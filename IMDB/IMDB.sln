@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1831
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMDB", "IMDB\IMDB.csproj", "{B93700A9-5965-4D37-85C1-83B71AF1A92E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B93700A9-5965-4D37-85C1-83B71AF1A92E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B93700A9-5965-4D37-85C1-83B71AF1A92E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B93700A9-5965-4D37-85C1-83B71AF1A92E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B93700A9-5965-4D37-85C1-83B71AF1A92E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B28CD282-EC8D-4E35-B56B-10FC99B3B196}
+	EndGlobalSection
+EndGlobal
