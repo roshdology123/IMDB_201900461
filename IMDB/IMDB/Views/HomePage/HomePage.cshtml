@@ -8,10 +8,27 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/Content/Site.css">
     <title>HomePage</title>
 </head>
 <body>
-    <div> 
+    <div class="navbar">
+        <div class="navbar-container">
+            <div class="logo-container"><img src="~/Content/Images/imdb-logo.svg" class="logo"></div>
+            <div class="menu-container">
+                <ul class="menu-list">
+                    <li class="menu-list-item">Menu</li>
+                    <li class="menu-list-item search"><input size="60" type="text" placeholder="Search.."><img class="imageSearch" src="~/Content/Images/search.png" /></li>
+                    <li class="menu-list-item"></li>
+                    <li class="menu-list-item">Sign In</li>
+                </ul>
+            </div>
+            <div class="profile-container">
+                <img class="profile-picture" src="~/Content/Images/man.png" alt="">
+                <div class="profile-text-container">
+                    <span class="profile-text">Profile</span>
+                </div>
+            </div>
     </div>
 </body>
 </html>

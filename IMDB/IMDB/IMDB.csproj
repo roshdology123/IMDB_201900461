@@ -88,6 +88,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\imdb-logo.svg" />
+    <Content Include="Content\Images\man.png" />
+    <Content Include="Content\Images\search.png" />
+    <Content Include="Content\Images\user.png" />
+    <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>

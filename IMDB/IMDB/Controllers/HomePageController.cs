@@ -9,7 +9,7 @@ namespace IMDB.Controllers
     public class HomePageController : Controller
     {
         // GET: HomePage
-        public ActionResult Index()
+        public ActionResult HomePage()
         {
             return View();
         }
