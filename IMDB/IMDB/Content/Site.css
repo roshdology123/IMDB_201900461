@@ -62,7 +62,10 @@ body {
 
 .profile-container {
     flex: 2;
-    
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 .profile-picture {
     width: 32px;
