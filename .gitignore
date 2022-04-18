@@ -119,3 +119,5 @@ src/.vs/config/applicationhost.config
 .idea/
 IMDB/.vs/IMDB/v15/.suo
 IMDB/.vs/IMDB/v15/Server/sqlite3/storage.ide-wal
+*.ide-shm
+*.ide-wal
