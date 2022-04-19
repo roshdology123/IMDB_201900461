@@ -48,8 +48,8 @@ body {
     padding: 6px;
     border: none;
     font-size: 17px;
-    margin-top: -8px;
     border-radius:8px 0px 0px 8px;
+    position:relative;
 
 }
 .imageSearch {
