@@ -88,6 +88,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\DrStrangeCover.jpg" />
     <Content Include="Content\Images\imdb-logo.svg" />
     <Content Include="Content\Images\img1.jpg" />
     <Content Include="Content\Images\img2.jpg" />
@@ -110,6 +111,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
+    <Content Include="Content\Font\Cairo-VariableFont_wght.ttf" />
+    <Content Include="Content\Font\static\Cairo-Black.ttf" />
+    <Content Include="Content\Font\static\Cairo-Bold.ttf" />
+    <Content Include="Content\Font\static\Cairo-ExtraBold.ttf" />
+    <Content Include="Content\Font\static\Cairo-ExtraLight.ttf" />
+    <Content Include="Content\Font\static\Cairo-Light.ttf" />
+    <Content Include="Content\Font\static\Cairo-Medium.ttf" />
+    <Content Include="Content\Font\static\Cairo-Regular.ttf" />
+    <Content Include="Content\Font\static\Cairo-SemiBold.ttf" />
     <None Include="packages.config" />
     <Content Include="Views\HomePage\HomePage.cshtml" />
     <None Include="Web.Debug.config">

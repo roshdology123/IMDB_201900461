@@ -19,7 +19,7 @@
             <div class="menu-container">
                 <ul class="menu-list">
                     <li class="menu-list-item">Menu</li>
-                    <li class="menu-list-item search"><input size="60" type="text" placeholder="Search.."><img class="imageSearch" src="~/Content/Images/search.png" /></li>
+                    <li class="menu-list-item search"><input size="50" type="text" placeholder="Search.."><img class="imageSearch" src="~/Content/Images/search.png" /></li>
                     <li class="menu-list-item"></li>
                     <li class="menu-list-item">Sign In</li>
                 </ul>
@@ -33,35 +33,101 @@
         </div>
     </div>
 
-    <div class="slideshow-container">
+    <div class="container">
+        <div class="content-container">
+            <div class="featured-content">
+                <img class="featured-title" src="~/Content/Images/img2.jpg" alt="Dr.Strange">
+                <p class="featured-desc">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto illo dolor
+                    deserunt nam assumenda ipsa eligendi dolore, ipsum id fugiat quo enim impedit, laboriosam omnis
+                    minima voluptatibus incidunt. Accusamus, provident.
+                </p>
+                <button class="featured-button">WATCH</button>
+            </div>
+            <div class="movie-list-container">
+                <h1 class="movie-list-title">NEW RELEASES</h1>
+                <div class="movie-list-wrapper">
+                    <div class="movie-list">
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="~/Content/Images/img1.jpg" alt="Film" />
+                            <span class="movie-list-item-title">Dr.Strange</span>
+                            <p class="movie-list-item-desc">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto illo dolor
+                                deserunt nam assumenda ipsa eligendi dolore.
+                            </p>
+                        </div>
 
-        <div class="mySlides fade">
-            <div class="numbertext">1 / 3</div>
-            <img src="~/Content/Images/img1.jpg" style="width:100%">
-            <div class="text">Caption Text</div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="~/Content/Images/img1.jpg" alt="Film" />
+                            <span class="movie-list-item-title">Dr.Strange</span>
+                            <p class="movie-list-item-desc">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto illo dolor
+                                deserunt nam assumenda ipsa eligendi dolore.
+                            </p>
+                        </div>
+
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="~/Content/Images/img1.jpg" alt="Film" />
+                            <span class="movie-list-item-title">Dr.Strange</span>
+                            <p class="movie-list-item-desc">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto illo dolor
+                                deserunt nam assumenda ipsa eligendi dolore.
+                            </p>
+                        </div>
+
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="~/Content/Images/img1.jpg" alt="Film" />
+                            <span class="movie-list-item-title">Dr.Strange</span>
+                            <p class="movie-list-item-desc">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto illo dolor
+                                deserunt nam assumenda ipsa eligendi dolore.
+                            </p>
+                        </div>
+
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="~/Content/Images/img1.jpg" alt="Film" />
+                            <span class="movie-list-item-title">Dr.Strange</span>
+                            <p class="movie-list-item-desc">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto illo dolor
+                                deserunt nam assumenda ipsa eligendi dolore.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="mySlides fade">
-            <div class="numbertext">2 / 3</div>
-            <img src="~/Content/Images/img2.jpg" style="width:100%">
-            <div class="text">Caption Two</div>
-        </div>
-
-        <div class="mySlides fade">
-            <div class="numbertext">3 / 3</div>
-            <img src="~/Content/Images/img3.jpg" style="width:100%">
-            <div class="text">Caption Three</div>
-        </div>
-
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
-    <br>
 
-    <div style="text-align:center">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-    </div>
+            <div class="slideshow-container">
+
+                <div class="mySlides fade">
+                    <div class="numbertext">1 / 3</div>
+                    <img src="~/Content/Images/img1.jpg" style="width:100%">
+                    <div class="text">Caption Text</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext">2 / 3</div>
+                    <img src="~/Content/Images/img2.jpg" style="width:100%">
+                    <div class="text">Caption Two</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext">3 / 3</div>
+                    <img src="~/Content/Images/img3.jpg" style="width:100%">
+                    <div class="text">Caption Three</div>
+                </div>
+
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+            <br>
+
+            <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
+
 </body>
 </html>
