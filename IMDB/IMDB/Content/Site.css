@@ -121,6 +121,7 @@ container {
     border: none;
     outline: none;
     font-weight: bold;
+    cursor: pointer;
 }
 
 
@@ -216,7 +217,8 @@ container {
 
 
 .slideshow-container {
-    max-width: 1000px;
+    width: 640px;
+    height: 320px;
     position: relative;
     margin: auto;
 }
