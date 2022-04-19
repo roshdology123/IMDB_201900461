@@ -29,7 +29,7 @@ body {
     position: relative;
 }
 
-.logo-container{
+.logo-container {
     flex : 1;
 }
 .menu-list{
@@ -75,4 +75,14 @@ body {
 .profile-text-container {
     margin: 0 10px;
 }
-
+.admin-menu {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+    margin-right: 70px;
+    font-size:150%;
+}
+.welcome{
+    margin-top: 50px;
+    margin-left: 50px;
+}
