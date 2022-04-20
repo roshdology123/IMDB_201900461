@@ -10,7 +10,6 @@
     <meta name="viewport" content="width=device-width" />
     <title>FilmDetails</title>
     <link rel="stylesheet" href="/Content/Site.css">
-    <script src="~/Content/Site.js"></script>
 </head>
 
 <body>
@@ -106,36 +105,46 @@
 
     </div>
     <div class="more-film-desc">
-        <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto illo dolor
-            deserunt nam assumenda ipsa eligendi dolore, ipsum id fugiat quo enim impedit, laboriosam omnis
-            minima voluptatibus incidunt. Accusamus, provident.
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto illo dolor
-            deserunt nam assumenda ipsa eligendi dolore, ipsum id fugiat quo enim impedit, laboriosam omnis
-            minima voluptatibus incidunt. Accusamus, provident.
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto illo dolor
-            deserunt nam assumenda ipsa eligendi dolore, ipsum id fugiat quo enim impedit, laboriosam omnis
-            minima voluptatibus incidunt. Accusamus, provident.
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto illo dolor
-            deserunt nam assumenda ipsa eligendi dolore, ipsum id fugiat quo enim impedit, laboriosam omnis
-            minima voluptatibus incidunt. Accusamus, provident.
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto illo dolor
-            deserunt nam assumenda ipsa eligendi dolore, ipsum id fugiat quo enim impedit, laboriosam omnis
-            minima voluptatibus incidunt. Accusamus, provident.
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto illo dolor
-            deserunt nam assumenda ipsa eligendi dolore, ipsum id fugiat quo enim impedit, laboriosam omnis
-            minima voluptatibus incidunt. Accusamus, provident.
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto illo dolor
-            deserunt nam assumenda ipsa eligendi dolore, ipsum id fugiat quo enim impedit, laboriosam omnis
-            minima voluptatibus incidunt. Accusamus, provident.
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto illo dolor
-            deserunt nam assumenda ipsa eligendi dolore, ipsum id fugiat quo enim impedit, laboriosam omnis
-            minima voluptatibus incidunt. Accusamus, provident.
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto illo dolor
-            deserunt nam assumenda ipsa eligendi dolore, ipsum id fugiat quo enim impedit, laboriosam omnis
-            minima voluptatibus incidunt. Accusamus, provident.
-        </p>
+        <div class="more-to-explore">
+            <h1 style="color: black;"> More To Explore</h1>
+            <img class="more-to-explore-image" src="~/Content/Images/img1.jpg" />
+            <img class="more-to-explore-image" src="~/Content/Images/img2.jpg" />
+            <img class="more-to-explore-image" src="~/Content/Images/img3.jpg" />
+        </div>
+        <h1>More Videos</h1>
+
+        <div class="slideshow-container">
+
+            <div class="mySlides1">
+
+                <img src="~/Content/Images/img1.jpg" style="width:640px ; height:320px; object-fit:contain;">
+
+            </div>
+
+            <div class="mySlides1">
+
+                <img src="~/Content/Images/img2.jpg" style="width:640px ; height:320px; object-fit:contain;">
+
+            </div>
+
+            <div class="mySlides1">
+
+                <img src="~/Content/Images/img3.jpg" style="width:640px ; height:320px; object-fit:contain">
+
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1,0)">&#10095;</a>
+        </div>
+        <div class="film-desc-cast">
+            <h2>Top cast</h2>
+            <table border="0"></table>
+        </div>
+        <script src="~/Content/Site.js"></script>
 
     </div>
+
+   
+
 </body>
 </html>
