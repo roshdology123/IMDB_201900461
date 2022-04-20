@@ -204,18 +204,6 @@ container {
     opacity: 1;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 .slideshow-container {
     width: 640px;
     height: 320px;
@@ -301,4 +289,70 @@ container {
     to {
         opacity: 1
     }
+}
+
+
+.film-container {
+    height: 100vh;
+    padding: 2% 10% 0% 10%;
+    background: rgba(59,59,59,255);
+
+}
+
+.film-container-details-rating{
+    float: right;
+    list-style: none;
+}
+
+.film-container-details-rating-item {
+
+    font-size:large;
+    color: white;
+}
+
+
+
+.film-container-details-title {
+    color: white;
+}
+
+.film-container-details-menu {
+    align-items: center;
+    display: inline-flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+}
+
+.film-container-details-menu-item {
+    display: inline-block;
+    color: lightgray;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.film-container-images-list {
+    align-items: center;
+    display: inline-flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding-left: 0;
+    padding-top: 10px;
+    list-style:none;
+}
+.person-director , .person-star , .person-writer{
+    display : inline-flex;
+}
+
+.person-director-item, .person-star-item, .person-writer-item {
+    display: inline-flex;
+    color: lightgray;
+    vertical-align: middle;
+
+}
+.more-film-desc {
+    height: 100vh;
+    width: 100%;
+    padding: 2% 10% 0% 10%;
+    background: white;
 }
