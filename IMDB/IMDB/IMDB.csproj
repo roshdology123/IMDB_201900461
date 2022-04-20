@@ -88,11 +88,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\DrStrangeCover.jpg" />
+    <Content Include="Content\Images\icons8-dislike-64.png" />
+    <Content Include="Content\Images\icons8-like-64 %281%29.png" />
+    <Content Include="Content\Images\icons8-star-64.png" />
     <Content Include="Content\Images\imdb-logo.svg" />
+    <Content Include="Content\Images\img1.jpg" />
+    <Content Include="Content\Images\img2.jpg" />
+    <Content Include="Content\Images\img3.jpg" />
+    <Content Include="Content\Images\man %281%29.png" />
     <Content Include="Content\Images\man.png" />
     <Content Include="Content\Images\search.png" />
+    <Content Include="Content\Images\TheGodfather poster.jpg" />
     <Content Include="Content\Images\user.png" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\Site.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -106,8 +116,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
+    <Content Include="Content\Font\Cairo-VariableFont_wght.ttf" />
+    <Content Include="Content\Font\static\Cairo-Black.ttf" />
+    <Content Include="Content\Font\static\Cairo-Bold.ttf" />
+    <Content Include="Content\Font\static\Cairo-ExtraBold.ttf" />
+    <Content Include="Content\Font\static\Cairo-ExtraLight.ttf" />
+    <Content Include="Content\Font\static\Cairo-Light.ttf" />
+    <Content Include="Content\Font\static\Cairo-Medium.ttf" />
+    <Content Include="Content\Font\static\Cairo-Regular.ttf" />
+    <Content Include="Content\Font\static\Cairo-SemiBold.ttf" />
     <None Include="packages.config" />
     <Content Include="Views\HomePage\HomePage.cshtml" />
+    <Content Include="Views\HomePage\FilmDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
