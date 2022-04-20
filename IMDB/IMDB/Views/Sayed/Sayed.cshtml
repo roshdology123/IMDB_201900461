@@ -8,18 +8,43 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="/Content/Site.css">
+    <link href="~/Content/Site.css" rel="stylesheet" />
     <title>HomePage</title>
 </head>
 <body>
     <div class="navbar">
+        
         <div class="navbar-container">
             <div><img src="~/Content/Images/imdb-logo.svg" class="logo"></div>
             <div class="menu-container">
                 <ul class="menu-list">
-                    <li><a href="https://www.youtube.com/watch?v=AOlkcLtyXkw" title="Go to Movies section" class="admin-menu">Movies</a></li>
-                    <li><a href="https://www.youtube.com/watch?v=AOlkcLtyXkw" title="Go to Actors section" class="admin-menu">Actors</a></li>
-                    <li><a href="https://www.youtube.com/watch?v=AOlkcLtyXkw" title="Go to Directors section" class="admin-menu">Directors</a></li>
+                    <li>
+                        <div class="dropdown">
+                            <a href="#" title="Movies section" class="admin-menu">Movies</a>
+                            <div class="dropdown-content">
+                                <a href="#" class="show">Show All Movies</a>
+                                <a href="#">Add New Movie</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <a href="#" title="Actors section" class="admin-menu">Actors</a>
+                            <div class="dropdown-content">
+                                <a href="#" class="show">Show All Actors</a>
+                                <a href="#">Add New Actor</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <a href="#" title="Directors section" class="admin-menu">Directors</a>
+                            <div class="dropdown-content">
+                                <a href="#" class="show">Show All Directors</a>
+                                <a href="#">Add New Director</a>
+                            </div>
+                        </div>
+                    </li>
                 </ul>
             </div>
             <div class="profile-container">
@@ -30,6 +55,6 @@
             </div>
         </div>
     </div>
-    <h1 class="welcome">WELCOME ADMIN !</h1>
+    <h1 class="welcome"></h1>
 </body>
 </html>
