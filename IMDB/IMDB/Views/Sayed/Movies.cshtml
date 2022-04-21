@@ -13,7 +13,7 @@
 </head>
 <body>
     <div class="navbar">
-        
+
         <div class="navbar-container">
             <div><img src="~/Content/Images/imdb-logo.svg" class="logo"></div>
             <div class="menu-container">
@@ -45,6 +45,9 @@
                             </div>
                         </div>
                     </li>
+                    <li class="menu-list-item search">
+                    <input size="50" type="text" placeholder="Search.." id="myInput" onkeyup="myFunction()"><img class="imageSearch" src="~/Content/Images/search.png" />
+                    </li>
                 </ul>
             </div>
             <div class="profile-container">
@@ -55,6 +58,59 @@
             </div>
         </div>
     </div>
-    <h1 class="welcome"></h1>
+    <div class="big">
+        <ul id="myUL">
+            <li>
+                <p>Doctor Strange</p>
+                <button onclick="details()">Details</button>
+                <div id="movie-details">
+                    <p>
+
+                        <table>
+                            <tr>
+                                <td>Movie</td>
+                                <td>Doctor Strange</td>
+                            </tr>
+                            <tr>
+                                <td>Director</td>
+                                <td>Sam Raimi</td>
+                            </tr>
+                            <tr>
+                                <td>actors</td>
+                                <td>bendect , elizabith olsen, tom holand</td>
+                            </tr>
+                            
+                        </table>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <p>the godfather</p>
+                <button onclick="details2()">Details</button>
+                <div id="movie-details2">
+                    <p>
+
+                        <table>
+                            <tr>
+                                <td>Movie</td>
+                                <td>the godfather</td>
+                            </tr>
+                            <tr>
+                                <td>Director</td>
+                                <td>Sam Raimi</td>
+                            </tr>
+                            <tr>
+                                <td>actors</td>
+                                <td>alpatchino , marlon brando, robert de niro</td>
+                            </tr>
+                        </table>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <script src="~/Content/Sayed.js"></script>
 </body>
 </html>
+
+
