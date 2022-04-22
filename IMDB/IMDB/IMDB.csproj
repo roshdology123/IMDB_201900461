@@ -92,6 +92,8 @@
     <Content Include="Content\Images\man.png" />
     <Content Include="Content\Images\search.png" />
     <Content Include="Content\Images\user.png" />
+    <Content Include="Content\AddMovies.css" />
+    <Content Include="Content\ShowMovies.css" />
     <Content Include="Content\Sayed.css" />
     <Content Include="Content\Sayed.js" />
     <Content Include="Content\Site.css" />
@@ -113,6 +115,7 @@
     <Content Include="Views\HomePage\HomePage.cshtml" />
     <Content Include="Views\Sayed\Sayed.cshtml" />
     <Content Include="Views\Sayed\Movies.cshtml" />
+    <Content Include="Views\Sayed\AddMovies.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

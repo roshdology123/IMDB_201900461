@@ -116,3 +116,64 @@ body {
         background-color: rgb(37, 37, 37);
         color: white;
     }
+.big {
+    margin: 2rem;
+    padding: 1rem;
+    outline-offset: 0.5rem;
+}
+
+#myUL {
+    font-size: 200%;
+    list-style-type: none;
+}
+
+.big p {
+    color: black;
+    
+}
+
+button {
+    padding: 14px 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: rgb(245,197,24);
+    font-size: 16px;
+    transition-duration: 0.4s;
+    margin-left:20px;
+    margin-bottom:10px;
+}
+
+.movie-button {
+    display: flex;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin-bottom:15px;
+    padding-top:10px;
+    padding-left:10px;
+}
+
+button:hover {
+    background-color: #ffd633;
+    color: black;
+}
+
+.big img {
+    height: 400px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+    background-color: #404040;
+    color: white;
+    border-bottom: 1px solid #ddd;
+}
+
+#movie-details, #movie-details2 {
+    display: none;
+    margin-bottom:15px;
+}

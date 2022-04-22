@@ -17,5 +17,9 @@ namespace IMDB.Controllers
         {
             return View();
         }
+        public ActionResult AddMovies()
+        {
+            return View();
+        }
     }
 }
