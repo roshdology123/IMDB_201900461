@@ -2,7 +2,7 @@
 @{
     Layout = null;
 }
-
+@model IMDB.Models.CommentModel
 <!DOCTYPE html>
 
 <html>
@@ -80,7 +80,7 @@
                 <ul class="person-director">
                     <li class="person-director-item"> Francis Ford Coppola </li>
                 </ul>
-                </p>
+
                 <hr style="width:50%;text-align:left;margin-left:0; ">
 
                 <h2 style="color:white; font-size:large;display: inline-block; padding-bottom:8px; padding-top: 8px;"> Writers</h2>
@@ -98,7 +98,6 @@
                     <li class="person-star-item"> James Caan </li>
                 </ul>
 
-                <hr style="width:50%;text-align:left;margin-left:0;">
             </div>
 
         </div>
@@ -136,15 +135,182 @@
             <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
             <a class="next" onclick="plusSlides(1,0)">&#10095;</a>
         </div>
+
         <div class="film-desc-cast">
-            <h2>Top cast</h2>
-            <table border="0"></table>
+            <h1>Top cast</h1>
+            <table class="film-desc-cast-table" border="0">
+                <tr>
+                    <th class="film-desc-cast-data">
+                        <img src="~/Content/Images/man (1).png" />
+                    </th>
+                    <th style="padding-right:20px;"><h3 style="padding-left:10px; margin-bottom:10px;"> Don Corleon</h3></th>
+                    <th class="film-desc-cast-data">
+                        <img src="~/Content/Images/man (1).png" />
+                    </th>
+                    <th style="padding-right:20px;"><h3 style="padding-left:10px; margin-bottom:10px;"> Don Corleon</h3></th>
+                </tr>
+
+                <tr>
+                    <th class="film-desc-cast-data">
+                        <img src="~/Content/Images/man (1).png" />
+                    </th>
+                    <th style="padding-right:20px;"><h3 style="padding-left:10px; margin-bottom:10px;"> Don Corleon</h3></th>
+                    <th class="film-desc-cast-data">
+                        <img src="~/Content/Images/man (1).png" />
+                    </th>
+                    <th style="padding-right:20px;"><h3 style="padding-left:10px; margin-bottom:10px;"> Don Corleon</h3></th>
+                </tr>
+
+                <tr>
+                    <th class="film-desc-cast-data">
+                        <img src="~/Content/Images/man (1).png" />
+                    </th>
+                    <th style="padding-right:20px;"><h3 style="padding-left:10px; margin-bottom:10px;"> Don Corleon</h3></th>
+                    <th class="film-desc-cast-data">
+                        <img src="~/Content/Images/man (1).png" />
+                    </th>
+                    <th style="padding-right:20px;"><h3 style="padding-left:10px; margin-bottom:10px;"> Don Corleon</h3></th>
+                </tr>
+
+            </table>
+
         </div>
+
+        <div class="comment-section">
+            <div class="comment_block">
+                <div class="create_new_comment">
+                    <!-- current #{user} avatar -->
+                    <div class="user_avatar"><img src="~/Content/Images/man (1).png" /></div><!-- the input field -->
+                    <div class="input_comment">
+                        <input type="text" placeholder="Join the conversation..">
+                    </div>
+                </div><!-- new comment -->
+                <div class="new_comment">
+                    <!-- build comment -->
+                    <ul class="user_comment">
+                        <!-- current #{user} avatar -->
+                        <div class="user_avatar"<img src="~/Content/Images/man (1).png" /></div>
+                        <div class="comment_body">
+                            <p>@Model.CommentData[1]</p>
+                        </div><!-- comments toolbar -->
+                        <div class="comment_toolbar">
+                            <!-- inc. date and time -->
+                            <div class="comment_details">
+                                <ul>
+                                    <li>13:94</li>
+                                    <li>04/01/2015</li>
+                                    <li><span class="user">John Smith</span></li>
+                                </ul>
+                            </div><!-- inc. share/reply and love -->
+                            <div class="comment_tools"></div>
+                        </div><!-- start user replies -->
+                        <li>
+                            <!-- current #{user} avatar -->
+                            <div class="user_avatar"><img src="~/Content/Images/man (1).png" /></div><!-- the comment body -->
+                            <div class="comment_body">
+                                <div class="replied_to">
+                                    <p><span class="user">John Smith:</span>Gastropub cardigan jean shorts, kogi Godard PBR&amp;B lo-fi locavore. Organic chillwave vinyl Neutra. Bushwick Helvetica cred freegan, crucifix Godard craft beer deep v mixtape cornhole Truffaut master cleanse pour-over Odd Future beard. Portland polaroid iPhone.</p>
+                                </div>That's exactly what I was thinking!
+                            </div><!-- comments toolbar -->
+                            <div class="comment_toolbar">
+                                <!-- inc. date and time -->
+                                <div class="comment_details">
+                                    <ul>
+                                        <li>14:52</li>
+                                        <li>04/01/2015</li>
+                                        <li><span class="user">Andrew Johnson</span></li>
+                                    </ul>
+                                </div><!-- inc. share/reply and love -->
+                                <div class="comment_tools">
+                                    <ul>
+                                        <li><i class="fa fa-heart love"><span class="love_amt">4</span></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li><!-- start user replies -->
+                        <li>
+                            <!-- current #{user} avatar -->
+                            <div class="user_avatar"><img src="~/Content/Images/man (1).png" /></div><!-- the comment body -->
+                            <div class="comment_body">
+                                <div class="replied_to">
+                                    <p><span class="user">John Smith:</span>Gastropub cardigan jean shorts, kogi Godard PBR&amp;B lo-fi locavore. Organic chillwave vinyl Neutra. Bushwick Helvetica cred freegan, crucifix Godard craft beer deep v mixtape cornhole Truffaut master cleanse pour-over Odd Future beard. Portland polaroid iPhone.</p>
+                                </div>Finally someone who actually gets it!
+                                <div class="replied_to">
+                                    <p><span class="user">Andrew Johnson:</span>That's exactly what I was thinking!</p>
+                                </div>That's awesome!
+                            </div><!-- comments toolbar -->
+                            <div class="comment_toolbar">
+                                <!-- inc. date and time -->
+                                <div class="comment_details">
+                                    <ul>
+                                        <li>14:59</li>
+                                        <li>04/01/2015</li>
+                                        <li><span class="user">Simon Gregor</span></li>
+                                    </ul>
+                                </div><!-- inc. share/reply and love -->
+                                <div class="comment_tools">
+                                    <ul>
+                                        <li><i class="fa fa-heart love"><span class="love_amt">4039</span></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div><!-- new comment -->
+                <div class="new_comment">
+                    <!-- build comment -->
+                    <ul class="user_comment">
+                        <!-- current #{user} avatar -->
+                        <div class="user_avatar"><img src="~/Content/Images/man (1).png" /></div><!-- the comment body -->
+                        <div class="comment_body">
+                            <p>Gastropub cardigan jean shorts, kogi Godard PBR&amp;B lo-fi locavore. Organic chillwave vinyl Neutra. Bushwick Helvetica cred freegan, crucifix Godard craft beer deep v mixtape cornhole Truffaut master cleanse pour-over Odd Future beard. Portland polaroid iPhone.</p>
+                        </div><!-- comments toolbar -->
+                        <div class="comment_toolbar">
+                            <!-- inc. date and time -->
+                            <div class="comment_details">
+                                <ul>
+                                    <li>13:94</li>
+                                    <li>04/01/2015</li>
+                                    <li><span class="user">Sarah Walkman</span></li>
+                                </ul>
+                            </div><!-- inc. share/reply and love -->
+                            <div class="comment_tools"></div>
+                        </div><!-- start user replies -->
+                        <li>
+                            <!-- current #{user} avatar -->
+                            <div class="user_avatar"><img src="~/Content/Images/man (1).png" /></div><!-- the comment body -->
+                            <div class="comment_body">
+                                <div class="replied_to">
+                                    <p><span class="user">Sarah Walkman:</span>Pork belly migas flexitarian messenger bag Brooklyn gluten-free. Tilde kitsch skateboard Helvetica, lumbersexual four loko direct trade pour-over. Cronut deep v keffiyeh cornhole food truck</p>
+                                </div>I'm tired, does anybody know a good place to buy extra strength coffee?
+                            </div><!-- comments toolbar -->
+                            <div class="comment_toolbar">
+                                <!-- inc. date and time -->
+                                <div class="comment_details">
+                                    <ul>
+                                        <li>19:23</li>
+                                        <li>14/01/2015</li>
+                                        <li><span class="user">Blake Anderson</span></li>
+                                    </ul>
+                                </div><!-- inc. share/reply and love -->
+                                <div class="comment_tools">
+                                    <ul>
+                                        <li><i class="fa fa-heart love"><span class="love_amt">12</span></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
         <script src="~/Content/Site.js"></script>
 
     </div>
 
-   
+
 
 </body>
 </html>

@@ -16,5 +16,6 @@ function showSlides(n, no) {
     for (i = 0; i < x.length; i++) {
         x[i].style.display = "none";
     }
+
     x[slideIndex[no] - 1].style.display = "block";
 }
