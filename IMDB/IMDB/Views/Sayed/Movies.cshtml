@@ -61,47 +61,55 @@
     <div class="big">
         <ul id="myUL">
             <li>
-                <p>Doctor Strange</p>
-                <button onclick="details()">Details</button>
+                <div class="movie-button" id="movie1-container">
+                    <p>Doctor Strange</p>
+                    <button onclick="details()">Details</button>
+                    <button onclick="RemoveMovie1()">Remove</button>
+                </div>
                 <div id="movie-details">
                     <p>
-
                         <table>
                             <tr>
                                 <td>Movie</td>
-                                <td>Doctor Strange</td>
+                                <td id="movie">Doctor Strange</td>
                             </tr>
                             <tr>
                                 <td>Director</td>
-                                <td>Sam Raimi</td>
+                                <td id="director" contenteditable="false">Sam Raimi</td>
                             </tr>
                             <tr>
-                                <td>actors</td>
-                                <td>bendect , elizabith olsen, tom holand</td>
+                                <td>Actors</td>
+                                <td id="actor" contenteditable="false"> bendect , elizabith olsen, tom holand</td>
                             </tr>
-                            
                         </table>
                     </p>
+                    <button id="edit-button" type="submit">Edit</button>
+                    <button id="done-button" type="submit">Done</button>
                 </div>
             </li>
             <li>
-                <p>the godfather</p>
-                <button onclick="details2()">Details</button>
+                <div class="movie-button" id="movie2-container">
+                    <p>The godfather</p>
+                    <button onclick="details2()">Details</button>
+                    <button onclick="RemoveMovie2()">Remove</button>
+                </div>
                 <div id="movie-details2">
                     <p>
-
                         <table>
                             <tr>
                                 <td>Movie</td>
                                 <td>the godfather</td>
+                                <td><button class="edit-button">Edit</button></td>
                             </tr>
                             <tr>
                                 <td>Director</td>
                                 <td>Sam Raimi</td>
+                                <td><button class="edit-button">Edit</button></td>
                             </tr>
                             <tr>
                                 <td>actors</td>
                                 <td>alpatchino , marlon brando, robert de niro</td>
+                                <td><button class="edit-button">Edit</button></td>
                             </tr>
                         </table>
                     </p>

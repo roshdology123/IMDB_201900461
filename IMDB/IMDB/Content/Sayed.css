@@ -93,7 +93,7 @@ body {
     display: none;
     position: absolute;
     width: 11%;
-    overflow: auto;
+    overflow:auto;
     box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4);
 }
 
@@ -112,7 +112,7 @@ body {
     
 }
 
-    .dropdown-content a:hover {
+.dropdown-content a:hover {
         background-color: rgb(37, 37, 37);
         color: white;
     }
@@ -139,11 +139,23 @@ button {
     background-color: rgb(245,197,24);
     font-size: 16px;
     transition-duration: 0.4s;
+    margin-left:20px;
+    margin-bottom:10px;
 }
-    button:hover {
-        background-color: #ffd633;
-        color: black;
-    }
+
+.movie-button {
+    display: flex;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin-bottom:15px;
+    padding-top:10px;
+    padding-left:10px;
+}
+
+button:hover {
+    background-color: #ffd633;
+    color: black;
+}
 
 .big img {
     height: 400px;
@@ -163,5 +175,5 @@ td {
 
 #movie-details, #movie-details2 {
     display: none;
+    margin-bottom:15px;
 }
-
