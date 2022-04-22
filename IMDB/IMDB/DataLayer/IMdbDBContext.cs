@@ -23,6 +23,8 @@ namespace IMDB.DataLayer
         public DbSet<UserFActor> UserFActors { get; set; }
         public DbSet<UserFDirector> UserFDirectors { get; set; }
         public DbSet<UserFMovie> UserFMovies { get; set; }
+        
+
     }
     
 }

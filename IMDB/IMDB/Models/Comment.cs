@@ -12,11 +12,9 @@ namespace IMDB.Models
         [Key]
         public int Comment_ID { get; set; }
 
-        [ForeignKey("User_ID")]
-        public int User_ID { get; set; }
+        public User User_ID { get; set; }
 
-        [ForeignKey("Movie_ID")]
-        public int Movie_ID { get; set; }
+        public Movie Movie_ID { get; set; }
 
         public String CommentData { get; set; }
     }

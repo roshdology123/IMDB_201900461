@@ -14,8 +14,7 @@ namespace IMDB.Models
 
         public String Movie_Name { get; set; }
 
-        [ForeignKey("Director_ID")]
-        public int Director_ID { get; set; }
+        public Director Director_ID { get; set; }
 
         public byte[] Img1 { get; set; }
 

@@ -12,11 +12,9 @@ namespace IMDB.Models
         [Key]
         public int ID { get; set; }
 
-        [ForeignKey("User_ID")]
-        public int User_ID { get; set; }
+        public User User_ID { get; set; }
 
-        [ForeignKey("Actor_ID")]
-        public int Actor_ID { get; set; }
+        public Actor Actor_ID { get; set; }
 
         public Boolean LikeValue { get; set; }
     }

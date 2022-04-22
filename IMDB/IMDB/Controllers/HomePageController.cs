@@ -1,4 +1,5 @@
-﻿using IMDB.Models;
+﻿using IMDB.DataLayer;
+using IMDB.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace IMDB.Controllers
             return View();
         }
         public ActionResult FilmDetails()
-        { 
+        {
             return View();
         }
     }
