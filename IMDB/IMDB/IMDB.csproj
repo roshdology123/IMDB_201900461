@@ -95,12 +95,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Content Include="Content\Images\47857.jpg" />
-=======
+
     <Content Include="Content\CSS\login.css" />
     <Content Include="Content\CSS\register.css" />
->>>>>>> Login-Register
     <Content Include="Content\Images\DrStrangeCover.jpg" />
     <Content Include="Content\Images\icons8-dislike-64.png" />
     <Content Include="Content\Images\icons8-like-64 %281%29.png" />
@@ -122,11 +120,9 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
-<<<<<<< HEAD
     <Compile Include="DataLayer\IMdbDBContext.cs" />
-=======
+
     <Compile Include="Controllers\LoginRegisterController.cs" />
->>>>>>> Login-Register
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
