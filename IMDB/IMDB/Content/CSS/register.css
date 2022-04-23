@@ -1,0 +1,56 @@
+.All{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    position: center;
+    border: #333333;
+    
+}
+body {
+    background-color: black;
+
+}
+.Logo{
+    display: block;
+    font-family: Poppins-Bold;
+    font-size: 39px;
+    color: #333333;
+    line-height: 1.2;
+    text-align: center;
+}
+.Form-Details{
+    z-index: 1;
+    background-color: white;
+    opacity: 90%;
+    max-width:400px;
+    height: 450px;
+    margin: 5px auto 5px;
+    padding: 0px 0px 50px 30px;
+     border: 1px #ddd solid;
+     background-color: #fff;
+}
+.form-details input{
+    padding:6px 6px 6px 6px;
+}
+.block{
+    margin-top: 10px;
+}
+
+h1 {
+
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.2;
+}
+.Submit {
+    margin-left: 100px;
+    cursor: pointer;
+}
+.input {
+        
+        padding-top:7px;
+        padding-left: 3px;
+        padding-right: 3px;
+        padding-bottom: 7px;
+    }
