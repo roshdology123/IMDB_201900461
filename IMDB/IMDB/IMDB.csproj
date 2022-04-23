@@ -96,7 +96,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Images\47857.jpg" />
-
     <Content Include="Content\CSS\login.css" />
     <Content Include="Content\CSS\register.css" />
     <Content Include="Content\Images\DrStrangeCover.jpg" />
@@ -121,7 +120,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
     <Compile Include="DataLayer\IMdbDBContext.cs" />
-
     <Compile Include="Controllers\LoginRegisterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -157,9 +155,8 @@
     <None Include="packages.config" />
     <Content Include="Views\HomePage\HomePage.cshtml" />
     <Content Include="Views\HomePage\FilmDetails.cshtml" />
-    <Content Include="Views\LoginPage\Login.cshtml" />
-    <Content Include="Views\LoginPage\Register.cshtml" />
     <Content Include="Views\LoginRegister\Login.cshtml" />
+    <Content Include="Views\LoginRegister\Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
