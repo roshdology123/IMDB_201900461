@@ -88,15 +88,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\game_over.png" />
     <Content Include="Content\Images\imdb-logo.svg" />
     <Content Include="Content\Images\man.png" />
     <Content Include="Content\Images\search.png" />
+    <Content Include="Content\Images\strange.jpg" />
     <Content Include="Content\Images\user.png" />
     <Content Include="Content\AddMovies.css" />
     <Content Include="Content\ShowMovies.css" />
     <Content Include="Content\Sayed.css" />
     <Content Include="Content\Sayed.js" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\upload.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
