@@ -16,11 +16,7 @@ namespace IMDB.Models
 
         public Director Director_ID { get; set; }
 
-        public byte[] Img1 { get; set; }
-
-        public byte[] Img2 { get; set; }
-
-        public byte[] Img3 { get; set; }
+        public byte[] Img { get; set; }
 
         public String Movie_TLink { get; set; }
 
