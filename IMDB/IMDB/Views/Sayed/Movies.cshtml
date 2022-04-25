@@ -23,7 +23,7 @@
                             <a href="#" title="Movies section" class="admin-menu">Movies</a>
                             <div class="dropdown-content">
                                 <a href="#" class="show">Show All Movies</a>
-                                <a href="#">Add New Movie</a>
+                                <a href="">Add New Movie</a>
                             </div>
                         </div>
                     </li>
@@ -46,7 +46,7 @@
                         </div>
                     </li>
                     <li class="menu-list-item search">
-                    <input size="50" type="text" placeholder="Search.." id="myInput" onkeyup="myFunction()"><img class="imageSearch" src="~/Content/Images/search.png" />
+                        <input size="50" type="text" placeholder="Search.." id="myInput" onkeyup="myFunction()"><img class="imageSearch" src="~/Content/Images/search.png" />
                     </li>
                 </ul>
             </div>
@@ -69,6 +69,19 @@
                 <div id="movie-details">
                     <p>
                         <table>
+                            <tr>
+                                <td>Photo</td>
+                                <td>
+                                    <img class="ImgSetting" src="~/Content/Images/strange.jpg" id="output" width="400" height="200" />
+                                    <div class="Change">
+                                        <label class="-label" for="file">
+                                            <span class="glyphicon glyphicon-camera"></span>
+                                            <span class="ChangeText">Change Image</span>
+                                        </label>
+                                    </div>
+                                    <input class="Upload" id="file" type="file" onchange="loadFile(event)" />
+                                </td>
+                            </tr>
                             <tr>
                                 <td>Movie</td>
                                 <td id="movie">Doctor Strange</td>
@@ -118,6 +131,7 @@
         </ul>
     </div>
     <script src="~/Content/Sayed.js"></script>
+    <script src="~/Content/upload.js"></script>
 </body>
 </html>
 
