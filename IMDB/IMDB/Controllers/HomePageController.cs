@@ -10,11 +10,9 @@ namespace IMDB.Controllers
 {
     public class HomePageController : Controller
     {
-        
-        // GET: HomePage
+
         public ActionResult HomePage()
         {
-            
             return View();
         }
         public ActionResult FilmDetails()

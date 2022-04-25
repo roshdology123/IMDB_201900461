@@ -14,7 +14,12 @@ namespace IMDB.Models
 
         public String Password { get; set; }
 
+        public String FName{ get; set; }
+
+        public String LName { get; set; }
+
         public int Role_ID { get; set; }
 
+        public byte[] User_Img { get; set; }
     }
 }

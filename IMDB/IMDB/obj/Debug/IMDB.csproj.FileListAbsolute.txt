@@ -71,6 +71,5 @@ C:\Users\roshd\Git-Hub\IMDB_201900461\IMDB\IMDB\bin\EntityFramework.dll
 C:\Users\roshd\Git-Hub\IMDB_201900461\IMDB\IMDB\bin\EntityFramework.SqlServer.dll
 C:\Users\roshd\Git-Hub\IMDB_201900461\IMDB\IMDB\bin\EntityFramework.xml
 C:\Users\roshd\Git-Hub\IMDB_201900461\IMDB\IMDB\bin\EntityFramework.SqlServer.xml
-C:\Users\roshd\Git-Hub\IMDB_201900461\IMDB\IMDB\obj\Debug\IMDB.Migrations.Initial.resources
 C:\Users\roshd\Git-Hub\IMDB_201900461\IMDB\IMDB\obj\Debug\IMDB.csproj.GenerateResource.cache
-C:\Users\roshd\Git-Hub\IMDB_201900461\IMDB\IMDB\obj\Debug\IMDB.Migrations.Initial1.resources
+C:\Users\roshd\Git-Hub\IMDB_201900461\IMDB\IMDB\obj\Debug\IMDB.Migrations.Lastforce.resources

@@ -124,13 +124,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202204221457458_Initial.cs" />
-    <Compile Include="Migrations\202204221457458_Initial.designer.cs">
-      <DependentUpon>202204221457458_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202204241225102_Initial1.cs" />
-    <Compile Include="Migrations\202204241225102_Initial1.designer.cs">
-      <DependentUpon>202204241225102_Initial1.cs</DependentUpon>
+    <Compile Include="Migrations\202204251400210_Last -force.cs" />
+    <Compile Include="Migrations\202204251400210_Last -force.designer.cs">
+      <DependentUpon>202204251400210_Last -force.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Actor.cs" />
@@ -172,11 +168,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202204221457458_Initial.resx">
-      <DependentUpon>202204221457458_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202204241225102_Initial1.resx">
-      <DependentUpon>202204241225102_Initial1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202204251400210_Last -force.resx">
+      <DependentUpon>202204251400210_Last -force.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
