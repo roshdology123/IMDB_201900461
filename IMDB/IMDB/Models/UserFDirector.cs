@@ -14,6 +14,6 @@ namespace IMDB.Models
 
         public User User_ID { get; set; }
 
-        public Actor Actor_ID { get; set; }
+        public Director Director_ID { get; set; }
     }
 }
