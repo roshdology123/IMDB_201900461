@@ -130,6 +130,10 @@
     <Compile Include="Migrations\202204251400210_Last -force.designer.cs">
       <DependentUpon>202204251400210_Last -force.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202204251554263_Inital.cs" />
+    <Compile Include="Migrations\202204251554263_Inital.designer.cs">
+      <DependentUpon>202204251554263_Inital.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Actor.cs" />
     <Compile Include="Models\Comment.cs" />
@@ -172,6 +176,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202204251400210_Last -force.resx">
       <DependentUpon>202204251400210_Last -force.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204251554263_Inital.resx">
+      <DependentUpon>202204251554263_Inital.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
