@@ -1,0 +1,125 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/UserSettings.css" rel="stylesheet" />
+    <title>HomePage</title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-container">
+            <div class="logo-container"><img src="~/Content/Images/imdb-logo.svg" class="logo"></div>
+            <div class="menu-container">
+                <ul class="menu-list">
+                    <li class="menu-list-item">Menu</li>
+                    <li class="menu-list-item search"><input size="60" type="text" placeholder="Search.."><img class="imageSearch" src="~/Content/Images/search.png" /></li>
+                    <li class="menu-list-item"></li>
+                    <li class="menu-list-item">SignIn</li>
+                </ul>
+            </div>
+            <div class="profile-container">
+                <img class="profile-picture" src="~/Content/Images/man.png" alt="">
+                <div class="profile-text-container">
+                    <span class="profile-text">Profile</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--.........................................................................-->
+    <div class="FormBox">
+        <form class="ProfileForm">
+            <div class="HeadBox"><h1 class="HeadText">Profile Settings</h1></div>
+            <!--.........................................................................-->
+            <div class="FloatChildImg">
+                <img class="ImgSettings" src="~/Content/Images/Yasuo.jpg" id="output" width="200" />
+                <br />
+                <div class="ChangeButton">
+                    <label class="-label" for="file">
+                        <span class="glyphicon glyphicon-camera"></span>
+                        <span class="ChangeButtonText">Change Image</span>
+                    </label>
+                </div>
+                <input class="UploadInput" id="file" type="file" onchange="loadFile(event)" />
+            </div>
+            <!--.........................................................................-->
+            <div class="FloatChild">
+                <div class="DHead"><b>Personal Information</b></div>
+                <br />
+                <label>First Name</label>
+                <input class="NameInput" type="text" id="fname" name="firstname" placeholder="Your name..">
+                <label>Last Name</label>
+                <input class="NameInput" type="text" id="lname" name="lastname" placeholder="Your last name..">
+                <label>Password:</label>
+                <input class="NameInput" type="password" id="myInput" placeholder="Your new password..">
+                <input type="checkbox" onclick="ShowPassword()"> Show Password
+                <br />
+                <button class="SubmitButton"><b>Save Changes</b></button>
+            </div>
+            <br />
+            <!--....................... Favorite Actors ............................-->
+            <div class="DHead2"><b>Favorite Actors</b></div>
+            <div class="FavoActors">
+                <div class="FloatActor">
+                    <img class="Actor" src="~/Content/Images/Bendict Cumberbatch.jpg" />
+                    <h3>Bendict Cumberbatch</h3>
+                    <button class="RemoveButton"><b>Remove Favorite</b></button>
+                </div>
+                <div class="FloatActor">
+                    <img class="Actor" src="~/Content/Images/Hugh Jackman.jpg" />
+                    <h3>Hugh Jackman</h3>
+                    <button class="RemoveButton"><b>Remove Favorite</b></button>
+                </div>
+                <div class="FloatActor">
+                    <img class="Actor" src="~/Content/Images/Chris Hemsworth.jpg" />
+                    <h3>Chris Hemsworth</h3>
+                    <button class="RemoveButton"><b>Remove Favorite</b></button>
+                </div>
+            </div>
+            <!--....................... Favorite Movies ............................-->
+            <br />
+            <div class="DHead2"><b>Favorite Movies</b></div>
+            <div class="FavoMovies">
+                <div class="FloatMovie">
+                    <img class="Movie" src="~/Content/Images/End Game.png" />
+                    <h3>End Game</h3>
+                    <button class="RemoveButton"><b>Remove Favorite</b></button>
+                </div>
+                <div class="FloatMovie">
+                    <img class="Movie" src="~/Content/Images/Infinity War.jpeg" />
+                    <h3>Infinity War</h3>
+                    <button class="RemoveButton"><b>Remove Favorite</b></button>
+                </div>
+                <div class="FloatMovie">
+                    <img class="Movie" src="~/Content/Images/Doctor Strange.jpg" />
+                    <h3>Doctor Strange</h3>
+                    <button class="RemoveButton"><b>Remove Favorite</b></button>
+                </div>
+                <div class="FloatMovie">
+                    <img class="Movie" src="~/Content/Images/Logan.png" />
+                    <h3>Logan</h3>
+                    <button class="RemoveButton"><b>Remove Favorite</b></button>
+                </div>
+            </div>
+            <!--....................... Favorite Directors ............................-->
+            <br />
+            <div class="DHead2"><b>Favorite Directors</b></div>
+            <div class="FavoDirectors">
+                <div class="FloatDirector">
+                    <img class="Director" src="~/Content/Images/Sam Raimi.jpg" />
+                    <h3>Sam Raimi</h3>
+                    <button class="RemoveButton"><b>Remove Favorite</b></button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="~/Content/UploadImg.js"></script>
+</body>
+</html>
+
