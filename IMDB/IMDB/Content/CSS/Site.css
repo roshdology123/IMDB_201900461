@@ -15,18 +15,12 @@ body {
 
 .navbar {
     width: 100%;
-<<<<<<< HEAD
     height: 50px;
     background-color: black;
-
-=======
     height: 60px;
-<<<<<<< HEAD
     background-color:rgb(37, 37, 37);
->>>>>>> ExplorerPage
-=======
     background-color: rgb(37, 37, 37);
->>>>>>> ExplorerPage
+
 }
 
 .navbar-container {
@@ -44,17 +38,12 @@ body {
     position: relative;
 }
 
-<<<<<<< HEAD
-.logo-container{
-    flex : 1;
-<<<<<<< HEAD
-=======
-=======
 .logo-container {
     flex: 1;
->>>>>>> ExplorerPage
+}
+.logo-container {
+    flex: 1;
     margin-top: 10px;
->>>>>>> ExplorerPage
 }
 
 .menu-list {
@@ -92,11 +81,8 @@ body {
 }
 
 .profile-container {
-<<<<<<< HEAD
-    flex: 2;
-=======
+
     flex: 1;
->>>>>>> ExplorerPage
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -111,8 +97,6 @@ body {
 
 .profile-text-container {
     margin: 0 10px;
-<<<<<<< HEAD
-=======
 }
 
 .mycontainer {
@@ -129,18 +113,11 @@ body {
 .featured-content {
     height: 50vh;
     padding: 50px;
-<<<<<<< HEAD
-    background: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('/Content/Images/DrStrangeCover.jpg');
+    background: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('/Content/Images/47857.jpg');
     object-fit:cover;
     background-repeat:no-repeat;
     background-size:contain;
     background-position:center;
->>>>>>> ExplorerPage
-=======
-    background: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('Images/47857.jpg');
-    background-size: contain;
-    background-position: center;
->>>>>>> ExplorerPage
 }
 
 .featured-title {
@@ -283,11 +260,11 @@ body {
 }
 
 
-    /* On hover, add a black background color with a little bit see-through */
-    .prev:hover, .next:hover {
-        background-color: #f1f1f1;
-        color: black;
-    }
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+    background-color: #f1f1f1;
+    color: black;
+}
 .fade {
     animation-name: fade;
     animation-duration: 0.5s;

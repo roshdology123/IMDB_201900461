@@ -120,6 +120,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
     <Compile Include="Controllers\ImageConversion.cs" />
+    <Compile Include="DataLayer\DBInitializer.cs" />
     <Compile Include="DataLayer\IMdbDBContext.cs" />
     <Compile Include="Controllers\LoginRegisterController.cs" />
     <Compile Include="Global.asax.cs">
