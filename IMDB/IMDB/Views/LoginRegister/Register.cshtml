@@ -4,26 +4,33 @@
 }
 
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IMDB Register</title>
     <link href="~/Content/CSS/register.css" rel="stylesheet" />
+  
+
 </head>
 <body>
     <span class="Logo">
-        <img src="https://images-na.ssl-images-amazon.com/images/G/01/imdb/authportal/images/www_imdb_logo._CB667618033_.png" alt="IMDb.com logo">
+        <a href="HomePage.html"> <img src="https://images-na.ssl-images-amazon.com/images/G/01/imdb/authportal/images/www_imdb_logo._CB667618033_.png" alt="IMDb.com logo"></a>
     </span>
 
     <div class="All">
         <Form action="login.html" name="register">
+
             <div id="Form-Details" class="Form-Details">
                 <h1 class="a-spacing small"> Create Account </h1>
+
                 <div class="block">
-                    <p>Your name</p>
+                    <p>Your First name</p>
+                    <input class="input" size="50" name=" Your name" type="text" id="Your name" placeholder="Enter Your Name" required>
+                </div>
+                <div class="block">
+                    <p>Your Last name</p>
                     <input class="input" size="50" name=" Your name" type="text" id="Your name" placeholder="Enter Your Name" required>
                 </div>
                 <div class="block">
@@ -44,6 +51,6 @@
                 </div>
             </div>
         </Form>
-    </div>
+        <script src="Register.js"></script>
 </body>
 </html>

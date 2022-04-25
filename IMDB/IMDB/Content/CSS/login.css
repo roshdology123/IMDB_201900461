@@ -7,8 +7,7 @@ All{
     border: #333333;
 }
 body {
-    background-color: black;
-
+    background-color: #1a1a1a;
 }
 .Logo{
     display: block;
@@ -18,17 +17,18 @@ body {
     line-height: 1.2;
     text-align: center;
 }
-.Form-Details{
+.Form-Details {
     z-index: 1;
     background-color: white;
     opacity: 90%;
-    max-width:400px;
+    max-width: 400px;
     width: 400px;
     height: 400px;
     margin: 5px auto 5px;
     padding: 0px 0px 50px 30px;
-     border: 1px #ddd solid;
-     background-color: #fff;
+    border: 1px #ddd solid;
+    background-color: #fff;
+    border-radius: 10px;
 }
 .form-details input{
     padding:6px 6px 6px 6px;
