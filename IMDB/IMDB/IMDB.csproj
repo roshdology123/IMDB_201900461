@@ -101,9 +101,9 @@
     <Content Include="Content\Images\search.png" />
     <Content Include="Content\Images\user.png" />
     <Content Include="Content\Images\Yasuo.jpg" />
-    <Content Include="Content\Site.css" />
-    <Content Include="Content\UploadImg.js" />
-    <Content Include="Content\UserSettings.css" />
+    <Content Include="Content\css\Site.css" />
+    <Content Include="Content\JS\UploadImg.js" />
+    <Content Include="Content\css\UserSettings.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
