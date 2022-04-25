@@ -53,6 +53,7 @@ function RemoveMovie2() {
 const Movie = document.getElementById("movie");
 const Director = document.getElementById("director");
 const Actors = document.getElementById("actor");
+const Trailer = document.getElementById("trailer");
 const edit_button = document.getElementById("edit-button");
 const done_button = document.getElementById("done-button");
 
@@ -60,10 +61,12 @@ edit_button.addEventListener("click", function () {
     Movie.contentEditable = true;
     Director.contentEditable = true;
     Actors.contentEditable = true;
+    Trailer.contentEditable = true;
 });
 
 done_button.addEventListener("click", function () {
     Movie.contentEditable = false;
     Director.contentEditable = false;
     Actors.contentEditable = false;
+    Trailer.contentEditable = false;
 });
