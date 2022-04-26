@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using IMDB.Models;
+using System.Drawing;
+using IMDB.Controllers;
+using System.IO;
 
 namespace IMDB.DataLayer
 {
@@ -43,6 +46,10 @@ namespace IMDB.DataLayer
             
             if (!context.Users.Any())
             {
+                    Image img = Image.FromFile("C:/Users/roshd/Git-Hub/IMDB_201900461/IMDB/IMDB/Content/Images/user.png");
+                    byte[] ImageData = ImageConversion.ImageToByteArray(img);
+
+
                 context.Users.AddRange(new List<User>()
                 {
                     new User()
@@ -51,12 +58,40 @@ namespace IMDB.DataLayer
                         LName = "Roshdy",
                         Email = "abdallahelswify@gmail.com",
                         Password = "@Bdallah123",
-                        User_Img = System.Text.Encoding.ASCII.GetBytes("0xe04fd020ea3a6910a2d808002b30309d")
-            }
-                    
+                        User_Img = ImageData
+                    },
+                    new User()
+                    {
+                        FName = "Roshdy",
+                        LName = "Raghep",
+                        Email = "abdallahelswify@gmail.com",
+                        Password = "@Bdallah123",
+                        User_Img = ImageData
+                    }
+
             });
                 context.SaveChanges();
             }
+            if (!context.Movies.Any())
+                {
+                    byte[] ImageData = null;
+                    Image img = Image.FromFile("C:/Users/roshd/Git-Hub/IMDB_201900461/IMDB/IMDB/Content/Images/user.png");
+
+                    FileStream Stream = new FileStream("C:/Users/roshd/Git-Hub/IMDB_201900461/IMDB/IMDB/Content/Images/user.png", FileMode.Open, FileAccess.Read);
+                    BinaryReader binaryReader = new BinaryReader(Stream);
+
+                    ImageData = binaryReader.ReadBytes((int)Stream.Length);
+                    context.Movies.AddRange(new List<Movie>()
+                    {
+                        new Movie()
+                        {
+                            Movie_Name = "Ay 7aga",
+                            Movie_TLink = "https://www.youtube.com/embed/ORVShW0Yjaw",
+                            Img = ImageData
+                        }
+                    });
+                    context.SaveChanges();
+                } 
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿
+﻿@using IMDB.Models
+
 @{
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_MainLayoutPage.cshtml";
@@ -19,6 +20,7 @@
         <div class="mycontainer">
             <div class="content-container">
                 <div class="featured-content">
+                    <img src="@String.Format("data:image/png;base64,{0}",Convert.ToBase64String(ViewBag.Image))" alt="Alternate Text" />
                     <img class="featured-title" src="~/Content/Images/img2.jpg" alt="Dr.Strange">
                     <p class="featured-desc">
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto illo dolor

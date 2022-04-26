@@ -12,8 +12,10 @@ namespace IMDB.Models
         [Key]
         public int ID { get; set; }
 
+        [Display(Name = "Movie ID")]
         public Movie Movie_ID { get; set; }
 
+        [Display(Name = "Actor ID")]
         public Actor Actor_ID { get; set; }
     }
 }

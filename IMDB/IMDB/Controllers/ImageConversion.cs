@@ -9,7 +9,7 @@ namespace IMDB.Controllers
 {
     public class ImageConversion
     {
-        public byte[] ImageToByteArray(Image imageIn)
+        public static byte[] ImageToByteArray(Image imageIn)
         {
             using (var memoryStream = new MemoryStream())
             {
@@ -17,7 +17,7 @@ namespace IMDB.Controllers
                 return memoryStream.ToArray();
             }
         }
-        public Image ByteArrayToImage(byte[] source)
+        public static Image ByteArrayToImage(byte[] source)
         {
             MemoryStream memoryStream = new MemoryStream(source);
             Image image = Image.FromStream(memoryStream);

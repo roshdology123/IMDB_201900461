@@ -11,10 +11,13 @@ namespace IMDB.Models
         [Key]
         public int Director_ID { get; set; }
 
+        [Display(Name = "First Name")]
         public String FName { get; set; }
 
+        [Display(Name = "Last Name")]
         public String LName { get; set; }
 
+        [Display(Name = "Age")]
         public int Age { get; set; }
 
     }
