@@ -126,14 +126,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202204251400210_Last -force.cs" />
-    <Compile Include="Migrations\202204251400210_Last -force.designer.cs">
-      <DependentUpon>202204251400210_Last -force.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202204251554263_Inital.cs" />
-    <Compile Include="Migrations\202204251554263_Inital.designer.cs">
-      <DependentUpon>202204251554263_Inital.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Actor.cs" />
     <Compile Include="Models\Comment.cs" />
@@ -163,6 +155,7 @@
     <Content Include="Views\HomePage\FilmDetails.cshtml" />
     <Content Include="Views\LoginRegister\Login.cshtml" />
     <Content Include="Views\LoginRegister\Register.cshtml" />
+    <Content Include="Views\Shared\_MainLayoutPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -172,14 +165,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202204251400210_Last -force.resx">
-      <DependentUpon>202204251400210_Last -force.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202204251554263_Inital.resx">
-      <DependentUpon>202204251554263_Inital.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
