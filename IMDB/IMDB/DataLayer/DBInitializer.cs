@@ -75,12 +75,9 @@ namespace IMDB.DataLayer
             if (!context.Movies.Any())
                 {
                     byte[] ImageData = null;
-                    Image img = Image.FromFile("C:/Users/roshd/Git-Hub/IMDB_201900461/IMDB/IMDB/Content/Images/user.png");
 
-                    FileStream Stream = new FileStream("C:/Users/roshd/Git-Hub/IMDB_201900461/IMDB/IMDB/Content/Images/user.png", FileMode.Open, FileAccess.Read);
-                    BinaryReader binaryReader = new BinaryReader(Stream);
 
-                    ImageData = binaryReader.ReadBytes((int)Stream.Length);
+                    ImageData = ImageConversion.ImageToByteArray("C:/Users/roshd/Git-Hub/IMDB_201900461/IMDB/IMDB/Content/Images/user.png");
                     context.Movies.AddRange(new List<Movie>()
                     {
                         new Movie()
