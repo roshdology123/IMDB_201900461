@@ -46,7 +46,7 @@ namespace IMDB.DataLayer
             
             if (!context.Users.Any())
             {
-                    Image img = Image.FromFile("C:/Users/roshd/Git-Hub/IMDB_201900461/IMDB/IMDB/Content/Images/user.png");
+                    Image img = Image.FromFile("C:/Users/TIGER LAP/OneDrive/سطح المكتب/GitHup/IMDB_201900461/IMDB/IMDB/Content/Images/DrStrangeCover.jpg");
                     byte[] ImageData = ImageConversion.ImageToByteArray(img);
 
 
@@ -75,9 +75,9 @@ namespace IMDB.DataLayer
             if (!context.Movies.Any())
                 {
                     byte[] ImageData = null;
-                    Image img = Image.FromFile("C:/Users/roshd/Git-Hub/IMDB_201900461/IMDB/IMDB/Content/Images/user.png");
+                    Image img = Image.FromFile("C:/Users/TIGER LAP/OneDrive/سطح المكتب/GitHup/IMDB_201900461/IMDB/IMDB/Content/Images/47857.jpg");
 
-                    FileStream Stream = new FileStream("C:/Users/roshd/Git-Hub/IMDB_201900461/IMDB/IMDB/Content/Images/user.png", FileMode.Open, FileAccess.Read);
+                    FileStream Stream = new FileStream("C:/Users/TIGER LAP/OneDrive/سطح المكتب/GitHup/IMDB_201900461/IMDB/IMDB/Content/Images/TheGodfather poster.jpg", FileMode.Open, FileAccess.Read);
                     BinaryReader binaryReader = new BinaryReader(Stream);
 
                     ImageData = binaryReader.ReadBytes((int)Stream.Length);

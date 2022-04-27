@@ -1,16 +1,28 @@
-.All{
+.All {
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     position: center;
     border: #333333;
-    
 }
+
 body {
-    background-color: rgba(0,0,0,0.84);
+    background-color: #1a1a1a;
 }
-.Logo{
+
+.ImgSetting {
+    object-fit: cover;
+    width: 150px;
+    height: 220px;
+    box-shadow: 0 0 10px 0 rgba(255,255,255,.35);
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-left: 100px;
+    margin-top: 4px;
+}
+
+.Logo {
     display: block;
     font-family: Poppins-Bold;
     font-size: 39px;
@@ -18,38 +30,42 @@ body {
     line-height: 1.2;
     text-align: center;
 }
-.Form-Details{
+
+.Form-Details {
     z-index: 1;
     background-color: white;
     opacity: 90%;
-    max-width:400px;
-    height: 450px;
+    max-width: 400px;
+    height: 820px;
     margin: 5px auto 5px;
     padding: 0px 0px 50px 30px;
-     border: 1px #ddd solid;
-     background-color: #fff;
+    border: 1px #ddd solid;
+    background-color: #fff;
+    border-radius: 10px;
 }
-.form-details input{
-    padding:6px 6px 6px 6px;
-}
-.block{
+
+    .form-details input {
+        padding: 6px 6px 6px 6px;
+    }
+
+.block {
     margin-top: 10px;
 }
 
 h1 {
-
     font-weight: 400;
     font-size: 28px;
     line-height: 1.2;
 }
+
 .Submit {
     margin-left: 100px;
     cursor: pointer;
 }
+
 .input {
-        
-        padding-top:7px;
-        padding-left: 3px;
-        padding-right: 3px;
-        padding-bottom: 7px;
-    }
+    padding-top: 7px;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-bottom: 7px;
+}
