@@ -146,3 +146,5 @@ C:\Users\TIGER LAP\OneDrive\سطح المكتب\GitHup\IMDB_201900461\IMDB\IMDB\
 C:\Users\TIGER LAP\OneDrive\سطح المكتب\GitHup\IMDB_201900461\IMDB\IMDB\obj\Debug\IMDB.pdb
 C:\Users\TIGER LAP\OneDrive\سطح المكتب\GitHup\IMDB_201900461\IMDB\IMDB\obj\Debug\IMDB.Migrations.initial.resources
 C:\Users\TIGER LAP\OneDrive\سطح المكتب\GitHup\IMDB_201900461\IMDB\IMDB\obj\Debug\IMDB.csproj.GenerateResource.cache
+C:\Users\roshd\Git-Hub\IMDB_201900461\IMDB\IMDB\obj\Debug\IMDB.Migrations.initial.resources
+C:\Users\roshd\Git-Hub\IMDB_201900461\IMDB\IMDB\obj\Debug\IMDB.csproj.GenerateResource.cache
