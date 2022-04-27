@@ -1,0 +1,89 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/CSS/AddMovies.css" rel="stylesheet" />
+    <title>HomePage</title>
+</head>
+<body>
+    <div class="navbar">
+
+        <div class="navbar-container">
+            <div><img src="~/Content/Images/imdb-logo.svg" class="logo"></div>
+            <div class="menu-container">
+                <ul class="menu-list">
+                    <li>
+                        <div class="dropdown">
+                            <a href="#" title="Movies section" class="admin-menu">Movies</a>
+                            <div class="dropdown-content">
+                                <a href="#" class="show">Show All Movies</a>
+                                <a href="#">Add New Movie</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <a href="#" title="Actors section" class="admin-menu">Actors</a>
+                            <div class="dropdown-content">
+                                <a href="#" class="show">Show All Actors</a>
+                                <a href="#">Add New Actor</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <a href="#" title="Directors section" class="admin-menu">Directors</a>
+                            <div class="dropdown-content">
+                                <a href="#" class="show">Show All Directors</a>
+                                <a href="#">Add New Director</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="profile-container">
+                <img class="profile-picture" src="~/Content/Images/man.png" alt="">
+                <div class="profile-text-container">
+                    <span class="profile-text">Admin</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="addform">
+        <form action="/action_page.php">
+            <div class="imgdiv">
+                <img class="ImgSetting" src="~/Content/Images/strange.jpg" id="output" />
+                <div class="Change">
+                    <label class="-label" for="file">
+                        <span class="glyphicon glyphicon-camera"></span>
+                        <span class="ChangeText">Change Image</span>
+                    </label>
+                </div>
+                <input class="Upload" id="file" type="file" onchange="loadFile(event)" />
+            </div>
+            <br /><br />
+            <label for="moviename">Movie name:</label><br>
+            <input type="text" id="moviename" name="moviename" placeholder="Enter movie name"><br><br>
+            <label for="moviedirector">Director name:</label><br>
+            <input type="text" id="moviedirector" name="moviedirector" placeholder="Enter director name"><br><br>
+            <label for="actor1">Actor 1:</label><br>
+            <input type="text" id="actor1" name="actor1" placeholder="Enter actor name"><br><br>
+            <label for="actor2">Actor 2:</label><br>
+            <input type="text" id="actor2" name="actor2" placeholder="Enter actor name"><br><br>
+            <label for="actor3">Actor 3:</label><br>
+            <input type="text" id="actor3" name="actor3" placeholder="Enter actor name"><br><br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+
+    <script src="~/Content/upload.js"></script>
+</body>
+</html>

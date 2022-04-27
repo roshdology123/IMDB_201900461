@@ -95,6 +95,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\CSS\AddActors.css" />
+    <Content Include="Content\CSS\AddDirectors.css" />
+    <Content Include="Content\CSS\AddMovies.css" />
+    <Content Include="Content\CSS\Sayed.css" />
+    <Content Include="Content\CSS\ShowActors.css" />
+    <Content Include="Content\CSS\ShowDirectors.css" />
+    <Content Include="Content\CSS\ShowMovies.css" />
+    <Content Include="Content\CSS\UserSettings.css" />
     <Content Include="Content\Images\47857.jpg" />
     <Content Include="Content\CSS\login.css" />
     <Content Include="Content\CSS\register.css" />
@@ -112,7 +120,12 @@
     <Content Include="Content\Images\TheGodfather poster.jpg" />
     <Content Include="Content\Images\user.png" />
     <Content Include="Content\CSS\Site.css" />
-    <Content Include="Content\Site.js" />
+    <Content Include="Content\JS\Actors.js" />
+    <Content Include="Content\JS\Directors.js" />
+    <Content Include="Content\JS\Sayed.js" />
+    <Content Include="Content\JS\Site.js" />
+    <Content Include="Content\JS\upload.js" />
+    <Content Include="Content\JS\UploadImg.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -120,6 +133,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
     <Compile Include="Controllers\ImageConversion.cs" />
+    <Compile Include="Controllers\AdminViewController.cs" />
+    <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="DataLayer\DBInitializer.cs" />
     <Compile Include="DataLayer\IMdbDBContext.cs" />
     <Compile Include="Controllers\LoginRegisterController.cs" />
@@ -156,6 +171,14 @@
     <Content Include="Views\LoginRegister\Login.cshtml" />
     <Content Include="Views\LoginRegister\Register.cshtml" />
     <Content Include="Views\Shared\_MainLayoutPage.cshtml" />
+    <Content Include="Views\AdminView\Actors.cshtml" />
+    <Content Include="Views\AdminView\AddActors.cshtml" />
+    <Content Include="Views\AdminView\AddDirectors.cshtml" />
+    <Content Include="Views\AdminView\AddMovies.cshtml" />
+    <Content Include="Views\AdminView\Directors.cshtml" />
+    <Content Include="Views\AdminView\Movies.cshtml" />
+    <Content Include="Views\AdminView\Sayed.cshtml" />
+    <Content Include="Views\UserProfile\UserSettings.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
