@@ -9,14 +9,13 @@ namespace IMDB.Controllers
 {
     public class ImageConversion
     {
-        public static byte[] ImageToByteArray(String ImgPath)
+        public static byte[] ImageToByteArray(Image imageIn)
         {
-            byte[] ImageData = null;
-            FileStream Stream = new FileStream(ImgPath, FileMode.Open, FileAccess.Read);
-            BinaryReader binaryReader = new BinaryReader(Stream);
-
-            ImageData = binaryReader.ReadBytes((int)Stream.Length);
-            return ImageData;
+            using (var memoryStream = new MemoryStream())
+            {
+                imageIn.Save(memoryStream, imageIn.RawFormat);
+                return memoryStream.ToArray();
+            }
         }
         public static Image ByteArrayToImage(byte[] source)
         {

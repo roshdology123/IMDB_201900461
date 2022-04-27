@@ -10,9 +10,9 @@ using System.IO;
 
 namespace IMDB.DataLayer
 {
-    public class DBInitializer
+    public class DBInitializer 
     {
-        public static void Seed()
+        public static void Seed() 
         {
             using(IMdbDBContext context = new IMdbDBContext()) { 
             context.Database.CreateIfNotExists();
@@ -46,8 +46,9 @@ namespace IMDB.DataLayer
             
             if (!context.Users.Any())
             {
-                    Image img = Image.FromFile("C:/Users/TIGER LAP/OneDrive/سطح المكتب/GitHup/IMDB_201900461/IMDB/IMDB/Content/Images/DrStrangeCover.jpg");
-                    byte[] ImageData = ImageConversion.ImageToByteArray("C:/Users/roshd/Git-Hub/IMDB_201900461/IMDB/IMDB/Content/Images/user.png");
+                    Image fileImage = Image.FromFile("C:/Users/roshd/Git-Hub/IMDB_201900461/IMDB/IMDB/Content/Images/user.png");
+
+                    byte[] ImageData = ImageConversion.ImageToByteArray(fileImage);
 
 
                 context.Users.AddRange(new List<User>()
@@ -75,8 +76,8 @@ namespace IMDB.DataLayer
             if (!context.Movies.Any())
                 {
                     byte[] ImageData = null;
-
-                    ImageData = ImageConversion.ImageToByteArray("C:/Users/roshd/Git-Hub/IMDB_201900461/IMDB/IMDB/Content/Images/user.png");
+                    Image fileImage = Image.FromFile("C:/Users/roshd/Git-Hub/IMDB_201900461/IMDB/IMDB/Content/Images/user.png");
+                    ImageData = ImageConversion.ImageToByteArray(fileImage);
                     context.Movies.AddRange(new List<Movie>()
                     {
                         new Movie()
