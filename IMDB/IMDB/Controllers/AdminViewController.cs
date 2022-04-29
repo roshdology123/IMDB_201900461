@@ -8,8 +8,8 @@ namespace IMDB.Controllers
 {
     public class AdminViewController : Controller
     {
-        // GET: Sayed
-        public ActionResult Sayed()
+        // GET: AdminHomePage
+        public ActionResult AdminHomePage()
         {
             return View();
         }

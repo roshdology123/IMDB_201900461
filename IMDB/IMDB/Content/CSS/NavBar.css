@@ -73,8 +73,9 @@ body {
     display: none;
     position: absolute;
     width: 11%;
-    overflow:auto;
+    overflow: auto;
     box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4);
+    background-color: white;
 }
 
 .dropdown:hover .dropdown-content {
@@ -89,7 +90,6 @@ body {
     color: #000000;
     padding: 15px;
     text-decoration: none;
-    
 }
 
 .dropdown-content a:hover {

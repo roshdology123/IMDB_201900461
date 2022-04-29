@@ -91,7 +91,6 @@ namespace IMDB.DataLayer
                         
 
                     });
-                    context.SaveChanges();
                 } 
             }
         }
