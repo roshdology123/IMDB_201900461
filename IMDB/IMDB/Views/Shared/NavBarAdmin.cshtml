@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
     Layout = null;
 }
 
@@ -7,23 +8,20 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link href="~/Content/CSS/AddDirectors.css" rel="stylesheet" />
-    <link href="~/Content/CSS/NavBar.css" rel="stylesheet" />
-    <title>HomePage</title>
+    <link href="~/Content/CSS/NavBarAdmin.css" rel="stylesheet" />
 </head>
 <body>
     <div class="navbar">
-
         <div class="navbar-container">
-            <div><img src="~/Content/Images/imdb-logo.svg" class="logo"></div>
+            <div><a href="~/AdminView/AdminHomePage"><img src="~/Content/Images/imdb-logo.svg" class="logo"></a></div>
             <div class="menu-container">
                 <ul class="menu-list">
                     <li>
                         <div class="dropdown">
                             <a href="#" title="Movies section" class="admin-menu">Movies</a>
                             <div class="dropdown-content">
-                                <a href="#" class="show">Show All Movies</a>
-                                <a href="#">Add New Movie</a>
+                                <a href="~/AdminView/Movies" class="show">Show All Movies</a>
+                                <a href="~/AdminView/AddMovies">Add New Movie</a>
                             </div>
                         </div>
                     </li>
@@ -31,8 +29,8 @@
                         <div class="dropdown">
                             <a href="#" title="Actors section" class="admin-menu">Actors</a>
                             <div class="dropdown-content">
-                                <a href="#" class="show">Show All Actors</a>
-                                <a href="#">Add New Actor</a>
+                                <a href="~/AdminView/Actors" class="show">Show All Actors</a>
+                                <a href="~/AdminView/AddActors">Add New Actor</a>
                             </div>
                         </div>
                     </li>
@@ -40,10 +38,13 @@
                         <div class="dropdown">
                             <a href="#" title="Directors section" class="admin-menu">Directors</a>
                             <div class="dropdown-content">
-                                <a href="#" class="show">Show All Directors</a>
-                                <a href="#">Add New Director</a>
+                                <a href="~/AdminView/Directos" class="show">Show All Directors</a>
+                                <a href="~/AdminView/AddDirectors">Add New Director</a>
                             </div>
                         </div>
+                    </li>
+                    <li class="menu-list-item search">
+                        <input size="50" type="text" placeholder="Search.." id="myInput" onkeyup="myFunction()"><img class="imageSearch" src="~/Content/Images/search.png" />
                     </li>
                 </ul>
             </div>
@@ -55,21 +56,6 @@
             </div>
         </div>
     </div>
-
-    <div class="addform">
-        <form action="/action_page.php">
-
-            <label for="directorfirstname">Director First Name:</label><br>
-            <input type="text" id="directorfirstname" name="directorfirstname" placeholder="Enter Director First Name"><br><br>
-            <label for="directorlastname">Director Last Name:</label><br>
-            <input type="text" id="directorlastname" name="directorlastname" placeholder="Enter Director Last Name"><br><br>
-            <label for="age">Age:</label><br>
-            <input type="text" id="age" name="age" placeholder="Enter Director Age"><br><br>
-            <label for="movies">Movies:</label><br>
-            <input type="text" id="movies" name="movies" placeholder="Enter Director Movies"><br><br>
-
-            <input type="submit" value="Submit">
-        </form>
-    </div>
 </body>
 </html>
+

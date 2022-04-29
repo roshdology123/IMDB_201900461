@@ -43,8 +43,6 @@ body {
     border: none;
     font-size: 17px;
     margin-top: -8px;
-    
-
 }
 .imageSearch{
     height: 32px;
@@ -79,10 +77,6 @@ body {
     text-decoration: none;
     margin-right: 70px;
     font-size:150%;
-}
-.welcome{
-    margin-top: 50px;
-    margin-left: 50px;
 }
 .dropdown {
     display: contents;

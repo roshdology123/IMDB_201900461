@@ -98,7 +98,8 @@
     <Content Include="Content\CSS\AddActors.css" />
     <Content Include="Content\CSS\AddDirectors.css" />
     <Content Include="Content\CSS\AddMovies.css" />
-    <Content Include="Content\CSS\Sayed.css" />
+    <Content Include="Content\CSS\NavBarAdmin.css" />
+    <Content Include="Content\CSS\NavBar.css" />
     <Content Include="Content\CSS\ShowActors.css" />
     <Content Include="Content\CSS\ShowDirectors.css" />
     <Content Include="Content\CSS\ShowMovies.css" />
@@ -131,6 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DirectorsController.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
     <Compile Include="Controllers\ImageConversion.cs" />
     <Compile Include="Controllers\AdminViewController.cs" />
@@ -140,6 +142,10 @@
     <Compile Include="Controllers\LoginRegisterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204292104205_initial.cs" />
+    <Compile Include="Migrations\202204292104205_initial.designer.cs">
+      <DependentUpon>202204292104205_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Actor.cs" />
@@ -178,8 +184,9 @@
     <Content Include="Views\AdminView\AddMovies.cshtml" />
     <Content Include="Views\AdminView\Directors.cshtml" />
     <Content Include="Views\AdminView\Movies.cshtml" />
-    <Content Include="Views\AdminView\Sayed.cshtml" />
+    <Content Include="Views\AdminView\AdminHomePage.cshtml" />
     <Content Include="Views\UserProfile\UserSettings.cshtml" />
+    <Content Include="Views\Shared\NavBarAdmin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -189,6 +196,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Directors\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202204292104205_initial.resx">
+      <DependentUpon>202204292104205_initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
