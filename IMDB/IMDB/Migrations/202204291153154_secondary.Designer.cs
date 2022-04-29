@@ -7,13 +7,13 @@ namespace IMDB.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class initial : IMigrationMetadata
+    public sealed partial class secondary : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(initial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(secondary));
         
         string IMigrationMetadata.Id
         {
-            get { return "202204270043430_initial"; }
+            get { return "202204291153154_secondary"; }
         }
         
         string IMigrationMetadata.Source

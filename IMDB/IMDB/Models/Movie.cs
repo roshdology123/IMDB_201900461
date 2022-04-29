@@ -15,8 +15,10 @@ namespace IMDB.Models
         [Display(Name = "Movie Name")]
         public String Movie_Name { get; set; }
 
-        [Display(Name = "Director ID")]
-        public Director Director_ID { get; set; }
+        public Director Director { get; set; }
+
+        [Display(Name = "Director")]
+        public int Director_ID { get; set; }
 
         [Display(Name = "Movie Image")]
         public byte[] Img { get; set; }
