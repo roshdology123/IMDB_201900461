@@ -13,7 +13,7 @@ namespace IMDB.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202204292104205_initial"; }
+            get { return "202204292328330_initial"; }
         }
         
         string IMigrationMetadata.Source

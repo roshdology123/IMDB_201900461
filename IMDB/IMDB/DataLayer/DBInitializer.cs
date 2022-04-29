@@ -46,7 +46,7 @@ namespace IMDB.DataLayer
             
             if (!context.Users.Any())
             {
-                    Image fileImage = Image.FromFile("C:/Users/masa/Documents/GitHub/IMDB_201900461/IMDB/IMDB/Content/Images/TheGodfather poster.jpg");
+                    Image fileImage = Image.FromFile("D:/OneDrive/Documents/GitHub/IMDB_201900461/IMDB/IMDB/Content/Images/47857.jpg");
 
                     byte[] ImageData = ImageConversion.ImageToByteArray(fileImage);
 
@@ -77,7 +77,7 @@ namespace IMDB.DataLayer
                 {
                     
                     byte[] ImageData = null;
-                    Image fileImage = Image.FromFile("C:/Users/masa/Documents/GitHub/IMDB_201900461/IMDB/IMDB/Content/Images/TheGodfather poster.jpg");
+                    Image fileImage = Image.FromFile("D:/OneDrive/Documents/GitHub/IMDB_201900461/IMDB/IMDB/Content/Images/DrStrangeCover.jpg");
                     ImageData = ImageConversion.ImageToByteArray(fileImage);
                     context.Movies.AddRange(new List<Movie>()
                     {

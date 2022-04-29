@@ -132,6 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ActorsController.cs" />
     <Compile Include="Controllers\DirectorsController.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
     <Compile Include="Controllers\ImageConversion.cs" />
@@ -143,9 +144,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202204292104205_initial.cs" />
-    <Compile Include="Migrations\202204292104205_initial.designer.cs">
-      <DependentUpon>202204292104205_initial.cs</DependentUpon>
+    <Compile Include="Migrations\202204292328330_initial.cs" />
+    <Compile Include="Migrations\202204292328330_initial.designer.cs">
+      <DependentUpon>202204292328330_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Actor.cs" />
@@ -196,11 +197,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Actors\" />
     <Folder Include="Views\Directors\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202204292104205_initial.resx">
-      <DependentUpon>202204292104205_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202204292328330_initial.resx">
+      <DependentUpon>202204292328330_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
