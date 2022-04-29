@@ -73,19 +73,27 @@ namespace IMDB.DataLayer
             });
                 context.SaveChanges();
             }
-            if (!context.Movies.Any())
+            if (context.Movies.Any())
                 {
+                    Director d = new Director();
+                    d.Age = 21;
+                    d.FName = "Director";
+                    d.LName = "Roshdy";
+                    
                     byte[] ImageData = null;
-                    Image fileImage = Image.FromFile("C:/Users/roshd/Git-Hub/IMDB_201900461/IMDB/IMDB/Content/Images/user.png");
+                    Image fileImage = Image.FromFile("C:/Users/roshd/Git-Hub/IMDB_201900461/IMDB/IMDB/Content/Images/47857.jpg");
                     ImageData = ImageConversion.ImageToByteArray(fileImage);
                     context.Movies.AddRange(new List<Movie>()
                     {
                         new Movie()
                         {
-                            Movie_Name = "Ay 7aga",
+                            Movie_Name = "DrStrange",
                             Movie_TLink = "https://www.youtube.com/embed/ORVShW0Yjaw",
-                            Img = ImageData
-                        }
+                            Img = ImageData,
+                            Director_ID = d
+                        },
+                        
+
                     });
                     context.SaveChanges();
                 } 

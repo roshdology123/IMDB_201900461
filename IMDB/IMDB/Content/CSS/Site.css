@@ -139,6 +139,7 @@ body {
     outline: none;
     font-weight: bold;
     cursor: pointer;
+    text-decoration:none;
 }
 
 
@@ -196,7 +197,7 @@ body {
 }
 
 .movie-list-item-button {
-    padding: 10px;
+    padding: 5px;
     background-color: #4dbf00;
     color: white;
     border-radius: 10px;
@@ -208,6 +209,7 @@ body {
     right: 50px;
     opacity: 0;
     transition: 1s all ease-in-out;
+    text-decoration: none;
 }
 
 .movie-list-item:hover .movie-list-item-img {

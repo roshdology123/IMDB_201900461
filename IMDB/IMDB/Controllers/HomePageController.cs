@@ -16,17 +16,15 @@ namespace IMDB.Controllers
 
         public ActionResult HomePage()
         {
-            var data = _context.Movies.ToList();
-            Movie movie = new Movie();
-            movie = _context.Movies.Find(1);
-            byte[] imageData = movie.Img;
-            ViewBag.Image = imageData;
-            return View(movie);
+            var movies = _context.Movies.ToList();
+            return View(movies);
         }
 
         public ActionResult FilmDetails()
         {
-            return View();
+            
+            var movies = _context.Movies.ToList();
+            return View(movies);
         }
     }
 }
