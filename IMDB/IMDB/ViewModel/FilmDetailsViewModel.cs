@@ -10,6 +10,7 @@ namespace IMDB.ViewModel
     {
         public Movie Movie { get; set; }
         public Director Director { get; set; }
-        public IEnumerable<Actor> Actor { get; set; }
+        public IEnumerable<Actor> Actors { get; set; }
+        public IEnumerable<Comment> Comments { get; set; }
     }
 }
