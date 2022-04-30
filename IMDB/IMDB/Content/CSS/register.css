@@ -36,7 +36,11 @@ body {
     background-color: white;
     opacity: 90%;
     max-width: 400px;
+<<<<<<< HEAD
     height: 820px;
+=======
+    height: 520px;
+>>>>>>> login-register1
     margin: 5px auto 5px;
     padding: 0px 0px 50px 30px;
     border: 1px #ddd solid;
@@ -64,6 +68,13 @@ h1 {
 }
 
 .input {
+<<<<<<< HEAD
 
     padding: 7px 3px 7px 3px;
+=======
+    padding-top: 7px;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-bottom: 7px;
+>>>>>>> login-register1
 }

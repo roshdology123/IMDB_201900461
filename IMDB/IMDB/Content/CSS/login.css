@@ -6,7 +6,10 @@ All {
     position: center;
     border: #333333;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> login-register1
 body {
     background-color: #1a1a1a;
 }
@@ -19,7 +22,10 @@ body {
     line-height: 1.2;
     text-align: center;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> login-register1
 .Form-Details {
     z-index: 1;
     background-color: white;
