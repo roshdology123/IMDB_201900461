@@ -98,7 +98,8 @@
     <Content Include="Content\CSS\AddActors.css" />
     <Content Include="Content\CSS\AddDirectors.css" />
     <Content Include="Content\CSS\AddMovies.css" />
-    <Content Include="Content\CSS\Sayed.css" />
+    <Content Include="Content\CSS\NavBar.css" />
+    <Content Include="Content\CSS\NavBarAdmin.css" />
     <Content Include="Content\CSS\ShowActors.css" />
     <Content Include="Content\CSS\ShowDirectors.css" />
     <Content Include="Content\CSS\ShowMovies.css" />
