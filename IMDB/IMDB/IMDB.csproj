@@ -128,7 +128,9 @@
     <Content Include="Content\JS\upload.js" />
     <Content Include="Content\JS\UploadImg.js" />
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -183,8 +185,8 @@
     <Content Include="Views\AdminView\AddMovies.cshtml" />
     <Content Include="Views\AdminView\Directors.cshtml" />
     <Content Include="Views\AdminView\Movies.cshtml" />
-    <Content Include="Views\AdminView\Sayed.cshtml" />
     <Content Include="Views\UserProfile\UserSettings.cshtml" />
+    <Content Include="Views\AdminView\AdminHomePage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
