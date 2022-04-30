@@ -64,8 +64,6 @@ h1 {
 }
 
 .input {
-    padding-top: 7px;
-    padding-left: 3px;
-    padding-right: 3px;
-    padding-bottom: 7px;
+
+    padding: 7px 3px 7px 3px;
 }
