@@ -183,8 +183,8 @@
     <Content Include="Views\AdminView\AddMovies.cshtml" />
     <Content Include="Views\AdminView\Directors.cshtml" />
     <Content Include="Views\AdminView\Movies.cshtml" />
-    <Content Include="Views\AdminView\Sayed.cshtml" />
     <Content Include="Views\UserProfile\UserSettings.cshtml" />
+    <Content Include="Views\AdminView\AdminHomePage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
