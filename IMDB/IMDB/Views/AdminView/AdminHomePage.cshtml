@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
     Layout = null;
 }
 
@@ -7,12 +8,11 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link href="~/Content/CSS/AddActors.css" rel="stylesheet" />
     <link href="~/Content/CSS/NavBar.css" rel="stylesheet" />
-    <title>AddActorsPage</title>
+    <title>HomePage</title>
 </head>
 <body>
-    <div class="navbar">
+    <div class="navbar">    
         <div class="navbar-container">
             <div><a href="~/AdminView/AdminHomePage"><img src="~/Content/Images/imdb-logo.svg" class="logo"></a></div>
             <div class="menu-container">
@@ -54,21 +54,5 @@
             </div>
         </div>
     </div>
-
-    <div class="addform">
-        <form action="/action_page.php">
-            
-            <label for="actorfirstname">Actor First Name:</label><br>
-            <input type="text" id="actorfirstname" name="actorfirstname" placeholder="Enter Actor First Name"><br><br>
-            <label for="actorlastname">Actor Last Name:</label><br>
-            <input type="text" id="actorlastname" name="actorlastname" placeholder="Enter Actor Last Name"><br><br>
-            <label for="age">Age:</label><br>
-            <input type="text" id="age" name="age" placeholder="Enter Actor Age"><br><br>
-            <label for="movies">Movies:</label><br>
-            <input type="text" id="movies" name="movies" placeholder="Enter Actor Movies"><br><br>
-            
-            <input type="submit" value="Submit">
-        </form>
-    </div>
-</body>
+    </body>
 </html>

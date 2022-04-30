@@ -9,55 +9,11 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link href="~/Content/CSS/ShowDirectors.css" rel="stylesheet" />
-    <title>HomePage</title>
+    <link href="~/Content/CSS/NavBarAdmin.css" rel="stylesheet" />
+    <title>DirectorsPage</title>
 </head>
 <body>
-    <div class="navbar">
-
-        <div class="navbar-container">
-            <div><img src="~/Content/Images/imdb-logo.svg" class="logo"></div>
-            <div class="menu-container">
-                <ul class="menu-list">
-                    <li>
-                        <div class="dropdown">
-                            <a href="#" title="Movies section" class="admin-menu">Movies</a>
-                            <div class="dropdown-content">
-                                <a href="#" class="show">Show All Movies</a>
-                                <a href="">Add New Movie</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="dropdown">
-                            <a href="#" title="Actors section" class="admin-menu">Actors</a>
-                            <div class="dropdown-content">
-                                <a href="#" class="show">Show All Actors</a>
-                                <a href="#">Add New Actor</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="dropdown">
-                            <a href="#" title="Directors section" class="admin-menu">Directors</a>
-                            <div class="dropdown-content">
-                                <a href="#" class="show">Show All Directors</a>
-                                <a href="#">Add New Director</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="menu-list-item search">
-                        <input size="50" type="text" placeholder="Search.." id="myInput" onkeyup="myFunction()"><img class="imageSearch" src="~/Content/Images/search.png" />
-                    </li>
-                </ul>
-            </div>
-            <div class="profile-container">
-                <img class="profile-picture" src="~/Content/Images/man.png" alt="">
-                <div class="profile-text-container">
-                    <span class="profile-text">Admin</span>
-                </div>
-            </div>
-        </div>
-    </div>
+    @Html.Partial("NavBarAdmin")
     <div class="big">
         <ul id="myUL">
             <li>
