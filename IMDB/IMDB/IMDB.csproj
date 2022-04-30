@@ -158,6 +158,7 @@
     <Compile Include="Models\UserFDirector.cs" />
     <Compile Include="Models\UserFMovie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestControllers\ActorsController.cs" />
     <Compile Include="ViewModel\FilmDetailsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -194,6 +195,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Actors\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202204301258063_Modelization.resx">
