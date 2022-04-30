@@ -18,6 +18,11 @@ namespace IMDB
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "HomePage", action = "HomePage", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "Film Details",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "HomePage", action = "FilmDetails", id = UrlParameter.Optional }
+            );
         }
     }
 }

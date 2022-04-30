@@ -1,4 +1,4 @@
-﻿
+﻿@model IMDB.ViewModel.FilmDetailsViewModel
 
 @{
     ViewBag.Title = "Film Details";
@@ -30,27 +30,18 @@
                     </li>
                 </ul>
 
-                <ul class="film-container-details-rating">
-                    <li class="film-container-details-rating-item">IMDb Rating</li>
-                    <li class="film-container-details-rating-item"><img style="width:32px; position:absolute;" src="~/Content/Images/icons8-star-64.png" /><p style="margin-left:40px;">9.7/10</p></li>
-
-                </ul>
 
             </ul>
-            <h1 class="film-container-details-title">The Godfather</h1>
+            <h1 class="film-container-details-title">@Model.Movie.Movie_Name</h1>
 
-            <ul class="film-container-details-menu">
-                <li class="film-container-details-menu-item">1972</li>
-                <li class="film-container-details-menu-item">R</li>
-                <li class="film-container-details-menu-item">2h 55m</li>
-            </ul>
+
 
             <div class="film-container-images">
                 <ul class="film-container-images-list">
-                    <li><img src="~/Content/Images/TheGodfather poster.jpg" /></li>
+                    <li><img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(Model.Movie.Img))" /></li>
                     <li style="margin-left: 5px;">
                         <iframe width="820" height="562" frameborder="0"
-                                src="https://www.youtube.com/embed/UaVTIH8mujA"></iframe>
+                                src="@Model.Movie.Movie_TLink"></iframe>
                     </li>
                 </ul>
             </div>

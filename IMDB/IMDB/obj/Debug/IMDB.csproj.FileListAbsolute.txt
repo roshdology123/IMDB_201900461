@@ -62,7 +62,6 @@ C:\Users\roshd\Git-Hub\IMDB_201900461\IMDB\IMDB\bin\System.Web.Webpages.Razor.xm
 C:\Users\roshd\Git-Hub\IMDB_201900461\IMDB\IMDB\bin\System.Web.Helpers.xml
 C:\Users\roshd\Git-Hub\IMDB_201900461\IMDB\IMDB\bin\System.Web.Mvc.xml
 C:\Users\roshd\Git-Hub\IMDB_201900461\IMDB\IMDB\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\roshd\Git-Hub\IMDB_201900461\IMDB\IMDB\obj\Debug\IMDB.csprojAssemblyReference.cache
 C:\Users\roshd\Git-Hub\IMDB_201900461\IMDB\IMDB\obj\Debug\IMDB.csproj.CoreCompileInputs.cache
 C:\Users\roshd\Git-Hub\IMDB_201900461\IMDB\IMDB\obj\Debug\IMDB.csproj.CopyComplete
 C:\Users\roshd\Git-Hub\IMDB_201900461\IMDB\IMDB\obj\Debug\IMDB.dll
@@ -146,5 +145,6 @@ C:\Users\TIGER LAP\OneDrive\سطح المكتب\GitHup\IMDB_201900461\IMDB\IMDB\
 C:\Users\TIGER LAP\OneDrive\سطح المكتب\GitHup\IMDB_201900461\IMDB\IMDB\obj\Debug\IMDB.pdb
 C:\Users\TIGER LAP\OneDrive\سطح المكتب\GitHup\IMDB_201900461\IMDB\IMDB\obj\Debug\IMDB.Migrations.initial.resources
 C:\Users\TIGER LAP\OneDrive\سطح المكتب\GitHup\IMDB_201900461\IMDB\IMDB\obj\Debug\IMDB.csproj.GenerateResource.cache
-C:\Users\roshd\Git-Hub\IMDB_201900461\IMDB\IMDB\obj\Debug\IMDB.Migrations.secondary.resources
+C:\Users\roshd\Git-Hub\IMDB_201900461\IMDB\IMDB\obj\Debug\IMDB.csprojAssemblyReference.cache
+C:\Users\roshd\Git-Hub\IMDB_201900461\IMDB\IMDB\obj\Debug\IMDB.Migrations.Modelization.resources
 C:\Users\roshd\Git-Hub\IMDB_201900461\IMDB\IMDB\obj\Debug\IMDB.csproj.GenerateResource.cache

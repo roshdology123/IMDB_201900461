@@ -12,11 +12,17 @@ namespace IMDB.Models
         [Key]
         public int ID { get; set; }
 
-        [Display(Name = "User ID")]
-        public User User_ID { get; set; }
+        public virtual User User { get; set; }
 
+        [ForeignKey("User")]
+        [Display(Name = "User ID")]
+        public int? User_ID { get; set; }
+
+        public virtual Movie Movie { get; set; }
+
+        [ForeignKey("Movie")]
         [Display(Name = "Movie ID")]
-        public Movie Movie_ID { get; set; }
+        public int? Movie_ID { get; set; }
 
         [Display(Name = "Like Value")]
         public Boolean LikeValue { get; set; }

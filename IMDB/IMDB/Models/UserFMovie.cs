@@ -15,7 +15,10 @@ namespace IMDB.Models
         [Display(Name = "User ID")]
         public User User_ID { get; set; }
 
+        public virtual Movie Movie { get; set; }
+
+        [ForeignKey("Movie")]
         [Display(Name = "Movie ID")]
-        public Movie Movie_ID { get; set; }
+        public int? Movie_ID { get; set; }
     }
 }

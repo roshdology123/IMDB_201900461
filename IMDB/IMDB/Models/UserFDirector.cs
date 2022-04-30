@@ -12,10 +12,16 @@ namespace IMDB.Models
         [Key]
         public int ID { get; set; }
 
-        [Display(Name = "User ID")]
-        public User User_ID { get; set; }
+        public virtual User User { get; set; }
 
+        [ForeignKey("User")]
+        [Display(Name = "User ID")]
+        public int? User_ID { get; set; }
+
+        public Director Director { get; set; }
+
+        [ForeignKey("Director")]
         [Display(Name = "Director ID")]
-        public Director Director_ID { get; set; }
+        public int? Director_ID { get; set; }
     }
 }

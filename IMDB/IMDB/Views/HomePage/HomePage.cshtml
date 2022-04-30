@@ -28,7 +28,7 @@
                         deserunt nam assumenda ipsa eligendi dolore, ipsum id fugiat quo enim impedit, laboriosam omnis
                         minima voluptatibus incidunt. Accusamus, provident.
                     </p>
-                    @Html.ActionLink("WATCH", "FilmDetails", new { controller = "HomePage" }, new { @class = "featured-button" })
+                    @Html.ActionLink("WATCH", "FilmDetails", new {id = 9 }, new { @class = "featured-button" })
  
                 </div>
                 <div class="movie-list-container">
@@ -51,7 +51,8 @@
                                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto illo dolor
                                         deserunt nam assumenda ipsa eligendi dolore.
                                     </p>
-                                    @Html.ActionLink("WATCH", "FilmDetails", new { controller = "HomePage" }, new { @class = "movie-list-item-button" })
+
+                                    @Html.ActionLink("WATCH", "FilmDetails", new { id = item.Movie_ID}, new { @class = "movie-list-item-button" })
                                 </div>
                                         }
                                     }

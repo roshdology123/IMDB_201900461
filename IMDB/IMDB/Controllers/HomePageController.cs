@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using IMDB.Models;
 using System.Drawing;
+using IMDB.ViewModel;
 
 namespace IMDB.Controllers
 {
@@ -20,11 +21,36 @@ namespace IMDB.Controllers
             return View(movies);
         }
 
-        public ActionResult FilmDetails()
+        public ActionResult FilmDetails(String ID)
         {
-            
-            var movies = _context.Movies.ToList();
-            return View(movies);
+            int MovieID = Int32.Parse(ID);
+
+            Movie movie = _context.Movies.Find(MovieID);
+
+            int? directorID = movie.Director_ID;
+
+            var movieActors = _context.MovieActors.ToList().Where(x => MovieID == x.Actor_ID);
+
+            Director director = _context.Directors.Find(directorID);
+
+            IEnumerable<Comment> comment = _context.Comments.ToList().Where(x=> MovieID == x.Movie_ID);
+
+            //Like like = (Like)_context.Likes.Where(x => MovieID == x.Movie_ID && x.User_ID == 2 );
+
+            FilmDetailsViewModel filmDetailsViewModel = new FilmDetailsViewModel()
+            {
+                Movie = movie,
+                Director = director,
+                MovieActors = movieActors,
+                Comments = comment,
+
+
+            };
+
+
+
+
+            return View(filmDetailsViewModel);
         }
     }
 }

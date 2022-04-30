@@ -328,8 +328,14 @@ body {
     padding-left: 0;
     padding-top: 10px;
     list-style: none;
-}
 
+}
+.film-container-images-list img {
+    width: 520px;
+    height: 562px;
+    object-fit:cover;
+        
+}
 .person-director, .person-star, .person-writer {
     display: inline-flex;
 }
