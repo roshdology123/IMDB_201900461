@@ -144,9 +144,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202204301258063_Modelization.cs" />
-    <Compile Include="Migrations\202204301258063_Modelization.designer.cs">
-      <DependentUpon>202204301258063_Modelization.cs</DependentUpon>
+    <Compile Include="Migrations\202205010023016_module.cs" />
+    <Compile Include="Migrations\202205010023016_module.designer.cs">
+      <DependentUpon>202205010023016_module.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Actor.cs" />
@@ -199,8 +199,8 @@
     <Folder Include="Views\Actors\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202204301258063_Modelization.resx">
-      <DependentUpon>202204301258063_Modelization.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202205010023016_module.resx">
+      <DependentUpon>202205010023016_module.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
