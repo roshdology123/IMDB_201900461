@@ -29,26 +29,22 @@ namespace IMDB.Controllers
 
             int? directorID = movie.Director_ID;
 
-            var movieActors = _context.MovieActors.ToList().Where(x => MovieID == x.Actor_ID);
+            var movieActors = _context.MovieActors.ToList().Where(x => MovieID == x.Movie_ID);
 
             Director director = _context.Directors.Find(directorID);
 
             IEnumerable<Comment> comment = _context.Comments.ToList().Where(x=> MovieID == x.Movie_ID);
 
-            //Like like = (Like)_context.Likes.Where(x => MovieID == x.Movie_ID && x.User_ID == 2 );
-
+            Like like = _context.Likes.Single(x => MovieID == x.Movie_ID && x.User_ID == 2 );
+            
             FilmDetailsViewModel filmDetailsViewModel = new FilmDetailsViewModel()
             {
                 Movie = movie,
                 Director = director,
                 MovieActors = movieActors,
                 Comments = comment,
-
-
+                Like = like
             };
-
-
-
 
             return View(filmDetailsViewModel);
         }

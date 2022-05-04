@@ -38,7 +38,9 @@
 
             <div class="film-container-images">
                 <ul class="film-container-images-list">
-                    <li><img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(Model.Movie.Img))" /></li>
+                    <li>
+                        <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(Model.Movie.Img))" />
+                    </li>
                     <li style="margin-left: 5px;">
                         <iframe width="820" height="562" frameborder="0"
                                 src="@Model.Movie.Movie_TLink"></iframe>
@@ -55,24 +57,27 @@
 
                 <h2 style="color:white; font-size:large; display: inline-block; padding-bottom:8px; padding-top: 8px; "> Directors </h2>
                 <ul class="person-director">
-                    <li class="person-director-item"> Francis Ford Coppola </li>
-                </ul>
-
-                <hr style="width:50%;text-align:left;margin-left:0; ">
-
-                <h2 style="color:white; font-size:large;display: inline-block; padding-bottom:8px; padding-top: 8px;"> Writers</h2>
-                <ul class="person-writer">
-                    <li class="person-writer-item"> Mario Puzo </li>
-                    <li class="person-writer-item"> Francis Ford Copploa</li>
+                    <li class="person-director-item"> @Model.Director.FName @Model.Director.LName </li>
                 </ul>
 
                 <hr style="width:50%;text-align:left;margin-left:0;">
 
                 <h2 style="color:white; font-size:large; display: inline-block; padding-bottom:8px; padding-top: 8px;"> Stars</h2>
                 <ul class="person-star">
-                    <li class="person-star-item"> Marlon Brando </li>
-                    <li class="person-star-item"> Al Pacino </li>
-                    <li class="person-star-item"> James Caan </li>
+                    @{
+                        int nOfCards = 0;
+
+                        foreach (var item in Model.MovieActors)
+                        {
+                            if (nOfCards < 3)
+                            {
+                                nOfCards += 1;
+                                <li class="person-star-item"> @item.Actor.FName  @item.Actor.LName  </li>
+
+                            }
+                            else { break; }
+                        }
+                    }
                 </ul>
 
             </div>
@@ -120,33 +125,45 @@
                     <th class="film-desc-cast-data">
                         <img src="~/Content/Images/man (1).png" />
                     </th>
-                    <th style="padding-right:20px;"><h3 style="padding-left:10px; margin-bottom:10px;"> Don Corleon</h3></th>
+                    <th style="padding-right:20px;">
+                        <h3 style="padding-left:10px; margin-bottom:10px;"> Don Corleon</h3>
+                    </th>
                     <th class="film-desc-cast-data">
                         <img src="~/Content/Images/man (1).png" />
                     </th>
-                    <th style="padding-right:20px;"><h3 style="padding-left:10px; margin-bottom:10px;"> Don Corleon</h3></th>
+                    <th style="padding-right:20px;">
+                        <h3 style="padding-left:10px; margin-bottom:10px;"> Don Corleon</h3>
+                    </th>
                 </tr>
 
                 <tr>
                     <th class="film-desc-cast-data">
                         <img src="~/Content/Images/man (1).png" />
                     </th>
-                    <th style="padding-right:20px;"><h3 style="padding-left:10px; margin-bottom:10px;"> Don Corleon</h3></th>
+                    <th style="padding-right:20px;">
+                        <h3 style="padding-left:10px; margin-bottom:10px;"> Don Corleon</h3>
+                    </th>
                     <th class="film-desc-cast-data">
                         <img src="~/Content/Images/man (1).png" />
                     </th>
-                    <th style="padding-right:20px;"><h3 style="padding-left:10px; margin-bottom:10px;"> Don Corleon</h3></th>
+                    <th style="padding-right:20px;">
+                        <h3 style="padding-left:10px; margin-bottom:10px;"> Don Corleon</h3>
+                    </th>
                 </tr>
 
                 <tr>
                     <th class="film-desc-cast-data">
                         <img src="~/Content/Images/man (1).png" />
                     </th>
-                    <th style="padding-right:20px;"><h3 style="padding-left:10px; margin-bottom:10px;"> Don Corleon</h3></th>
+                    <th style="padding-right:20px;">
+                        <h3 style="padding-left:10px; margin-bottom:10px;"> Don Corleon</h3>
+                    </th>
                     <th class="film-desc-cast-data">
                         <img src="~/Content/Images/man (1).png" />
                     </th>
-                    <th style="padding-right:20px;"><h3 style="padding-left:10px; margin-bottom:10px;"> Don Corleon</h3></th>
+                    <th style="padding-right:20px;">
+                        <h3 style="padding-left:10px; margin-bottom:10px;"> Don Corleon</h3>
+                    </th>
                 </tr>
 
             </table>
@@ -157,7 +174,9 @@
             <div class="comment_block">
                 <div class="create_new_comment">
                     <!-- current #{user} avatar -->
-                    <div class="user_avatar"><img src="~/Content/Images/man (1).png" /></div><!-- the input field -->
+                    <div class="user_avatar">
+                        <img src="~/Content/Images/man (1).png" />
+                    </div><!-- the input field -->
                     <div class="input_comment">
                         <input type="text" placeholder="Join the conversation..">
                     </div>
@@ -166,7 +185,8 @@
                     <!-- build comment -->
                     <ul class="user_comment">
                         <!-- current #{user} avatar -->
-                        <div class="user_avatar"<img src="~/Content/Images/man (1).png" /></div>
+                        <div class="user_avatar"
+<img src="~/Content/Images/man (1).png" /></div>
                         <div class="comment_body">
                             <p></p>
                         </div><!-- comments toolbar -->
@@ -176,17 +196,23 @@
                                 <ul>
                                     <li>13:94</li>
                                     <li>04/01/2015</li>
-                                    <li><span class="user">John Smith</span></li>
+                                    <li>
+                                        <span class="user">John Smith</span>
+                                    </li>
                                 </ul>
                             </div><!-- inc. share/reply and love -->
                             <div class="comment_tools"></div>
                         </div><!-- start user replies -->
                         <li>
                             <!-- current #{user} avatar -->
-                            <div class="user_avatar"><img src="~/Content/Images/man (1).png" /></div><!-- the comment body -->
+                            <div class="user_avatar">
+                                <img src="~/Content/Images/man (1).png" />
+                            </div><!-- the comment body -->
                             <div class="comment_body">
                                 <div class="replied_to">
-                                    <p><span class="user">John Smith:</span>Gastropub cardigan jean shorts, kogi Godard PBR&amp;B lo-fi locavore. Organic chillwave vinyl Neutra. Bushwick Helvetica cred freegan, crucifix Godard craft beer deep v mixtape cornhole Truffaut master cleanse pour-over Odd Future beard. Portland polaroid iPhone.</p>
+                                    <p>
+                                        <span class="user">John Smith:</span>Gastropub cardigan jean shorts, kogi Godard PBR&amp;B lo-fi locavore. Organic chillwave vinyl Neutra. Bushwick Helvetica cred freegan, crucifix Godard craft beer deep v mixtape cornhole Truffaut master cleanse pour-over Odd Future beard. Portland polaroid iPhone.
+                                    </p>
                                 </div>That's exactly what I was thinking!
                             </div><!-- comments toolbar -->
                             <div class="comment_toolbar">
@@ -195,25 +221,35 @@
                                     <ul>
                                         <li>14:52</li>
                                         <li>04/01/2015</li>
-                                        <li><span class="user">Andrew Johnson</span></li>
+                                        <li>
+                                            <span class="user">Andrew Johnson</span>
+                                        </li>
                                     </ul>
                                 </div><!-- inc. share/reply and love -->
                                 <div class="comment_tools">
                                     <ul>
-                                        <li><i class="fa fa-heart love"><span class="love_amt">4</span></i></li>
+                                        <li>
+                                            <i class="fa fa-heart love"><span class="love_amt">4</span></i>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
                         </li><!-- start user replies -->
                         <li>
                             <!-- current #{user} avatar -->
-                            <div class="user_avatar"><img src="~/Content/Images/man (1).png" /></div><!-- the comment body -->
+                            <div class="user_avatar">
+                                <img src="~/Content/Images/man (1).png" />
+                            </div><!-- the comment body -->
                             <div class="comment_body">
                                 <div class="replied_to">
-                                    <p><span class="user">John Smith:</span>Gastropub cardigan jean shorts, kogi Godard PBR&amp;B lo-fi locavore. Organic chillwave vinyl Neutra. Bushwick Helvetica cred freegan, crucifix Godard craft beer deep v mixtape cornhole Truffaut master cleanse pour-over Odd Future beard. Portland polaroid iPhone.</p>
+                                    <p>
+                                        <span class="user">John Smith:</span>Gastropub cardigan jean shorts, kogi Godard PBR&amp;B lo-fi locavore. Organic chillwave vinyl Neutra. Bushwick Helvetica cred freegan, crucifix Godard craft beer deep v mixtape cornhole Truffaut master cleanse pour-over Odd Future beard. Portland polaroid iPhone.
+                                    </p>
                                 </div>Finally someone who actually gets it!
                                 <div class="replied_to">
-                                    <p><span class="user">Andrew Johnson:</span>That's exactly what I was thinking!</p>
+                                    <p>
+                                        <span class="user">Andrew Johnson:</span>That's exactly what I was thinking!
+                                    </p>
                                 </div>That's awesome!
                             </div><!-- comments toolbar -->
                             <div class="comment_toolbar">
@@ -222,12 +258,16 @@
                                     <ul>
                                         <li>14:59</li>
                                         <li>04/01/2015</li>
-                                        <li><span class="user">Simon Gregor</span></li>
+                                        <li>
+                                            <span class="user">Simon Gregor</span>
+                                        </li>
                                     </ul>
                                 </div><!-- inc. share/reply and love -->
                                 <div class="comment_tools">
                                     <ul>
-                                        <li><i class="fa fa-heart love"><span class="love_amt">4039</span></i></li>
+                                        <li>
+                                            <i class="fa fa-heart love"><span class="love_amt">4039</span></i>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -238,7 +278,9 @@
                     <!-- build comment -->
                     <ul class="user_comment">
                         <!-- current #{user} avatar -->
-                        <div class="user_avatar"><img src="~/Content/Images/man (1).png" /></div><!-- the comment body -->
+                        <div class="user_avatar">
+                            <img src="~/Content/Images/man (1).png" />
+                        </div><!-- the comment body -->
                         <div class="comment_body">
                             <p>Gastropub cardigan jean shorts, kogi Godard PBR&amp;B lo-fi locavore. Organic chillwave vinyl Neutra. Bushwick Helvetica cred freegan, crucifix Godard craft beer deep v mixtape cornhole Truffaut master cleanse pour-over Odd Future beard. Portland polaroid iPhone.</p>
                         </div><!-- comments toolbar -->
@@ -248,17 +290,23 @@
                                 <ul>
                                     <li>13:94</li>
                                     <li>04/01/2015</li>
-                                    <li><span class="user">Sarah Walkman</span></li>
+                                    <li>
+                                        <span class="user">Sarah Walkman</span>
+                                    </li>
                                 </ul>
                             </div><!-- inc. share/reply and love -->
                             <div class="comment_tools"></div>
                         </div><!-- start user replies -->
                         <li>
                             <!-- current #{user} avatar -->
-                            <div class="user_avatar"><img src="~/Content/Images/man (1).png" /></div><!-- the comment body -->
+                            <div class="user_avatar">
+                                <img src="~/Content/Images/man (1).png" />
+                            </div><!-- the comment body -->
                             <div class="comment_body">
                                 <div class="replied_to">
-                                    <p><span class="user">Sarah Walkman:</span>Pork belly migas flexitarian messenger bag Brooklyn gluten-free. Tilde kitsch skateboard Helvetica, lumbersexual four loko direct trade pour-over. Cronut deep v keffiyeh cornhole food truck</p>
+                                    <p>
+                                        <span class="user">Sarah Walkman:</span>Pork belly migas flexitarian messenger bag Brooklyn gluten-free. Tilde kitsch skateboard Helvetica, lumbersexual four loko direct trade pour-over. Cronut deep v keffiyeh cornhole food truck
+                                    </p>
                                 </div>I'm tired, does anybody know a good place to buy extra strength coffee?
                             </div><!-- comments toolbar -->
                             <div class="comment_toolbar">
@@ -267,12 +315,16 @@
                                     <ul>
                                         <li>19:23</li>
                                         <li>14/01/2015</li>
-                                        <li><span class="user">Blake Anderson</span></li>
+                                        <li>
+                                            <span class="user">Blake Anderson</span>
+                                        </li>
                                     </ul>
                                 </div><!-- inc. share/reply and love -->
                                 <div class="comment_tools">
                                     <ul>
-                                        <li><i class="fa fa-heart love"><span class="love_amt">12</span></i></li>
+                                        <li>
+                                            <i class="fa fa-heart love"><span class="love_amt">12</span></i>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
