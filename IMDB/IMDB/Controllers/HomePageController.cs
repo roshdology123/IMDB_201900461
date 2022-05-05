@@ -21,24 +21,23 @@ namespace IMDB.Controllers
             return View(movies);
         }
 
+        [HttpGet]
         public ActionResult FilmDetails(String ID)
         {
             int MovieID = Int32.Parse(ID);
-
-            Movie movie = _context.Movies.Find(MovieID);
-
-            int? directorID = movie.Director_ID;
-
-            var movieActors = _context.MovieActors.ToList().Where(x => MovieID == x.Movie_ID);
-
-            Director director = _context.Directors.Find(directorID);
-
-            IEnumerable<Comment> comment = _context.Comments.ToList().Where(x=> MovieID == x.Movie_ID);
-
-            Like like = _context.Likes.Single(x => MovieID == x.Movie_ID && x.User_ID == 2 );
+            Session["Movie_ID"] = MovieID;
             
+            User loggedOnUser = _context.Users.Find(2);
+            Movie movie = _context.Movies.Find(MovieID);
+            int? directorID = movie.Director_ID;
+            var movieActors = _context.MovieActors.ToList().Where(x => MovieID == x.Movie_ID);
+            Director director = _context.Directors.Find(directorID);
+            IEnumerable<Comment> comment = _context.Comments.ToList().Where(x=> MovieID == x.Movie_ID);
+            Like like = _context.Likes.Single(x => MovieID == x.Movie_ID && x.User_ID == 2 );
+
             FilmDetailsViewModel filmDetailsViewModel = new FilmDetailsViewModel()
             {
+                User = loggedOnUser,
                 Movie = movie,
                 Director = director,
                 MovieActors = movieActors,
@@ -47,6 +46,18 @@ namespace IMDB.Controllers
             };
 
             return View(filmDetailsViewModel);
+        }
+
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult FilmDetails(Comment comment)
+        {
+            comment.Movie_ID = (int) Session["Movie_ID"];
+            _context.Comments.Add(comment);
+            _context.SaveChanges();
+
+            return RedirectToAction("FilmDetails");
         }
     }
 }

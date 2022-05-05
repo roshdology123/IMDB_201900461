@@ -175,162 +175,46 @@
                 <div class="create_new_comment">
                     <!-- current #{user} avatar -->
                     <div class="user_avatar">
-                        <img src="~/Content/Images/man (1).png" />
+                        <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(Model.User.User_Img))" />
                     </div><!-- the input field -->
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
                     <div class="input_comment">
-                        <input type="text" placeholder="Join the conversation..">
+
+                        @Html.TextBoxFor(x=>x.UpComment.CommentData)
+
+                        <input type="submit" value="Submit" class="sendButton" />
                     </div>
+                    }
                 </div><!-- new comment -->
-                <div class="new_comment">
-                    <!-- build comment -->
-                    <ul class="user_comment">
-                        <!-- current #{user} avatar -->
-                        <div class="user_avatar"
-<img src="~/Content/Images/man (1).png" /></div>
-                        <div class="comment_body">
-                            <p></p>
-                        </div><!-- comments toolbar -->
-                        <div class="comment_toolbar">
-                            <!-- inc. date and time -->
-                            <div class="comment_details">
-                                <ul>
-                                    <li>13:94</li>
-                                    <li>04/01/2015</li>
-                                    <li>
-                                        <span class="user">John Smith</span>
-                                    </li>
-                                </ul>
-                            </div><!-- inc. share/reply and love -->
-                            <div class="comment_tools"></div>
-                        </div><!-- start user replies -->
-                        <li>
+               
+                @foreach (var item in Model.Comments)
+                {
+                    <div class="new_comment">
+                        <!-- build comment -->
+                        <ul class="user_comment">
                             <!-- current #{user} avatar -->
                             <div class="user_avatar">
-                                <img src="~/Content/Images/man (1).png" />
-                            </div><!-- the comment body -->
+                                <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.User.User_Img))" />
+                            </div>
                             <div class="comment_body">
-                                <div class="replied_to">
-                                    <p>
-                                        <span class="user">John Smith:</span>Gastropub cardigan jean shorts, kogi Godard PBR&amp;B lo-fi locavore. Organic chillwave vinyl Neutra. Bushwick Helvetica cred freegan, crucifix Godard craft beer deep v mixtape cornhole Truffaut master cleanse pour-over Odd Future beard. Portland polaroid iPhone.
-                                    </p>
-                                </div>That's exactly what I was thinking!
+                                <p>@item.CommentData</p>
                             </div><!-- comments toolbar -->
                             <div class="comment_toolbar">
                                 <!-- inc. date and time -->
                                 <div class="comment_details">
                                     <ul>
-                                        <li>14:52</li>
-                                        <li>04/01/2015</li>
                                         <li>
-                                            <span class="user">Andrew Johnson</span>
+                                            <span class="user">@item.User.FName @item.User.LName</span>
                                         </li>
                                     </ul>
                                 </div><!-- inc. share/reply and love -->
-                                <div class="comment_tools">
-                                    <ul>
-                                        <li>
-                                            <i class="fa fa-heart love"><span class="love_amt">4</span></i>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li><!-- start user replies -->
-                        <li>
-                            <!-- current #{user} avatar -->
-                            <div class="user_avatar">
-                                <img src="~/Content/Images/man (1).png" />
-                            </div><!-- the comment body -->
-                            <div class="comment_body">
-                                <div class="replied_to">
-                                    <p>
-                                        <span class="user">John Smith:</span>Gastropub cardigan jean shorts, kogi Godard PBR&amp;B lo-fi locavore. Organic chillwave vinyl Neutra. Bushwick Helvetica cred freegan, crucifix Godard craft beer deep v mixtape cornhole Truffaut master cleanse pour-over Odd Future beard. Portland polaroid iPhone.
-                                    </p>
-                                </div>Finally someone who actually gets it!
-                                <div class="replied_to">
-                                    <p>
-                                        <span class="user">Andrew Johnson:</span>That's exactly what I was thinking!
-                                    </p>
-                                </div>That's awesome!
-                            </div><!-- comments toolbar -->
-                            <div class="comment_toolbar">
-                                <!-- inc. date and time -->
-                                <div class="comment_details">
-                                    <ul>
-                                        <li>14:59</li>
-                                        <li>04/01/2015</li>
-                                        <li>
-                                            <span class="user">Simon Gregor</span>
-                                        </li>
-                                    </ul>
-                                </div><!-- inc. share/reply and love -->
-                                <div class="comment_tools">
-                                    <ul>
-                                        <li>
-                                            <i class="fa fa-heart love"><span class="love_amt">4039</span></i>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div><!-- new comment -->
-                <div class="new_comment">
-                    <!-- build comment -->
-                    <ul class="user_comment">
-                        <!-- current #{user} avatar -->
-                        <div class="user_avatar">
-                            <img src="~/Content/Images/man (1).png" />
-                        </div><!-- the comment body -->
-                        <div class="comment_body">
-                            <p>Gastropub cardigan jean shorts, kogi Godard PBR&amp;B lo-fi locavore. Organic chillwave vinyl Neutra. Bushwick Helvetica cred freegan, crucifix Godard craft beer deep v mixtape cornhole Truffaut master cleanse pour-over Odd Future beard. Portland polaroid iPhone.</p>
-                        </div><!-- comments toolbar -->
-                        <div class="comment_toolbar">
-                            <!-- inc. date and time -->
-                            <div class="comment_details">
-                                <ul>
-                                    <li>13:94</li>
-                                    <li>04/01/2015</li>
-                                    <li>
-                                        <span class="user">Sarah Walkman</span>
-                                    </li>
-                                </ul>
-                            </div><!-- inc. share/reply and love -->
-                            <div class="comment_tools"></div>
-                        </div><!-- start user replies -->
-                        <li>
-                            <!-- current #{user} avatar -->
-                            <div class="user_avatar">
-                                <img src="~/Content/Images/man (1).png" />
-                            </div><!-- the comment body -->
-                            <div class="comment_body">
-                                <div class="replied_to">
-                                    <p>
-                                        <span class="user">Sarah Walkman:</span>Pork belly migas flexitarian messenger bag Brooklyn gluten-free. Tilde kitsch skateboard Helvetica, lumbersexual four loko direct trade pour-over. Cronut deep v keffiyeh cornhole food truck
-                                    </p>
-                                </div>I'm tired, does anybody know a good place to buy extra strength coffee?
-                            </div><!-- comments toolbar -->
-                            <div class="comment_toolbar">
-                                <!-- inc. date and time -->
-                                <div class="comment_details">
-                                    <ul>
-                                        <li>19:23</li>
-                                        <li>14/01/2015</li>
-                                        <li>
-                                            <span class="user">Blake Anderson</span>
-                                        </li>
-                                    </ul>
-                                </div><!-- inc. share/reply and love -->
-                                <div class="comment_tools">
-                                    <ul>
-                                        <li>
-                                            <i class="fa fa-heart love"><span class="love_amt">12</span></i>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                            </div><!-- start user replies -->
+                        </ul>
+                    </div>
+                }
+
             </div>
         </div>
 
