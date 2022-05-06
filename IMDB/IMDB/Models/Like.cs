@@ -24,7 +24,10 @@ namespace IMDB.Models
         [Display(Name = "Movie ID")]
         public int? Movie_ID { get; set; }
 
+        [Required]
         [Display(Name = "Like Value")]
-        public Boolean LikeValue { get; set; }
+        public LikeExp LikeValue { get; set; }
+
     }
+    public enum LikeExp {Like, Dislike}
 }
