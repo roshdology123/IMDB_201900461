@@ -21,8 +21,8 @@
                         <div class="dropdown">
                             <a href="#" title="Movies section" class="admin-menu">Movies</a>
                             <div class="dropdown-content">
-                                <a href="~/AdminView/Movies" class="show">Show All Movies</a>
-                                <a href="~/AdminView/AddMovies">Add New Movie</a>
+                                @Html.ActionLink("Show All Movies", "Movies")
+                                @Html.ActionLink("Add New Movie", "AddMovies")
                             </div>
                         </div>
                     </li>
@@ -30,8 +30,8 @@
                         <div class="dropdown">
                             <a href="#" title="Actors section" class="admin-menu">Actors</a>
                             <div class="dropdown-content">
-                                <a href="~/AdminView/Actors" class="show">Show All Actors</a>
-                                <a href="~/AdminView/AddActors">Add New Actor</a>
+                                @Html.ActionLink("Show All Actors", "Actors")
+                                @Html.ActionLink("Add New Actor", "AddActors")
                             </div>
                         </div>
                     </li>
@@ -39,8 +39,8 @@
                         <div class="dropdown">
                             <a href="#" title="Directors section" class="admin-menu">Directors</a>
                             <div class="dropdown-content">
-                                <a href="~/AdminView/Directors" class="show">Show All Directors</a>
-                                <a href="~/AdminView/AddDirectors">Add New Director</a>
+                                @Html.ActionLink("Show All Directors", "Directors")
+                                @Html.ActionLink("Add New Director", "AddDirectors")
                             </div>
                         </div>
                     </li>
