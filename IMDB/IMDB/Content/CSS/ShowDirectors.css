@@ -12,46 +12,29 @@ body {
     outline-offset: 0.5rem;
 }
 
-#myUL {
-    font-size: 200%;
-    list-style-type: none;
-}
-
-.big p {
+a {
+    text-decoration: none;
     color: black;
 }
 
-button {
-    padding: 14px 40px;
+.button {
+    margin-left: 10px;
     border-radius: 8px;
     cursor: pointer;
     background-color: rgb(245,197,24);
     font-size: 16px;
     transition-duration: 0.4s;
-    margin-left: 20px;
-    margin-bottom: 10px;
 }
 
-.director-button {
-    display: flex;
-    border: 2px solid black;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    padding-top: 10px;
-    padding-left: 10px;
-}
-
-button:hover {
-    background-color: #ffd633;
-    color: black;
-}
-
-.big img {
-    height: 400px;
-}
+    .button:hover {
+        background-color: #ffd633;
+        color: black;
+    }
 
 table {
     border-collapse: collapse;
+    height: 200px;
+    width: 500px;
 }
 
 td {
@@ -60,9 +43,4 @@ td {
     background-color: #404040;
     color: white;
     border-bottom: 1px solid #ddd;
-}
-
-#director-details {
-    display: none;
-    margin-bottom: 15px;
 }

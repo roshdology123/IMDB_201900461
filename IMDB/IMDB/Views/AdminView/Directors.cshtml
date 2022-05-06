@@ -1,57 +1,61 @@
 ﻿
-@{
-    Layout = null;
-}
+@model IEnumerable<IMDB.Models.Director>
 
-<!DOCTYPE html>
+    @{
+        Layout = null;
+    }
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <link href="~/Content/CSS/ShowDirectors.css" rel="stylesheet" />
-    <link href="~/Content/CSS/NavBarAdmin.css" rel="stylesheet" />
-    <title>DirectorsPage</title>
-</head>
-<body>
-    @Html.Partial("NavBarAdmin")
-    <div class="big">
-        <ul id="myUL">
-            <li>
-                <div class="director-button" id="director1-container">
-                    <p>aaaaaa</p>
-                    <button onclick="details()">Details</button>
-                    <button onclick="RemoveDirector1()">Remove</button>
-                </div>
-                <div id="director-details">
-                    <p>
-                        <table>
-                            <tr>
-                                <td>First Name</td>
-                                <td id="first-name" contenteditable="false">aaa</td>
-                            </tr>
-                            <tr>
-                                <td>Last Name</td>
-                                <td id="last-name" contenteditable="false">sss</td>
-                            </tr>
-                            <tr>
-                                <td>Age</td>
-                                <td id="age" contenteditable="false">25</td>
-                            </tr>
-                            <tr>
-                                <td>Movies</td>
-                                <td id="director-movies" contenteditable="false">a,b,c</td>
-                            </tr>
-                        </table>
-                    </p>
-                    <button id="edit-button" type="submit">Edit</button>
-                    <button id="done-button" type="submit">Done</button>
-                </div>
-            </li>
+    <!DOCTYPE html>
 
-        </ul>
-    </div>
-    <script src="~/Content/JS/Directors.js"></script>
-</body>
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <link href="~/Content/CSS/ShowDirectors.css" rel="stylesheet" />
+        <link href="~/Content/CSS/NavBarAdmin.css" rel="stylesheet" />
+        <title>DirectorsPage</title>
+    </head>
+    <body>
+        @Html.Partial("NavBarAdmin")
+        <div class="big">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Age)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Age)
+                    </td>
+                    <td class="button">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Director_ID })
+                    </td>
+                    <td class="button">
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Director_ID })
+                    </td>
+                </tr>
+                }
+
+            </table>
+        </div>
+        <script src="~/Content/JS/Directors.js"></script>
+    </body>
 </html>
 
 

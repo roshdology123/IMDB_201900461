@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IMDB.Models.Actor
+@{
     Layout = null;
 }
 
@@ -56,19 +57,46 @@
     </div>
 
     <div class="addform">
-        <form action="/action_page.php">
-            
-            <label for="actorfirstname">Actor First Name:</label><br>
-            <input type="text" id="actorfirstname" name="actorfirstname" placeholder="Enter Actor First Name"><br><br>
-            <label for="actorlastname">Actor Last Name:</label><br>
-            <input type="text" id="actorlastname" name="actorlastname" placeholder="Enter Actor Last Name"><br><br>
-            <label for="age">Age:</label><br>
-            <input type="text" id="age" name="age" placeholder="Enter Actor Age"><br><br>
-            <label for="movies">Movies:</label><br>
-            <input type="text" id="movies" name="movies" placeholder="Enter Actor Movies"><br><br>
-            
-            <input type="submit" value="Submit">
-        </form>
+        <h1>Add Actor</h1>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.LName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.LName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="submit-button-container">
+                        <input type="submit" value="Create" class="submit-button" />
+                    </div>
+                </div>
+            </div>
+        }
+
+
     </div>
 </body>
 </html>
