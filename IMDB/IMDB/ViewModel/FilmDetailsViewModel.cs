@@ -14,5 +14,6 @@ namespace IMDB.ViewModel
         public IEnumerable<MovieActor> MovieActors { get; set; }
         public IEnumerable<Comment> Comments { get; set; }
         public Like Like { get; set; }
+        public Comment Upcomment{ get; set; }
     }
 }

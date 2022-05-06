@@ -1,4 +1,7 @@
-﻿@model IMDB.ViewModel.FilmDetailsViewModel
+﻿
+
+@model IMDB.ViewModel.FilmDetailsViewModel
+
 
 @{
     ViewBag.Title = "Film Details";
@@ -14,6 +17,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>FilmDetails</title>
     <link href="~/Content/CSS/Site.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -21,17 +25,6 @@
 
     <div class="film-container">
         <div class="film-container-details">
-            <ul class="film-container-details-block">
-                <ul class="film-container-details-rating">
-                    <li class="film-container-details-rating-item">Rate</li>
-                    <li class="film-container-details-rating-item">
-                        <img style="width:32px; cursor:pointer;" src="~/Content/Images/icons8-like-64 (1).png" />
-                        <img style="width:32px; cursor:pointer;" src="~/Content/Images/icons8-dislike-64.png" />
-                    </li>
-                </ul>
-
-
-            </ul>
             <h1 class="film-container-details-title">@Model.Movie.Movie_Name</h1>
 
 
@@ -53,11 +46,20 @@
                     The aging patriarch of an organized crime dynasty in postwar
                     New York City transfers control of his clandestine empire to his reluctant youngest son.
                 </p>
+                <div class="rate-box">
+                    @using (Html.BeginForm("FilmDetails", "HomePage", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.DropDownListFor(m => m.Like.LikeValue, new SelectList(Enum.GetValues(typeof(IMDB.Models.LikeExp))), "Rate The Film", new { @class = "LikeDropDownList" })
+                        <input type="submit" value="Rate" class="submitDropDownList"/>
+
+                    }
+                </div>
                 <hr style="width:50%;text-align:left;margin-left:0;">
 
                 <h2 style="color:white; font-size:large; display: inline-block; padding-bottom:8px; padding-top: 8px; "> Directors </h2>
                 <ul class="person-director">
-                    <li class="person-director-item"> @Model.Director.FName @Model.Director.LName </li>
+                    <li class="person-director-item"> @Html.ActionLink(Model.Director.FName +" "+ Model.Director.LName, "DirectorProfile", new { id = Model.Director.Director_ID})   </li>
                 </ul>
 
                 <hr style="width:50%;text-align:left;margin-left:0;">
@@ -177,47 +179,46 @@
                     <div class="user_avatar">
                         <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(Model.User.User_Img))" />
                     </div><!-- the input field -->
-                    @using (Html.BeginForm())
-                    {
-                        @Html.AntiForgeryToken()
+                    @using (Html.BeginForm("FilmDetails", "HomePage", FormMethod.Post))
+                                        {
+                    @Html.AntiForgeryToken()
                     <div class="input_comment">
 
-                        @Html.TextBoxFor(x=>x.UpComment.CommentData)
+                        @Html.TextBoxFor(x => x.Upcomment.CommentData)
 
                         <input type="submit" value="Submit" class="sendButton" />
                     </div>
-                    }
+                                        }
                 </div><!-- new comment -->
-               
+
                 @foreach (var item in Model.Comments)
-                {
-                    <div class="new_comment">
-                        <!-- build comment -->
-                        <ul class="user_comment">
-                            <!-- current #{user} avatar -->
-                            <div class="user_avatar">
-                                <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.User.User_Img))" />
-                            </div>
-                            <div class="comment_body">
-                                <p>@item.CommentData</p>
-                            </div><!-- comments toolbar -->
-                            <div class="comment_toolbar">
-                                <!-- inc. date and time -->
-                                <div class="comment_details">
-                                    <ul>
-                                        <li>
-                                            <span class="user">@item.User.FName @item.User.LName</span>
-                                        </li>
-                                    </ul>
-                                </div><!-- inc. share/reply and love -->
-                            </div><!-- start user replies -->
-                        </ul>
-                    </div>
-                }
+                                {
+                <div class="new_comment">
+                    <!-- build comment -->
+                    <ul class="user_comment">
+                        <!-- current #{user} avatar -->
+                        <div class="user_avatar">
+                            <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.User.User_Img))" />
+                        </div>
+                        <div class="comment_body">
+                            <p>@item.CommentData</p>
+                        </div><!-- comments toolbar -->
+                        <div class="comment_toolbar">
+                            <!-- inc. date and time -->
+                            <div class="comment_details">
+                                <ul>
+                                    <li>
+                                        <span class="user">@item.User.FName @item.User.LName</span>
+                                    </li>
+                                </ul>
+                            </div><!-- inc. share/reply and love -->
+                        </div><!-- start user replies -->
+                    </ul>
+                </div>
+                                }
 
             </div>
         </div>
-
 
         <script src="~/Content/JS/Site.js"></script>
 
