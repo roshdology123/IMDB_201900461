@@ -1,4 +1,5 @@
-﻿
+﻿@model IMDB.Models.User
+
 @{
     Layout = null;
 }
@@ -11,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IMDB Login</title>
     <link href="~/Content/CSS/login.css" rel="stylesheet" />
-   
+
 </head>
 <body>
     <span class="Logo">
@@ -19,25 +20,26 @@
     </span>
 
     <div class="All">
-        <Form action="Home-Page.html" method="GET">
-            <div id="Form-Details" class="Form-Details">
-                <h1 class="a-spacing small"> Sign-In </h1>
-
-                <div class="block">
-                    <p>Email</p>
-                    <input class="input" size="50" name=" Email" type="Email" id="Email" placeholder="Enter Your Email" required>
-                </div>
-                <div class="block">
-                    <p>Password  </p>
-                    <input class="input" size="50" name=" Password" type="password" id="Password" placeholder="at least 8 characters" maxlength="8" required>
-                </div> <br> <br>
-
-                <!--<input  id="submit-btn" class="Submit" type="submit" required> -->
-                <button type="submit" id="submit-btn" class="Submit">Sign-In</button>
-                <div class="register-Link">
-                    <p>New to IMDb? <a href="register.html">Create your IMDb Account</a> </p>
-                </div>
+        @using (Html.BeginForm("Login", "LoginRegister", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+        <div class="Form-Details">
+            <h1 class="a-spacing small"> Sign-In </h1>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Email)
+                @Html.TextBoxFor(m => m.Email, new { @class = "textinput", size = "50" })
             </div>
-        </Form>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Password)
+                @Html.TextBoxFor(m => m.Password, new { @class = "textinput", size = "50" })
+
+            </div>
+            <input type="submit" id="submit-btn" class="Submit" required value="Sign-In" />
+            <div class="register-Link">
+                <p>New to IMDb? <a href="register.html">Create your IMDb Account</a> </p>
+            </div>
+        </div>
+        }
+    </div>
 </body>
 </html>

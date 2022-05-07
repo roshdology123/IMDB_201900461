@@ -47,10 +47,15 @@ h1 {
     margin-left: 140px;
     cursor: pointer;
 }
-.input {
+.textinput {
         
         padding-top:7px;
         padding-left: 3px;
         padding-right: 3px;
         padding-bottom: 7px;
     }
+input {
+    margin-right: 30px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}

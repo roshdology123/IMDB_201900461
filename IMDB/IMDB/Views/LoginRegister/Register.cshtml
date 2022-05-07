@@ -1,8 +1,7 @@
-﻿
+﻿@model IMDB.Models.User
 @{
     Layout = null;
 }
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,44 +9,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IMDB Register</title>
+
     <link href="~/Content/CSS/register.css" rel="stylesheet" />
-  
+
 
 </head>
 <body>
     <span class="Logo">
         <a href="HomePage.html"> <img src="https://images-na.ssl-images-amazon.com/images/G/01/imdb/authportal/images/www_imdb_logo._CB667618033_.png" alt="IMDb.com logo"></a>
     </span>
-
     <div class="All">
-        <Form action="login.html" name="register">
+            @using (Html.BeginForm("Register", "LoginRegister", FormMethod.Post))
+            {
+                            @Html.AntiForgeryToken()
+                            <div class="Form-Details">
+                    <h1 class="a-spacing small"> Create Account </h1>
+                    <div class="form-group">
 
-            <div id="Form-Details" class="Form-Details">
-                <h1 class="a-spacing small"> Create Account </h1>
+                        @Html.LabelFor(x => x.FName)
+                        @Html.TextBoxFor(m => m.FName, new { @class = "textinput", size = "50" })
 
-                <div class="block">
-                    <p>Your First name</p>
-                    <input class="input" size="50" name=" Your name" type="text" id="Your name" placeholder="Enter Your Name" required>
-                </div>
-                <div class="block">
-                    <p>Your Last name</p>
-                    <input class="input" size="50" name=" Your name" type="text" id="Your name" placeholder="Enter Your Name" required>
-                </div>
-                <div class="block">
-                    <p>Email</p>
-                    <input class="input" size="50" name=" Email" type="Email" id="Email" placeholder="Enter Your Email" required>
-                </div>
-                <div class="block">
-                    <p>Password  </p>
-                    <input class="input" size="50" name=" Password" type="password" id="Password" placeholder="at least 8 characters" maxlength="8" required><br><br>
-                </div>
-             
-                <button type="submit" id="submit-btn" class="Submit" required>Create your IMDb Account</button>
-                <div class="login">
-                    <p>Already have an account? <a href="login.html">Sign-In</a> </p>
-                </div>
-            </div>
-        </Form>
-      
+                    </div>
+                    <div class="form-group">
+
+                        @Html.LabelFor(x => x.LName)
+                        @Html.TextBoxFor(m => m.LName, new { @class = "textinput", size = "50" })
+
+                    </div>
+                    <div class="form-group">
+
+                        @Html.LabelFor(x => x.Email)
+                        @Html.TextBoxFor(m => m.Email, new { @class = "textinput", size = "50" })
+
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Password)
+                        @Html.TextBoxFor(m => m.Password, new { @class = "textinput", size = "50" })
+
+                    </div>
+                    <input type="submit" id="submit-btn" class="Submit" required value="Create your IMDb Account" />
+                    <div class="login">
+                        <p>Already have an account? <a href="login.html">Sign-In</a> </p>
+                    </div>
+                 </div>
+              }  
+         </div>
+         
 </body>
 </html>
