@@ -44,10 +44,10 @@
                         @Html.DisplayFor(modelItem => item.Age)
                     </td>
                     <td class="button">
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Director_ID })
+                        @Html.ActionLink("Edit", "EditDirector", new { id = item.Director_ID })
                     </td>
                     <td class="button">
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Director_ID })
+                        @Html.ActionLink("Delete", "DeleteDirector", new { id = item.Director_ID })
                     </td>
                 </tr>
                 }

@@ -42,10 +42,10 @@
                     @Html.DisplayFor(modelItem => item.Age)
                 </td>
                 <td class="button">
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Actor_ID })
+                    @Html.ActionLink("Edit", "EditActor", new { id = item.Actor_ID })
                 </td>
                 <td class="button">
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Actor_ID })
+                    @Html.ActionLink("Delete", "DeleteActor", new { id = item.Actor_ID })
                 </td>
             </tr>
             }

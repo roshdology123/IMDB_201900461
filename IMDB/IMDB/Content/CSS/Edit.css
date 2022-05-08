@@ -1,0 +1,48 @@
+﻿* {
+    margin: 0;
+}
+
+body {
+    font-family: 'Roboto',sans-serif;
+}
+
+.editform {
+    margin-top: 150px;
+    margin-left: 40%;
+}
+
+input {
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid red;
+    border-radius: 10px;
+}
+
+    input[type=submit] {
+        padding: 14px 40px;
+        border-radius: 8px;
+        cursor: pointer;
+        background-color: rgb(245,197,24);
+        font-size: 16px;
+        transition-duration: 0.4s;
+        margin-left: 60px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+        input[type=submit]:hover {
+            background-color: #ffd633;
+            color: black;
+        }
+
+
+h1 {
+    margin-bottom: 20px;
+    margin-left: 50px;
+}
+
+.submit-button-container {
+    margin-right: 500px;
+}

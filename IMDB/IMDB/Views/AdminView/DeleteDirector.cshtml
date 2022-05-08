@@ -1,0 +1,56 @@
+﻿@model IMDB.Models.Director
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DeleteDirector</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Director</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.FName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.FName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.LName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.LName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Age)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Age)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                
+            </div>
+        }
+    </div>
+</body>
+</html>

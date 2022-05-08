@@ -1,5 +1,5 @@
-﻿@model IMDB.ViewModel.Movie_Director
-@using IMDB.Models
+﻿@model IMDB.Models.Director
+
 @{
     Layout = null;
 }
@@ -9,9 +9,9 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link href="~/Content/CSS/AddMovies.css" rel="stylesheet" />
     <link href="~/Content/CSS/NavBar.css" rel="stylesheet" />
-    <title>AddMoviesPage</title>
+    <link href="~/Content/CSS/Edit.css" rel="stylesheet" />
+    <title>EditDirector</title>
 </head>
 <body>
     <div class="navbar">
@@ -56,58 +56,49 @@
             </div>
         </div>
     </div>
-    <div class="addform">
-        @using (Html.BeginForm("AddMovies", "AdminView", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+    <div class="editform">
+        @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
 
             <div class="form-horizontal">
-               
+                <h1>Edit Director</h1>
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Director_ID)
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.movie.Director_ID, "Director", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.FName, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.DropDownListFor(model => model.movie.Director_ID, new SelectList(Model.directors, "Director_ID", "FName"), "Select Director Name", htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.movie.Director_ID, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.FName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FName, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                <br />
+
                 <div class="form-group">
-                    @Html.LabelFor(model => model.movie.Movie_Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.LName, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.movie.Movie_Name, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.movie.Movie_Name, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.LName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.LName, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                <br />
-
-
-
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.movie.Movie_TLink, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.movie.Movie_TLink, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.movie.Movie_TLink, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                <br />
+
                 <div class="form-group">
-                    @Html.LabelFor(model => model.movie.Img, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <input type="file" name="image" />
-                </div>
-
-
-
-                <br />
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Create" class="btn btn-default" />
+                    <div class="submit-button-container">
+                        <input type="submit" value="Save" class="submit-button" />
                     </div>
                 </div>
             </div>
         }
-        </div>
+
+    </div>
 </body>
 </html>
