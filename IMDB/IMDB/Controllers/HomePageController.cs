@@ -6,9 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using IMDB.Models;
-using System.Drawing;
 using IMDB.ViewModel;
-using System.Threading.Tasks;
 using IMDB.Functions;
 
 namespace IMDB.Controllers
@@ -17,6 +15,7 @@ namespace IMDB.Controllers
     {
         IMdbDBContext _context = new IMdbDBContext();
         IsRated isRated = new IsRated();
+        DbData dbData = new DbData();
         public ActionResult HomePage()
         {
             var movies = _context.Movies.ToList();
@@ -83,5 +82,16 @@ namespace IMDB.Controllers
 
             return RedirectToAction("FilmDetails");
         }
+
+
+        public ActionResult Search(String searching)
+        {
+            var retrivedActors = dbData.RetriveActors();
+            var retrivedDirectors = dbData.RetriveDirectors();
+            var retrivedMovies = dbData.RetriveMovies();
+
+            return View();
+        }
+
     }
 }
