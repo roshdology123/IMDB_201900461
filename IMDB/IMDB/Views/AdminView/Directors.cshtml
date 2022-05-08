@@ -33,6 +33,8 @@
 
                 @foreach (var item in Model)
                 {
+                    if(item.Director_ID != 9)
+                    {
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.FName)
@@ -50,6 +52,7 @@
                         @Html.ActionLink("Delete", "DeleteDirector", new { id = item.Director_ID })
                     </td>
                 </tr>
+                    }
                 }
 
             </table>
