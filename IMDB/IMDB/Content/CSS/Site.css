@@ -50,13 +50,14 @@ body {
     margin-right: 30px;
 }
 
-.menu-list-item.search input[type=text] {
-    padding: 6px;
-    border: none;
-    font-size: 17px;
-    border-radius: 8px 0px 0px 8px;
-    position: relative;
-}
+    .menu-list-item.search input[type=text] {
+        padding: 6px;
+        border: none;
+        font-size: 17px;
+        border-radius: 8px 0px 0px 8px;
+        position: relative;
+
+    }
 
 .imageSearch {
     height: 32px;
