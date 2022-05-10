@@ -1,0 +1,96 @@
+﻿@using IMDB.ViewModel
+
+@model SearchViewModel
+
+@{
+    ViewBag.Title = "Search";
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Search</title>
+    <link href="~/Content/CSS/Search.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="navbar-container">
+
+        <div class="logo-container">
+            <img src="~/Content/Images/imdb-logo.svg" class="logo" alt="User Photo">
+        </div>
+        <div class="menu-container">
+            <ul class="menu-list"></ul>
+        </div>
+        <div class="profile-container">
+            <img class="profile-picture" src="~/Content/Images/man.png" alt="">
+            <div class="profile-text-container">
+                <span class="profile-text">Sign In</span>
+                <span class="profile-text">Profile</span>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="All-Container">
+            @using (Html.BeginForm())
+            {
+                <input type="text" name="SearchValue" />
+                <input type="submit" value="Search" />
+            }
+            <br />
+            <br />
+            <label> Choose Type Search</label>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                    </tr>
+                </thead>
+                <tbody id="DataSearching">
+                    @foreach (var item in Model.Actors)
+                    {
+                        <tr>
+                            <td>Actor</td>
+                            <td>@item.FName @item.LName</td>
+                            <td>@item.Age</td>
+                        </tr>
+                    }
+                    
+                    @foreach (var item in Model.Directors)
+                    {
+                        <tr>
+                            <td>Director</td>
+                            <td>@item.FName @item.LName</td>
+                            <td>@item.Age</td>
+                        </tr>
+                    }
+                    
+                </tbody>
+            </table>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Trailer Link</th>
+                    </tr>
+                </thead>
+                <tbody id="DataSearching">
+                    @foreach (var item in Model.Movies)
+                    {
+                        <tr>
+                            <td>@item.Movie_Name</td>
+                            <td><a href="@item.Movie_TLink">@item.Movie_TLink</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
