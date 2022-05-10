@@ -84,14 +84,7 @@ namespace IMDB.Controllers
         }
 
 
-        public ActionResult Search(String searching)
-        {
-            var retrivedActors = dbData.RetriveActors();
-            var retrivedDirectors = dbData.RetriveDirectors();
-            var retrivedMovies = dbData.RetriveMovies();
 
-            return View();
-        }
 
     }
 }
