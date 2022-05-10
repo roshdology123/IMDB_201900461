@@ -50,14 +50,13 @@ body {
     margin-right: 30px;
 }
 
-    .menu-list-item.search input[type=text] {
-        padding: 6px;
-        border: none;
-        font-size: 17px;
-        border-radius: 8px 0px 0px 8px;
-        position: relative;
-
-    }
+.menu-list-item.search input[type=text] {
+    padding: 10px;
+    border: none;
+    font-size: 17px;
+    border-radius: 8px 0px 0px 8px;
+    position: relative;
+}
 
 .imageSearch {
     height: 32px;
@@ -65,6 +64,22 @@ body {
     position: absolute;
     background-color: white;
     border-radius: 0px 8px 8px 0px;
+}
+.SearchBTN {
+    float: right;
+    width: 6%;
+    padding: 9px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+    border-radius: 0px 8px 8px 0px;
+}
+
+.SearchBTN:hover {
+    background: #0b7dda;
 }
 
 .menu-container {
@@ -77,7 +92,6 @@ body {
 }
 
 .profile-container {
-
     flex: 1;
     display: flex;
     align-items: center;
