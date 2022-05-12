@@ -47,11 +47,11 @@
                     New York City transfers control of his clandestine empire to his reluctant youngest son.
                 </p>
                 <div class="rate-box">
-                    @using (Html.BeginForm("FilmDetails", "HomePage", FormMethod.Post))
+                    @using (Html.BeginForm("FilmDetails", "HomePage", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
                         @Html.AntiForgeryToken()
                         @Html.DropDownListFor(m => m.Like.LikeValue, new SelectList(Enum.GetValues(typeof(IMDB.Models.LikeExp))), "Rate The Film", new { @class = "LikeDropDownList" })
-                        <input type="submit" value="Rate" class="submitDropDownList"/>
+                        <button name="PressedBtn" type="submit" value="2" class="submitDropDownList">Rate</button>
 
                     }
                 </div>
@@ -179,14 +179,14 @@
                     <div class="user_avatar">
                         <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(Model.User.User_Img))" />
                     </div><!-- the input field -->
-                    @using (Html.BeginForm("FilmDetails", "HomePage", FormMethod.Post))
-                                        {
+                    @using (Html.BeginForm("FilmDetails", "HomePage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
                     @Html.AntiForgeryToken()
                     <div class="input_comment">
 
                         @Html.TextBoxFor(x => x.Upcomment.CommentData)
 
-                        <input type="submit" value="Submit" class="sendButton" />
+                        <button name="PressedBtn" type="submit" value="1" class="sendButton">Comment</button>
                     </div>
                                         }
                 </div><!-- new comment -->

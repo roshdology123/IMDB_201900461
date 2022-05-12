@@ -53,31 +53,37 @@ namespace IMDB.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult FilmDetails(FilmDetailsViewModel fdvm)
+        public ActionResult FilmDetails(FilmDetailsViewModel fdvm, int PressedBtn)
         {
-            try
+           
+            switch (PressedBtn)
             {
-                Comment comment = new Comment();
-                comment.CommentData = fdvm.Upcomment.CommentData;       
-                comment.Movie_ID = (int)Session["Movie_ID"];
-                comment.User_ID = (int)Session["User_ID"];
-                _context.Comments.Add(comment);
-                _context.SaveChanges();
-            }
-            catch (Exception)
-            {
-                isRated.MovieID = (int)Session["Movie_ID"];
-                isRated.UserID = (int)Session["User_ID"];
-                var valid = isRated.Validate();
-                isRated.Update(fdvm.Like.LikeValue);
+                case 1:
+                    Comment comment = new Comment();
+                    comment.CommentData = fdvm.Upcomment.CommentData;       
+                    comment.Movie_ID = (int)Session["Movie_ID"];
+                    comment.User_ID = (int)Session["User_ID"];
+                    _context.Comments.Add(comment);
+                    _context.SaveChanges();
+                    break;
+                case 2:
+                    isRated.MovieID = (int)Session["Movie_ID"];
+                    isRated.UserID = (int)Session["User_ID"];
+                    var valid = isRated.Validate();
 
-                //Like like = new Like();
-                //like.Movie_ID = (int)Session["Movie_ID"];
-                //like.User_ID = (int)Session["User_ID"];
-                //like.LikeValue = fdvm.Like.LikeValue;
-                //_context.Likes.Add(like);
-                //_context.SaveChanges();
+                    if (valid)
+                    {
+                        isRated.Update(fdvm.Like.LikeValue);
+                        
+                    }
+                    else
+                    {
+                        isRated.Insert(fdvm.Like.LikeValue);
+                    }
+                    
+                    break;
             }
+           
 
 
             return RedirectToAction("FilmDetails");

@@ -19,10 +19,10 @@ namespace IMDB.Functions
         public bool Validate()
         {
             
-            var isValid = true;
-            if (_context.Likes.Where(x => MovieID == x.Movie_ID && x.User_ID == UserID).Count() > 1)
+            var isValid = false;
+            if (_context.Likes.Where(x => MovieID == x.Movie_ID && x.User_ID == UserID).Count() > 0)
             {
-                isValid = false;
+                isValid = true;
             }
            
             return isValid;
