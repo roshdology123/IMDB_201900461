@@ -1,0 +1,37 @@
+﻿@using IMDB.ViewModel
+@model ActorDetailsViewModel
+@{
+    Layout = "~/Views/Shared/_MainLayoutPage.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <link href="~/Content/CSS/ActorDetails.css" rel="stylesheet" />
+    <title>ActorDetails</title>
+</head>
+<body>
+    @section navbar{}
+    <!--............................... Form & head .............................-->
+    <div class="Form-Container">
+        <div class="Head-Container"><h1 class="HeadText">@Model.Actor.FName</h1></div>
+        <!--..........................................-->
+        <div class="Movie-Container">
+            @Model.Movies.ToList();
+            
+        </div>
+        <!--...............................................-->
+        <div class="Movie-Container">
+            Movie Name
+            
+        </div>
+        <!--............................. Back Button ........................-->
+
+        @Html.ActionLink("Back", "FilmDetails", new { id = 1 }, new { @class = "BackBtn" })
+    </div>
+</body>
+</html>

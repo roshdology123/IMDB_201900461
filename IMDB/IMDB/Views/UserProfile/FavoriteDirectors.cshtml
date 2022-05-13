@@ -1,0 +1,54 @@
+﻿@using IMDB.ViewModel
+@model FavoriteDirectorViewModel
+@{
+    Layout = "~/Views/Shared/_MainLayoutPage.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/CSS/FavoriteDirectors.css" rel="stylesheet" />
+    <title>FavoriteActors</title>
+</head>
+<body>
+    @section navbar{}
+    <!--............................... Form & head .............................-->
+    <div class="Form-Container">
+        @using (Html.BeginForm("FavoriteDirectors", "UserProfile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="Head-Container"><h1 class="HeadText">Favorite Directors</h1></div>
+            <!--................ Favorite Directors Drop List ..........................-->
+            <div class="FavoDropList-Container">
+                <label><b>Choose a Favorite Director:</b></label>
+                @Html.DropDownListFor(name => name.FDirector.Director_ID, new SelectList(Model.favoDirectors, "Director_ID", "Director.FName"), "Select Favorite Director", new { @class = "DirectorDropList" })
+                <p class="DropListDetails">
+                    * Choose an director from your favorite directors
+                    then click on remove button to delete him from your favorites.
+                </p>
+                <button name="BtnType" value="0" type="submit" class="EditFavoBtn">Remove Favorite</button>
+            </div>
+        }
+        @using (Html.BeginForm("FavoriteDirectors", "UserProfile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <!--..................... Directors Drop List ..........................-->
+            <div class="DirectorDropList-Container">
+                <label><b>Choose an Director:</b></label>
+                @Html.DropDownListFor(name => name.Director.Director_ID, new SelectList(Model.Directors, "Director_ID", "FName"), "Select Director", new { @class = "DirectorDropList" })
+                <p class="DropListDetails">
+                    * Choose an Director then click on add button to add him to your favorites.
+                </p>
+                <h4 style="color:red;">@TempData["Message"]</h4>
+                <button name="BtnType" type="submit" value="1" class="EditFavoBtn">Add<br /> Favorite</button>
+            </div>
+        }
+            <!--............................. Back Button ........................-->
+            @Html.ActionLink("Back to Profile Settings", "ProfileSettings", new { id = 1 }, new { @class = "GoBackProfileSettings" })
+        </div>
+</body>
+</html>
+

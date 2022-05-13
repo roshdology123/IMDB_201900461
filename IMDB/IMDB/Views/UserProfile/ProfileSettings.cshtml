@@ -1,0 +1,84 @@
+﻿@model IMDB.Models.User
+
+@{
+    Layout = "~/Views/Shared/_MainLayoutPage.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+    <link href="~/Content/CSS/UserSettings.css" rel="stylesheet" />
+</head>
+<body>
+    @section navbar{}
+    @using (Html.BeginForm("ProfileSettings", "UserProfile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="Form-Container">
+        <div class="Head-Container"><h1 class="HeadText">Profile Settings</h1></div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.User_ID)
+        <!--........................... Change Image ...............................-->
+        <div class="ChangeImg-Container">
+            <img class="ImgStyle" src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(Model.User_Img))" id="output" width="200" />
+            <br />
+            <div class="ChangeImgBtn">
+                <label for="file">
+                    <span class="ChangeImgBtnText">Change Image</span>
+                </label>
+            </div>
+            <input class="UploadImgInput" id="file" type="file" name="profileImg" onchange="loadFile(event)" />
+        </div>
+        <div class="PersonalInfo-Container">
+            <div class="form-group">
+                @Html.LabelFor(model => model.FName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.FName, new { htmlAttributes = new { @class = "PresonalInfoInput" } })
+                    @Html.ValidationMessageFor(model => model.FName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.LName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.LName, new { htmlAttributes = new { @class = "PresonalInfoInput" } })
+                    @Html.ValidationMessageFor(model => model.LName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "PresonalInfoInput" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "PresonalInfoInput" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save Changes" class="SaveChangesBtn" />
+                </div>
+            </div>
+        </div>
+
+        <!--............................. Buttons for Favorite Websites ........................-->
+        @Html.ActionLink("Your Favorite Actors", "FavoriteActors", new { id = 1 }, new { @class = "GoFavoWebsiteBtn" })
+        @Html.ActionLink("Your Favorite Movies", "FavoriteMovies", new { id = 1 }, new { @class = "GoFavoWebsiteBtn" })
+        @Html.ActionLink("Your Favorite Directors", "FavoriteDirectors", new { id = 1 }, new { @class = "GoFavoWebsiteBtn" })
+    </div>
+
+        }
+
+
+        <script src="~/Content/JS/UploadImg.js"></script>
+</body>
+</html>

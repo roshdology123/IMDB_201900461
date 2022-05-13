@@ -1,0 +1,117 @@
+﻿* {
+    margin: 0;
+    box-sizing: border-box
+}
+
+@font-face {
+    font-family: "Cairo", sans-serif;
+    src: url(../Content/Font/static/Cairo-Bold.ttf);
+}
+
+body {
+    font-family: 'Cairo',sans-serif;
+    background-color: #1a1a1a;
+}
+/* form div style */
+.Form-Container {
+    margin-top: 50px;
+    border: 3px solid rgb(245,197,24);
+    border-radius: 15px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin-left: 17%;
+    width: 1000px;
+    height: 510px
+}
+/* head div style */
+.HeadText {
+    text-shadow: 0 0 5px white, 0 0 8px white;
+}
+
+.Head-Container {
+    border: 3px solid black;
+    padding: 5px;
+    background-color: rgb(245,197,24);
+    text-align: center;
+}
+/* favorite drop list div style */
+.FavoDropList-Container {
+    width: 280px;
+    float: left;
+    margin-top: 20px;
+    margin-left: 5%;
+}
+.ActorDropList {
+    background-color: rgb(245,197,24);
+    color: black;
+    padding: 16px;
+    font-size: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 250px;
+    margin-bottom: 5px;
+    margin-top: 15px;
+}
+
+.ActorDropList:hover {
+    background-color: black;
+    color: rgb(245,197,24);
+}
+
+.ActorDropList option {
+    background-color: black;
+    color: rgb(245,197,24);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.ActorDropList option:hover {
+    background-color: rgb(245,197,24);
+    color: black;
+}
+.DropListDetails {
+    font-size:14px;
+}
+
+.EditFavoBtn {
+    margin: 10px;
+    border: 2px solid black;
+    width: 100px;
+    padding: 4px;
+    border-radius: 9px;
+    background-color: rgb(245,197,24);
+    margin-left: 28%;
+    margin-top: 5%;
+}
+.EditFavoBtn:hover {
+    background-color: black;
+    color: rgb(245,197,24);
+}
+
+.ActorDropList-Container {
+    width: 280px;
+    float: left;
+    margin-top: 20px;
+    margin-left: 32%;
+}
+/* back Button Style */
+.GoBackProfileSettings {
+    border: 2px solid black;
+    width: 130px;
+    padding: 4px;
+    border-radius: 9px;
+    background-color: rgb(245,197,24);
+    position: absolute;
+    margin-top: 20%;
+    margin-left: -32%;
+    text-decoration: none;
+    display: inline-flex;
+    color: black;
+    text-align: center;
+}
+
+    .GoBackProfileSettings:hover {
+        background-color: black;
+        color: rgb(245,197,24);
+    }
