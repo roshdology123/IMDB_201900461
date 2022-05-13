@@ -1,4 +1,5 @@
-﻿@model IMDB.Models.Director
+﻿@model IMDB.Models.Actor
+
 @{
     Layout = null;
 }
@@ -8,20 +9,25 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link href="~/Content/CSS/AddDirectors.css" rel="stylesheet" />
-    <title>AddDirectorsPage</title>
+    <link href="~/Content/CSS/Edit.css" rel="stylesheet" />
+    
+    <title>EditActor</title>
 </head>
 <body>
+
     @Html.Partial("NavBarAdmin")
-    <div class="addform">
+
+    <div class="editform">
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
 
             <div class="form-horizontal">
-                <h1>Add Director</h1>
+                <h1>Edit Actor</h1>
 
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Actor_ID)
+
                 <div class="form-group">
                     @Html.LabelFor(model => model.FName, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
@@ -48,12 +54,13 @@
 
                 <div class="form-group">
                     <div class="submit-button-container">
-                        <input type="submit" value="Create" class="submit-button" />
+                        <input type="submit" value="Save" class="submit-button" />
                     </div>
                 </div>
             </div>
         }
-        </div>
 
+
+    </div>
 </body>
 </html>

@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<IMDB.Models.Actor>
 @{
     Layout = null;
 }
@@ -9,48 +9,48 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link href="~/Content/CSS/ShowActors.css" rel="stylesheet" />
-    <link href="~/Content/CSS/NavBarAdmin.css" rel="stylesheet" />
     <title>ActorsPage</title>
 </head>
 <body>
-   @Html.Partial("NavBarAdmin")
+    @Html.Partial("NavBarAdmin")
     <div class="big">
-        <ul id="myUL">
-            <li>
-                <div class="actor-button" id="actor1-container">
-                    <p>aaaaaa</p>
-                    <button onclick="details()">Details</button>
-                    <button onclick="RemoveActor1()">Remove</button>
-                </div>
-                <div id="actor-details">
-                    <p>
-                        <table>
-                            <tr>
-                                <td>First Name</td>
-                                <td id="first-name" contenteditable="false">aaa</td>
-                            </tr>
-                            <tr>
-                                <td>Last Name</td>
-                                <td id="last-name" contenteditable="false">sss</td>
-                            </tr>
-                            <tr>
-                                <td>Age</td>
-                                <td id="age" contenteditable="false">25</td>
-                            </tr>
-                            <tr>
-                                <td>Movies</td>
-                                <td id="actor-movies" contenteditable="false">a,b,c</td>
-                            </tr>
-                        </table>
-                    </p>
-                    <button id="edit-button" type="submit">Edit</button>
-                    <button id="done-button" type="submit">Done</button>
-                </div>
-            </li>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Age)
+                </th>
+                <th></th>
+            </tr>
 
-        </ul>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Age)
+                </td>
+                <td class="button">
+                    @Html.ActionLink("Edit", "EditActor", new { id = item.Actor_ID })
+                </td>
+                <td class="button">
+                    @Html.ActionLink("Delete", "DeleteActor", new { id = item.Actor_ID })
+                </td>
+            </tr>
+            }
+
+        </table>
     </div>
-    <script src="~/Content/JS/Actors.js"></script>
 </body>
 </html>
 

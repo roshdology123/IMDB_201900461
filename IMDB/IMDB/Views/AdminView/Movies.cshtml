@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<IMDB.Models.Movie>
 @{
     Layout = null;
 }
@@ -8,89 +8,60 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+
     <link href="~/Content/CSS/ShowMovies.css" rel="stylesheet" />
-    <link href="~/Content/CSS/NavBarAdmin.css" rel="stylesheet" />
+
     <title>MoviesPage</title>
 </head>
 <body>
     @Html.Partial("NavBarAdmin")
     <div class="big">
-        <ul id="myUL">
-            <li>
-                <div class="movie-button" id="movie1-container">
-                    <p>Doctor Strange</p>
-                    <button onclick="details()">Details</button>
-                    <button onclick="RemoveMovie1()">Remove</button>
-                </div>
-                <div id="movie-details">
-                    <p>
-                        <table>
-                            <tr>
-                                <td>Photo</td>
-                                <td>
-                                    <img class="ImgSetting" src="~/Content/Images/strange.jpg" id="output" width="400" height="200" />
-                                    <div class="Change">
-                                        <label class="-label" for="file">
-                                            <span class="glyphicon glyphicon-camera"></span>
-                                            <span class="ChangeText">Change Image</span>
-                                        </label>
-                                    </div>
-                                    <input class="Upload" id="file" type="file" onchange="loadFile(event)" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Movie</td>
-                                <td id="movie" contenteditable="false">Doctor Strange</td>
-                            </tr>
-                            <tr>
-                                <td>Trailer</td>
-                                <td id="trailer" contenteditable="false"><a id="movie-link" href="https://www.youtube.com/embed/3mSMUZ_aC14">https://www.youtube.com/embed/3mSMUZ_aC14</a></td>
-                            </tr>
-                            <tr>
-                                <td>Director</td>
-                                <td id="director" contenteditable="false">Sam Raimi</td>
-                            </tr>
-                            <tr>
-                                <td>Actors</td>
-                                <td id="actor" contenteditable="false"> bendect , elizabith olsen, tom holand</td>
-                            </tr>
-                        </table>
-                    </p>
-                    <button id="edit-button" type="submit">Edit</button>
-                    <button id="done-button" type="submit">Done</button>
-                </div>
-            </li>
-            <li>
-                <div class="movie-button" id="movie2-container">
-                    <p>The godfather</p>
-                    <button onclick="details2()">Details</button>
-                    <button onclick="RemoveMovie2()">Remove</button>
-                </div>
-                <div id="movie-details2">
-                    <p>
-                        <table>
-                            <tr>
-                                <td>Movie</td>
-                                <td>the godfather</td>
-                                <td><button class="edit-button">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>Director</td>
-                                <td>Sam Raimi</td>
-                                <td><button class="edit-button">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>actors</td>
-                                <td>alpatchino , marlon brando, robert de niro</td>
-                                <td><button class="edit-button">Edit</button></td>
-                            </tr>
-                        </table>
-                    </p>
-                </div>
-            </li>
-        </ul>
+        <table class="table">
+            <tr>
+               
+                <th>
+                    @Html.DisplayNameFor(model => model.Movie_Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Img)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Movie_TLink)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Movie_Name)
+                    </td>
+                    <td>
+                        <img class="images" src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.Img))">
+                    </td>
+                    <td>
+                        <a href="@item.Movie_TLink" target="_blank">Trailer</a>
+                    </td>
+                    <td class="button">
+                        @Html.ActionLink("Edit", "EditMovie", new { id = item.Movie_ID }) 
+                    </td>
+
+                    <td class="button">
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Movie_ID })
+                       
+                    </td>
+
+                    <td class="button">
+                        @Html.ActionLink("Assign", "MovieToActor", new { id = item.Movie_ID })
+                    </td>
+                </tr>
+            }
+
+        </table>
     </div>
-    <script src="~/Content/JS/Sayed.js"></script>
+    
     <script src="~/Content/JS/upload.js"></script>
 </body>
 </html>

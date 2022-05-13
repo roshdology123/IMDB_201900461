@@ -1,0 +1,47 @@
+﻿@model IMDB.Models.Movie
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/CSS/Delete.css" rel="stylesheet" />
+    <title>Delete</title>
+</head>
+<body>
+    @Html.Partial("NavBarAdmin")
+    
+    <div class="delete">
+
+        <h2>Are you sure you want to delete this movie?</h2>
+        <dl class="dl-horizontal">
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Movie_Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Movie_Name)
+            </dd>
+
+
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="submit-button" />
+
+            </div>
+        }
+    </div>
+</body>
+</html>

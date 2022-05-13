@@ -7,11 +7,11 @@ body {
 }
 
 .addform {
-    margin-top: 20px;
+    margin-top: 150px;
     margin-left: 40%;
 }
 
-input[type=text] {
+input {
     width: 30%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -37,24 +37,11 @@ input[type=submit] {
         color: black;
     }
 
-.Upload {
-    display: none;
+
+h1{
+    margin-bottom: 20px;
+    margin-left: 50px;
 }
-
-.Change {
-    border: 2px solid black;
-    margin-top: 20px;
-    margin-left: 20px;
-    width: 119px;
-    padding: 4px;
-    border-radius: 9px;
-    background-color: rgb(245,197,24);
-}
-
-    .Change:hover {
-        background-color: black;
-    }
-
-.ChangeText:hover {
-    color: rgb(245,197,24);
+.submit-button-container{
+    margin-right: 500px;
 }
