@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using IMDB.Models;
-
 namespace IMDB.ViewModel
 {
-    public class ActorDetailsViewModel
+    public class DirectorDetailsViewModel
     {
-        public Actor Actor { get; set; }
-        public IEnumerable<MovieActor> movieActors { get; set; }
+        public Director Director{ get; set; }
+        public IEnumerable<Movie> Movies{ get; set; }
     }
 }

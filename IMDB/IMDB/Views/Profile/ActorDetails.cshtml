@@ -18,20 +18,19 @@
     @section navbar{}
     <!--............................... Form & head .............................-->
     <div class="Form-Container">
-        <div class="Head-Container"><h1 class="HeadText">@Model.Actor.FName</h1></div>
+        <div class="Head-Container"><h1 class="HeadText">@Model.Actor.FName @Model.Actor.LName</h1></div>
         <!--..........................................-->
         <div class="Movie-Container">
-            @Model.Movies.ToList();
-            
+            @foreach(var item in Model.movieActors)
+            {
+                @item.Movie.Movie_Name
+            }
+
         </div>
-        <!--...............................................-->
-        <div class="Movie-Container">
-            Movie Name
-            
-        </div>
+
         <!--............................. Back Button ........................-->
 
-        @Html.ActionLink("Back", "FilmDetails", new { id = 1 }, new { @class = "BackBtn" })
+        @Html.ActionLink("Back", "Home", "Home", new { id = "" }, new { @class = "BackBtn" })
     </div>
 </body>
 </html>

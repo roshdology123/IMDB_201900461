@@ -19,7 +19,8 @@ namespace IMDB.Functions
         private IEnumerable<Movie> Movies { get; set; }
         private Movie Movie { get; set; }
 
-        private IEnumerable<MovieActor> movieActors { get; set; }
+        private IEnumerable<MovieActor> MovieActors { get; set; }
+        private IEnumerable<MovieActor> ActorMovies { get; set; }
 
         private IEnumerable<Director> Directors { get; set; }
         private Director Director { get; set; }
@@ -59,11 +60,21 @@ namespace IMDB.Functions
             Movie = _context.Movies.SingleOrDefault(x=>x.Movie_ID == movieId);
             return Movie;
         }
-
+        public IEnumerable<Movie> RetrieveDirectorMovies(int? directorId)
+        {
+            Movies = _context.Movies.ToList().Where(x=> x.Director_ID == directorId);
+            return Movies;
+        }
         public IEnumerable<MovieActor> RetriveMovieActors(int MovieId)
         {
-            movieActors =_context.MovieActors.ToList().Where(x => MovieId == x.Movie_ID);
-            return movieActors;
+            MovieActors = _context.MovieActors.ToList().Where(x => MovieId == x.Movie_ID);
+            return MovieActors;
+        }
+
+        public IEnumerable<MovieActor> RetrieveActorMovies(int ActorId)
+        {
+            ActorMovies = _context.MovieActors.ToList().Where(x => ActorId == x.Actor_ID);
+            return ActorMovies;
         }
         public IEnumerable<Director> RetriveDirectors()
         {
