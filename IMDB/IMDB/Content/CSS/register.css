@@ -1,7 +1,7 @@
 .All {
     padding: 0px;
     margin: 0px;
-    box-sizing: border-box;
+      box-sizing: border-box;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     position: center;
     border: #333333;
@@ -38,18 +38,14 @@ body {
     max-width: 400px;
     height: 520px;
     margin: 5px auto 5px;
-    padding: 0px 0px 50px 30px;
+    padding: 1px 1px 50px 30px;
     border: 1px #ddd solid;
     background-color: #fff;
     border-radius: 10px;
 }
-
-    .form-details input {
-        padding: 6px 6px 6px 6px;
-    }
-
-.block {
+.form-group {
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 h1 {
@@ -62,7 +58,15 @@ h1 {
     margin-left: 100px;
     cursor: pointer;
 }
+.textinput {
+    padding-top: 7px;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-bottom: 7px;
+}
+input {
+    margin-right: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 
-.input {
-    padding: 7px 3px 7px 3px;
 }

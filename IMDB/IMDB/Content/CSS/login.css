@@ -1,4 +1,4 @@
-All {
+All{
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
@@ -9,8 +9,7 @@ All {
 body {
     background-color: #1a1a1a;
 }
-
-.Logo {
+.Logo{
     display: block;
     font-family: Poppins-Bold;
     font-size: 39px;
@@ -18,7 +17,6 @@ body {
     line-height: 1.2;
     text-align: center;
 }
-
 .Form-Details {
     z-index: 1;
     background-color: white;
@@ -32,29 +30,32 @@ body {
     background-color: #fff;
     border-radius: 10px;
 }
-
-    .form-details input {
-        padding: 6px 6px 6px 6px;
-    }
-
-.block {
+.form-details input{
+    padding:6px 6px 6px 6px;
+}
+.block{
     margin-top: 10px;
 }
 
 h1 {
+
     font-weight: 400;
     font-size: 28px;
     line-height: 1.2;
 }
-
 .Submit {
     margin-left: 140px;
     cursor: pointer;
 }
-
-.input {
-    padding-top: 7px;
-    padding-left: 3px;
-    padding-right: 3px;
-    padding-bottom: 7px;
+.textinput {
+        
+        padding-top:7px;
+        padding-left: 3px;
+        padding-right: 3px;
+        padding-bottom: 7px;
+    }
+input {
+    margin-right: 30px;
+    margin-top: 10px;
+    margin-bottom: 30px;
 }
