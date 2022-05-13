@@ -14,12 +14,18 @@ namespace IMDB.Models
         [Display(Name = "Email")]
         public String Email { get; set; }
 
+        [StringLength(50, ErrorMessage = "maximum length for last name is 50")]
+        [Required(ErrorMessage = "please enter Password")]
         [Display(Name = "Password")]
         public String Password { get; set; }
 
+        [StringLength(50, ErrorMessage = "maximum length for last name is 50")]
+        [Required(ErrorMessage = "please enter first name")]
         [Display(Name = "First Name")]
         public String FName { get; set; }
 
+        [StringLength(50, ErrorMessage = "maximum length for last name is 50")]
+        [Required(ErrorMessage = "please enter last name")]
         [Display(Name = "Last Name")]
         public String LName { get; set; }
 

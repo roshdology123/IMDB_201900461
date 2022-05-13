@@ -1,0 +1,53 @@
+﻿@using IMDB.ViewModel
+@model FavoriteMovieViewModel
+@{
+    Layout = "~/Views/Shared/_MainLayoutPage.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/CSS/FavoriteMovies.css" rel="stylesheet" />
+    <title>FavoriteMovies</title>
+</head>
+<body>
+    @section navbar{}
+    <!--............................... Form & head .............................-->
+    <div class="Form-Container">
+        @using (Html.BeginForm("FavoriteMovies", "UserProfile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="Head-Container"><h1 class="HeadText">Favorite Movies</h1></div>
+            <!--................ Favorite movies Drop List ..........................-->
+            <div class="FavoDropList-Container">
+                <label><b>Choose a Favorite Movie:</b></label>
+                @Html.DropDownListFor(name => name.FMovie.Movie_ID, new SelectList(Model.favoMovies, "Movie_ID", "Movie.Movie_Name"), "Select Favorite Movie", new { @class = "MovieDropList" })
+                <p class="DropListDetails">
+                    * Choose an movie from your favorite movies
+                    then click on remove button to delete him from your favorites.
+                </p>
+                <button name="BtnType" value="0" type="submit" class="EditFavoBtn">Remove Favorite</button>
+            </div>
+        }
+        @using (Html.BeginForm("FavoriteMovies", "UserProfile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <!--..................... movies Drop List ..........................-->
+            <div class="MovieDropList-Container">
+                <label><b>Choose an Movie:</b></label>
+                @Html.DropDownListFor(name => name.Movie.Movie_ID, new SelectList(Model.Movies, "Movie_ID", "Movie_Name"), "Select Movie", new { @class = "MovieDropList" })
+                <p class="DropListDetails">
+                    * Choose an movie then click on add button to add him to your favorites.
+                </p>
+                <h4 style="color:red;">@TempData["Message"]</h4>
+                <button name="BtnType" type="submit" value="1" class="EditFavoBtn">Add<br /> Favorite</button>
+            </div>
+            <!--............................. Back Button ........................-->
+            @Html.ActionLink("Back to Profile Settings", "ProfileSettings", new { id = 1 }, new { @class = "GoBackProfileSettings" })
+        }
+        </div>
+</body>
+</html>

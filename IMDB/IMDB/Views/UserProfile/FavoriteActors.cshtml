@@ -1,0 +1,57 @@
+﻿@using IMDB.ViewModel
+@model FavoriteActorViewModel
+@{
+    Layout = "~/Views/Shared/_MainLayoutPage.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/CSS/FavoriteActors.css" rel="stylesheet" />
+    <title>FavoriteActors</title>
+</head>
+<body>
+    @section navbar{}
+
+    <!--............................... Form & head .............................-->
+    <div class="Form-Container">
+        @using (Html.BeginForm("FavoriteActors", "UserProfile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="Head-Container"><h1 class="HeadText">Favorite Actors</h1></div>
+            <!--................ Favorite actors Drop List ..........................-->
+            <div class="FavoDropList-Container">
+                <label><b>Choose a Favorite Actor:</b></label>
+                @Html.DropDownListFor(name => name.FActor.Actor_ID, new SelectList(Model.favoActors, "Actor_ID", "Actor.FName"), "Select Favorite Actor", new { @class = "ActorDropList" })
+                <p class="DropListDetails">
+                    * Choose an actor from your favorite actors
+                    then click on remove button to delete him from your favorites.
+                </p>
+                <button name="BtnType" value="0" type="submit" class="EditFavoBtn">Remove Favorite</button>
+            </div>
+        }
+        @using (Html.BeginForm("FavoriteActors", "UserProfile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <!--..................... actors Drop List ..........................-->
+            <div class="ActorDropList-Container">
+                <label><b>Choose an Actor:</b></label>
+                @Html.DropDownListFor(name => name.Actor.Actor_ID, new SelectList(Model.Actors, "Actor_ID", "FName"), "Select Actor", new { @class = "ActorDropList" })
+
+                <p class="DropListDetails">
+                    * Choose an actor then click on add button to add him to your favorites.
+                </p>
+                <h4 style="color:red;">@TempData["Message"]</h4>
+                <button name="BtnType" type="submit" value="1" class="EditFavoBtn">Add<br /> Favorite</button>
+
+            </div>
+            <!--............................. Back Button ........................-->
+            <br />
+            @Html.ActionLink("Back to Profile Settings", "ProfileSettings", new { id = 1 }, new { @class = "GoBackProfileSettings" })
+        }
+    </div>
+</body>
+</html>

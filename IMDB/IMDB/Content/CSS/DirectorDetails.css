@@ -1,0 +1,76 @@
+﻿* {
+    margin: 0;
+    box-sizing: border-box
+}
+
+@font-face {
+    font-family: "Cairo", sans-serif;
+    src: url(../Content/Font/static/Cairo-Bold.ttf);
+}
+
+body {
+    font-family: 'Cairo',sans-serif;
+    background-color: #1a1a1a;
+}
+/* form div style */
+.Form-Container {
+    margin-top: 50px;
+    border: 3px solid rgb(245,197,24);
+    border-radius: 15px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin-left: 17%;
+    width: 1000px;
+}
+/* head div style */
+.HeadText {
+    text-shadow: 0 0 5px white, 0 0 8px white;
+}
+
+.Head-Container {
+    border: 3px solid black;
+    padding: 5px;
+    background-color: rgb(245,197,24);
+    text-align: center;
+}
+/* movie div style*/
+.Movie-Container{
+    border:3px solid red;
+    display:inline-flex;
+    float:left;
+    width:190px;
+    height:200px;
+    margin-left:20px;
+    margin-top:20px;
+}
+/* back Button Style */
+.BackBtn {
+    border: 2px solid black;
+    width: 90px;
+    height:50px;
+    font-size:23px;
+    padding: 10px;
+    padding-left:18px;
+    border-radius: 9px;
+    background-color: rgb(245,197,24);
+    margin-top: 30%;
+    margin-left:45%;
+    text-decoration: none;
+    display:flex;
+    color: black;
+}
+
+.BackBtn:hover {
+    background-color: black;
+    color: rgb(245,197,24);
+}
+.ImgStyle {
+    width: 165px;
+    height: 155px;
+    box-shadow: 0 0 10px 0 rgba(255,255,255,.35);
+    border: 3px solid black;
+    border-radius: 5px;
+}
+.name {
+    position:static;
+}

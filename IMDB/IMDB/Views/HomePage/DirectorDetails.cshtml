@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "~/Views/Shared/_MainLayoutPage.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+
+    <link href="~/Content/CSS/DirectorDetails.css" rel="stylesheet" />
+    <title>ActorDetails</title>
+</head>
+<body>
+    @section navbar{}
+    <!--............................... Form & head .............................-->
+    <div class="Form-Container">
+        <div class="Head-Container"><h1 class="HeadText">Director Name</h1></div>
+        <!--..........................................-->
+        <div class="Movie-Container">
+            <img class="ImgStyle" src="~/Content/Images/TheGodfather poster.jpg" width="200" />
+            <p class="name">movie name</p>
+        </div>
+        <!--...............................................-->
+        <div class="Movie-Container">
+            Movie Name
+            
+        </div>
+        <!--............................. Back Button ........................-->
+
+        @Html.ActionLink("Back", "FilmDetails", new { id = 1 }, new { @class = "BackBtn" })
+    </div>
+</body>
+</html>
