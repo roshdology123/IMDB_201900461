@@ -12,6 +12,7 @@ namespace IMDB.Models
         [Key]
         public int ID { get; set; }
 
+
         public virtual User User { get; set; }
 
         [ForeignKey("User")]

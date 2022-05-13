@@ -100,6 +100,7 @@
     <Content Include="Content\CSS\AddMovies.css" />
     <Content Include="Content\CSS\NavBar.css" />
     <Content Include="Content\CSS\NavBarAdmin.css" />
+    <Content Include="Content\CSS\Search.css" />
     <Content Include="Content\CSS\ShowActors.css" />
     <Content Include="Content\CSS\ShowDirectors.css" />
     <Content Include="Content\CSS\ShowMovies.css" />
@@ -119,10 +120,12 @@
     <Content Include="Content\Images\man.png" />
     <Content Include="Content\Images\search.png" />
     <Content Include="Content\Images\TheGodfather poster.jpg" />
+    <Content Include="Content\Images\thumb-up.png" />
     <Content Include="Content\Images\user.png" />
     <Content Include="Content\CSS\Site.css" />
     <Content Include="Content\JS\Actors.js" />
     <Content Include="Content\JS\Directors.js" />
+    <Content Include="Content\JS\jquery-3.6.0.min.js" />
     <Content Include="Content\JS\Sayed.js" />
     <Content Include="Content\JS\Site.js" />
     <Content Include="Content\JS\upload.js" />
@@ -137,16 +140,23 @@
     <Compile Include="Controllers\HomePageController.cs" />
     <Compile Include="Controllers\ImageConversion.cs" />
     <Compile Include="Controllers\AdminViewController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="DataLayer\DBInitializer.cs" />
     <Compile Include="DataLayer\IMdbDBContext.cs" />
     <Compile Include="Controllers\LoginRegisterController.cs" />
+    <Compile Include="Functions\IsRated.cs" />
+    <Compile Include="Functions\DbData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202205010023016_module.cs" />
-    <Compile Include="Migrations\202205010023016_module.designer.cs">
-      <DependentUpon>202205010023016_module.cs</DependentUpon>
+    <Compile Include="Migrations\202205061455009_like-update.cs" />
+    <Compile Include="Migrations\202205061455009_like-update.designer.cs">
+      <DependentUpon>202205061455009_like-update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205101536318_userFmovieUpdata.cs" />
+    <Compile Include="Migrations\202205101536318_userFmovieUpdata.designer.cs">
+      <DependentUpon>202205101536318_userFmovieUpdata.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Actor.cs" />
@@ -161,6 +171,7 @@
     <Compile Include="Models\UserFMovie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\FilmDetailsViewModel.cs" />
+    <Compile Include="ViewModel\SearchViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -187,6 +198,8 @@
     <Content Include="Views\AdminView\Movies.cshtml" />
     <Content Include="Views\UserProfile\UserSettings.cshtml" />
     <Content Include="Views\AdminView\AdminHomePage.cshtml" />
+    <Content Include="Views\Shared\_LikeDislike.cshtml" />
+    <Content Include="Views\Search\Search.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -199,8 +212,11 @@
     <Folder Include="Views\Actors\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202205010023016_module.resx">
-      <DependentUpon>202205010023016_module.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202205061455009_like-update.resx">
+      <DependentUpon>202205061455009_like-update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205101536318_userFmovieUpdata.resx">
+      <DependentUpon>202205101536318_userFmovieUpdata.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

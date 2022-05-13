@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link href="~/Content/CSS/Site.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 <body>
@@ -16,10 +17,16 @@
                 <div class="logo-container"><img src="~/Content/Images/imdb-logo.svg" class="logo" alt="User Photo"></div>
                 <div class="menu-container">
                     <ul class="menu-list">
-                        <li class="menu-list-item">Menu</li>
-                        <li class="menu-list-item search"><input size="50" type="text" placeholder="Search.."><img class="imageSearch" src="~/Content/Images/search.png" /></li>
-                        <li class="menu-list-item"></li>
-                        <li class="menu-list-item">Sign In</li>
+
+                        <li class="menu-list-item search">
+                            @using (Html.BeginForm("Search", "Search", FormMethod.Post))
+                            {
+
+                                <input size="50"  type="text" name="SearchValue" placeholder="Search.." />
+                                <button class="SearchBTN" type="submit" value="Search"><i class="fa fa-search"></i></button>
+                            }
+                        </li>
+
                     </ul>
                 </div>
                 <div class="profile-container">

@@ -1,0 +1,199 @@
+﻿
+
+@model IMDB.ViewModel.FilmDetailsViewModel
+
+
+@{
+    ViewBag.Title = "Film Details";
+    Layout = "~/Views/Shared/_MainLayoutPage.cshtml";
+}
+
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>FilmDetails</title>
+    <link href="~/Content/CSS/Site.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    @section navbar{}
+
+    <div class="film-container">
+        <div class="film-container-details">
+            <h1 class="film-container-details-title">@Model.Movie.Movie_Name</h1>
+
+
+
+            <div class="film-container-images">
+                <ul class="film-container-images-list">
+                    <li>
+                        <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(Model.Movie.Img))" />
+                    </li>
+                    <li style="margin-left: 5px;">
+                        <iframe width="820" height="562" frameborder="0"
+                                src="@Model.Movie.Movie_TLink"></iframe>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="film-container-desc">
+                <p style="color:white; padding-top: 10px; padding-bottom:10px; font-size:large">
+                    The aging patriarch of an organized crime dynasty in postwar
+                    New York City transfers control of his clandestine empire to his reluctant youngest son.
+                </p>
+                <div class="rate-box">
+                    @using (Html.BeginForm("FilmDetails", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.DropDownListFor(m => m.Like.LikeValue, new SelectList(Enum.GetValues(typeof(IMDB.Models.LikeExp))), "Rate The Film", new { @class = "LikeDropDownList" })
+                        <button name="PressedBtn" type="submit" value="2" class="submitDropDownList">Rate</button>
+
+                    }
+                </div>
+                <hr style="width:50%;text-align:left;margin-left:0;">
+
+                <h2 style="color:white; font-size:large; display: inline-block; padding-bottom:8px; padding-top: 8px; "> Directors </h2>
+                <ul class="person-director">
+                    <li class="person-director-item"> @Html.ActionLink(Model.Director.FName +" "+ Model.Director.LName, "DirectorProfile", new { id = Model.Director.Director_ID},new { @class = "DirectorLink"})   </li>
+                </ul>
+
+                <hr style="width:50%;text-align:left;margin-left:0;">
+
+                <h2 style="color:white; font-size:large; display: inline-block; padding-bottom:8px; padding-top: 8px;"> Stars</h2>
+                <ul class="person-star">
+                    @{
+                        int nOfCards = 0;
+
+                        foreach (var item in Model.MovieActors)
+                        {
+                            if (nOfCards < 3)
+                            {
+                                nOfCards += 1;
+                    <li class="person-star-item"> @Html.ActionLink(item.Actor.FName + " " + item.Actor.LName, "ActorProfile", new { id = item.Actor_ID }, new { @class = "ActorLink" })  </li>
+
+                            }
+                            else { break; }
+                        }
+                    }
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="more-film-desc">
+        <div class="more-to-explore">
+            <h1 style="color: black;"> More To Explore</h1>
+            <img class="more-to-explore-image" src="~/Content/Images/img1.jpg" />
+            <img class="more-to-explore-image" src="~/Content/Images/img2.jpg" />
+            <img class="more-to-explore-image" src="~/Content/Images/img3.jpg" />
+        </div>
+        <h1>More Videos</h1>
+
+        <div class="slideshow-container">
+
+            <div class="mySlides1">
+
+                <img src="~/Content/Images/img1.jpg" style="width:640px ; height:320px; object-fit:contain;">
+
+            </div>
+
+            <div class="mySlides1">
+
+                <img src="~/Content/Images/img2.jpg" style="width:640px ; height:320px; object-fit:contain;">
+
+            </div>
+
+            <div class="mySlides1">
+
+                <img src="~/Content/Images/img3.jpg" style="width:640px ; height:320px; object-fit:contain">
+
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1,0)">&#10095;</a>
+        </div>
+
+        <div class="film-desc-cast">
+            <h1>Top cast</h1>
+            <table class="film-desc-cast-table" border="0">
+
+                <tr>
+                    @foreach (var item in Model.MovieActors)
+                    {
+                        <th class="film-desc-cast-data">
+                            <img src="~/Content/Images/man (1).png" />
+                        </th>
+                        <th style="padding-right:20px;">
+                            <h3 style="padding-left:10px; margin-bottom:10px;">@Html.ActionLink(item.Actor.FName + " " + item.Actor.LName, "ActorProfile", new { id = item.Actor_ID }, new { @class = "OtherActorLink" }) </h3>
+                        </th>
+                    }
+                </tr>
+                
+
+            </table>
+
+        </div>
+
+        <div class="comment-section">
+            <div class="comment_block">
+                <div class="create_new_comment">
+                    <!-- current #{user} avatar -->
+                    <div class="user_avatar">
+                        <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(Model.User.User_Img))" />
+                    </div><!-- the input field -->
+                    @using (Html.BeginForm("FilmDetails", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                    @Html.AntiForgeryToken()
+                    <div class="input_comment">
+
+                        @Html.TextBoxFor(x => x.Upcomment.CommentData)
+
+                        <button name="PressedBtn" type="submit" value="1" class="sendButton">Comment</button>
+                    </div>
+                                        }
+                </div><!-- new comment -->
+
+                @foreach (var item in Model.Comments)
+                                {
+                <div class="new_comment">
+                    <!-- build comment -->
+                    <ul class="user_comment">
+                        <!-- current #{user} avatar -->
+                        <div class="user_avatar">
+                            <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.User.User_Img))" />
+                        </div>
+                        <div class="comment_body">
+                            <p>@item.CommentData</p>
+                        </div><!-- comments toolbar -->
+                        <div class="comment_toolbar">
+                            <!-- inc. date and time -->
+                            <div class="comment_details">
+                                <ul>
+                                    <li>
+                                        <span class="user">@item.User.FName @item.User.LName</span>
+                                    </li>
+                                </ul>
+                            </div><!-- inc. share/reply and love -->
+                        </div><!-- start user replies -->
+                    </ul>
+                </div>
+                                }
+
+            </div>
+        </div>
+
+        <script src="~/Content/JS/Site.js"></script>
+
+    </div>
+
+
+
+</body>
+</html>

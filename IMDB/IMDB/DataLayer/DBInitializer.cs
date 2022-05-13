@@ -43,10 +43,38 @@ namespace IMDB.DataLayer
                     });
                 context.SaveChanges();
             }
-            
-            if (!context.Users.Any())
+
+            if (!context.Directors.Any())
             {
-                    Image fileImage = Image.FromFile("D:/IA Project/IMDB_201900461/IMDB/IMDB/Content/Images/img1.jpg");
+                context.Directors.AddRange(new List<Director>()
+                {
+                    new Director()
+                    {
+                        Age = 21,
+                        FName = "Abdallah",
+                        LName = "Roshdy"
+                    },
+                    new Director()
+                    {
+                        Age = 22,
+                        FName = "Omar",
+                        LName = "Hassan"
+                    },
+                    new Director()
+                    {
+                        Age = 20,
+                        FName = "Bedo",
+                        LName = "Faisal"
+                    },
+
+                });
+                context.SaveChanges();
+            }
+
+
+                if (!context.Users.Any())
+            {
+                    Image fileImage = Image.FromFile("C:/Users/roshd/Git-Hub/IMDB_201900461/IMDB/IMDB/Content/Images/man.png");
 
                     byte[] ImageData = ImageConversion.ImageToByteArray(fileImage);
 
@@ -77,7 +105,7 @@ namespace IMDB.DataLayer
                 {
                     
                     byte[] ImageData = null;
-                    Image fileImage = Image.FromFile("D:/IA Project/IMDB_201900461/IMDB/IMDB/Content/Images/img1.jpg");
+                    Image fileImage = Image.FromFile("C:/Users/roshd/Git-Hub/IMDB_201900461/IMDB/IMDB/Content/Images/img1.jpg");
                     ImageData = ImageConversion.ImageToByteArray(fileImage);
                     context.Movies.AddRange(new List<Movie>()
                     {
@@ -88,9 +116,31 @@ namespace IMDB.DataLayer
                             Img = ImageData,
                             Director_ID = 2
                         },
-                        
+                        new Movie()
+                        {
+                            Movie_Name = "asd",
+                            Movie_TLink = "https://www.youtube.com/embed/ORVShW0Yjaw",
+                            Img = ImageData,
+                            Director_ID = 2
+                        },
+                        new Movie()
+                        {
+                            Movie_Name = "eqw",
+                            Movie_TLink = "https://www.youtube.com/embed/ORVShW0Yjaw",
+                            Img = ImageData,
+                            Director_ID = 2
+                        },
+                        new Movie()
+                        {
+                            Movie_Name = "rqe",
+                            Movie_TLink = "https://www.youtube.com/embed/ORVShW0Yjaw",
+                            Img = ImageData,
+                            Director_ID = 2
+                        },
+
 
                     });
+                    context.SaveChanges();
                 } 
             }
         }

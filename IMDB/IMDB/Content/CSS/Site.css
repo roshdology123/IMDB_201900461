@@ -15,11 +15,9 @@ body {
 
 .navbar {
     width: 100%;
-    height: 50px;
-    background-color: black;
     height: 60px;
     background-color:rgb(37, 37, 37);
-    background-color: rgb(37, 37, 37);
+
 
 }
 
@@ -40,9 +38,6 @@ body {
 
 .logo-container {
     flex: 1;
-}
-.logo-container {
-    flex: 1;
     margin-top: 10px;
 }
 
@@ -56,7 +51,7 @@ body {
 }
 
 .menu-list-item.search input[type=text] {
-    padding: 6px;
+    padding: 10px;
     border: none;
     font-size: 17px;
     border-radius: 8px 0px 0px 8px;
@@ -70,6 +65,22 @@ body {
     background-color: white;
     border-radius: 0px 8px 8px 0px;
 }
+.SearchBTN {
+    float: right;
+    width: 6%;
+    padding: 9px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+    border-radius: 0px 8px 8px 0px;
+}
+
+.SearchBTN:hover {
+    background: #0b7dda;
+}
 
 .menu-container {
     flex: 3;
@@ -81,7 +92,6 @@ body {
 }
 
 .profile-container {
-
     flex: 1;
     display: flex;
     align-items: center;
@@ -142,7 +152,20 @@ body {
     text-decoration:none;
 }
 
+.ActorLink{
+    color:gold;
+    text-decoration:none;
 
+}
+.OtherActorLink{
+    color: black;
+    text-decoration: none;
+}
+
+.DirectorLink{
+    color: white;
+    text-decoration:none;
+}
 .movie-list {
     display: flex;
     align-items: center;
@@ -298,8 +321,43 @@ body {
     font-size: large;
     color: white;
 }
+.radio_group {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    position: relative;
+    text-align: center;
+    display:inline-flex;
+    line-height: 50px;
+    font-size: 40px;
+}
+.radio_group input[type="radio"] {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+    cursor: pointer;
+}
 
+.radio_group input[type="radio"] + label {
+    color: #95a5a6;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: scale(.8);
+}
 
+.radio_group input[type="radio"]:checked + label {
+    color: #3498db;
+    transform: scale(1.1);
+}
 
 .film-container-details-title {
     color: white;
@@ -336,16 +394,93 @@ body {
     object-fit:cover;
         
 }
+
+
+
+
 .person-director, .person-star, .person-writer {
     display: inline-flex;
 }
 
+.LikeDropDownList {
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    border-radius: 5px 5px 0px 0px;
+}
+.submitDropDownList {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 12px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+.rate-box {
+    float: right;
+}
 .person-director-item, .person-star-item, .person-writer-item {
     display: inline-flex;
     color: lightgray;
     vertical-align: middle;
     padding-left: 5px;
 }
+
+button {
+    background: #fff;
+    border: unset;
+    outline: 0;
+    font-size: 18px;
+    cursor: pointer;
+    color: #65676b;
+    padding: 5px 10px;
+}
+
+button.liked {
+    color: #0571ed;
+}
+
+button.liked i {
+    animation: animLiked 0.5s ease-in-out;
+    -webkit-animation: animLiked 0.5s ease-in-out;
+}
+button.disliked {
+    color: red;
+}
+
+button.disliked i {
+    animation: animDisliked 0.5s ease-in-out;
+    -webkit-animation: animDisliked 0.5s ease-in-out;
+}
+
+@keyframes animLiked {
+    100% {
+        transform: rotate(-15deg) scale(1.3);
+        -webkit-transform: rotate(-15deg) scale(1.3);
+        -moz-transform: rotate(-15deg) scale(1.3);
+        -ms-transform: rotate(-15deg) scale(1.3);
+        -o-transform: rotate(-15deg) scale(1.3);
+        filter: blur(0.5px);
+        -webkit-filter: blur(0.5px);
+    }
+}
+@keyframes animDisliked {
+    100% {
+        transform: rotate(15deg) scale(1.3);
+        -webkit-transform: rotate(15deg) scale(1.3);
+        -moz-transform: rotate(15deg) scale(1.3);
+        -ms-transform: rotate(15deg) scale(1.3);
+        -o-transform: rotate(15deg) scale(1.3);
+        filter: blur(0.5px);
+        -webkit-filter: blur(0.5px);
+    }
+}
+
 
 .more-film-desc {
     height: auto;
@@ -368,7 +503,10 @@ body {
 .film-desc-cast {
     position: absolute;
     margin-top: 360px;
+    width: auto;
+
 }
+
 
 .film-desc-cast-data img {
     width: 64px;
@@ -520,4 +658,17 @@ body {
 
 .comment_block .new_comment .love:hover {
     color: #ff6347;
+}
+.sendButton {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+    float: right;
 }

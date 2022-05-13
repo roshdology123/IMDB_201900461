@@ -25,6 +25,7 @@ namespace IMDB.Models
         [Display(Name = "Movie ID")]
         public int? Movie_ID { get; set; }
 
+        [Required]
         [Display(Name = "Comment Data")]
         public String CommentData { get; set; }
     }
