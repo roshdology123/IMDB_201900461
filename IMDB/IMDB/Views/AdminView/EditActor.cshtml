@@ -9,54 +9,13 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link href="~/Content/CSS/NavBar.css" rel="stylesheet" />
     <link href="~/Content/CSS/Edit.css" rel="stylesheet" />
     
     <title>EditActor</title>
 </head>
 <body>
-    <div class="navbar">
-        <div class="navbar-container">
-            <div><a href="~/AdminView/AdminHomePage"><img src="~/Content/Images/imdb-logo.svg" class="logo"></a></div>
-            <div class="menu-container">
-                <ul class="menu-list">
-                    <li>
-                        <div class="dropdown">
-                            <a href="#" title="Movies section" class="admin-menu">Movies</a>
-                            <div class="dropdown-content">
-                                <a href="~/AdminView/Movies" class="show">Show All Movies</a>
-                                <a href="~/AdminView/AddMovies">Add New Movie</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="dropdown">
-                            <a href="#" title="Actors section" class="admin-menu">Actors</a>
-                            <div class="dropdown-content">
-                                <a href="~/AdminView/Actors" class="show">Show All Actors</a>
-                                <a href="~/AdminView/AddActors">Add New Actor</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="dropdown">
-                            <a href="#" title="Directors section" class="admin-menu">Directors</a>
-                            <div class="dropdown-content">
-                                <a href="~/AdminView/Directors" class="show">Show All Directors</a>
-                                <a href="~/AdminView/AddDirectors">Add New Director</a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="profile-container">
-                <img class="profile-picture" src="~/Content/Images/man.png" alt="">
-                <div class="profile-text-container">
-                    <span class="profile-text">Admin</span>
-                </div>
-            </div>
-        </div>
-    </div>
+
+    @Html.Partial("NavBarAdmin")
 
     <div class="editform">
         @using (Html.BeginForm())
@@ -65,7 +24,7 @@
 
             <div class="form-horizontal">
                 <h1>Edit Actor</h1>
-                
+
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 @Html.HiddenFor(model => model.Actor_ID)
 
@@ -101,7 +60,7 @@
             </div>
         }
 
-        
+
     </div>
 </body>
 </html>

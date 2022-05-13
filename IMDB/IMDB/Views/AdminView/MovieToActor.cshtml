@@ -1,0 +1,56 @@
+﻿@model IMDB.ViewModel.MovieActorViewModel
+
+@{
+    ViewBag.Title = "Assign movie to actor";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    
+    <link href="~/Content/CSS/AssignActor.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+
+    @Html.Partial("NavBarAdmin")
+
+   
+    <div class="assignform">
+        <h1 class="Header">Assign Movie to Actor</h1>
+
+
+        @using (Html.BeginForm("MovieToActor", "AdminView", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="text-line">
+                @Html.LabelFor(text => text.MovieActor.Actor_ID, "Actor Name")
+                @Html.DropDownListFor(name => name.MovieActor.Actor_ID, new SelectList(Model.Actors, "Actor_ID", "FName"), "Select The Actor", new { @class = "DropList" })
+                @Html.ValidationMessageFor(name => name.MovieActor.Actor_ID, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="text-line">
+                @Html.LabelFor(text => text.MovieActor.Movie_ID, "Movie Name")
+                @Html.DropDownListFor(name => name.MovieActor.Movie_ID, new SelectList(Model.Movies, "Movie_ID", "Movie_Name"), "Select The Movie", new { @class = "DropList" })
+                @Html.ValidationMessageFor(name => name.MovieActor.Movie_ID, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="submit-button-container">
+                <input type="submit" value="Assign" class="submit-button" aria-label="File browser example" />
+
+            </div>
+
+        }
+        <h4 style="color:red;">@TempData["Message"]</h4>
+        <h4 style="color:red;">@TempData["Message2"]</h4>
+
+    </div>
+
+   
+    
+</body>
+</html>

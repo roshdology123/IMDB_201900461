@@ -8,8 +8,9 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+
     <link href="~/Content/CSS/ShowMovies.css" rel="stylesheet" />
-    <link href="~/Content/CSS/NavBarAdmin.css" rel="stylesheet" />
+
     <title>MoviesPage</title>
 </head>
 <body>
@@ -17,9 +18,7 @@
     <div class="big">
         <table class="table">
             <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Director.FName)
-                </th>
+               
                 <th>
                     @Html.DisplayNameFor(model => model.Movie_Name)
                 </th>
@@ -35,29 +34,34 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Director.FName)
-                    </td>
+                    
                     <td>
                         @Html.DisplayFor(modelItem => item.Movie_Name)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Img)
+                        <img class="images" src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.Img))">
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Movie_TLink)
+                        <a href="@item.Movie_TLink" target="_blank">Trailer</a>
                     </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Movie_ID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Movie_ID }) |
+                    <td class="button">
+                        @Html.ActionLink("Edit", "EditMovie", new { id = item.Movie_ID }) 
+                    </td>
+
+                    <td class="button">
                         @Html.ActionLink("Delete", "Delete", new { id = item.Movie_ID })
+                       
+                    </td>
+
+                    <td class="button">
+                        @Html.ActionLink("Assign", "MovieToActor", new { id = item.Movie_ID })
                     </td>
                 </tr>
             }
 
         </table>
     </div>
-    <script src="~/Content/JS/Sayed.js"></script>
+    
     <script src="~/Content/JS/upload.js"></script>
 </body>
 </html>

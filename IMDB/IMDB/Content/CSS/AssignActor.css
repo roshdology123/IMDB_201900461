@@ -1,0 +1,63 @@
+﻿body {
+}
+.DropList {
+    background-color: rgb(245,197,24);
+    color: black;
+    padding: 16px;
+    font-size: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 250px;
+    margin-bottom: 50px;
+    margin-top: 15px;
+    display:flex;
+}
+
+    .DropList:hover {
+        background-color: black;
+        color: rgb(245,197,24);
+    }
+
+    .DropList option {
+        background-color: black;
+        color: rgb(245,197,24);
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+        .DropList option:hover {
+            background-color: rgb(245,197,24);
+            color: black;
+        }
+.assignform {
+    margin-top: 150px;
+    margin-left: 40%;
+}
+
+input[type=submit] {
+    padding: 14px 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: rgb(245,197,24);
+    font-size: 16px;
+    transition-duration: 0.4s;
+    margin-left: 60px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+    input[type=submit]:hover {
+        background-color: #ffd633;
+        color: black;
+    }
+
+
+h1 {
+    margin-bottom: 20px;
+    
+}
+
+.submit-button-container {
+    margin-right: 500px;
+}
