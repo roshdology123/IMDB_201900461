@@ -152,7 +152,20 @@ body {
     text-decoration:none;
 }
 
+.ActorLink{
+    color:gold;
+    text-decoration:none;
 
+}
+.OtherActorLink{
+    color: black;
+    text-decoration: none;
+}
+
+.DirectorLink{
+    color: white;
+    text-decoration:none;
+}
 .movie-list {
     display: flex;
     align-items: center;
@@ -381,6 +394,10 @@ body {
     object-fit:cover;
         
 }
+
+
+
+
 .person-director, .person-star, .person-writer {
     display: inline-flex;
 }
@@ -486,7 +503,10 @@ button.disliked i {
 .film-desc-cast {
     position: absolute;
     margin-top: 360px;
+    width: auto;
+
 }
+
 
 .film-desc-cast-data img {
     width: 64px;

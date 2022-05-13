@@ -44,7 +44,6 @@ namespace IMDB.Functions
             like.Movie_ID = MovieID;
             like.User_ID = UserID;
             like.LikeValue = likeExp;
-            
             _context.SaveChanges();
             
         }

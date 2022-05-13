@@ -11,16 +11,23 @@ using IMDB.Functions;
 
 namespace IMDB.Controllers
 {
-    public class HomePageController : Controller
+    public class HomeController : Controller
     {
         IMdbDBContext _context = new IMdbDBContext();
         IsRated isRated = new IsRated();
         DbData dbData = new DbData();
-        public ActionResult HomePage()
+        HomeViewModel HomeVM = new HomeViewModel();
+        public ActionResult Home()
         {
-            var movies = _context.Movies.ToList();
+            var movies = dbData.RetriveMovies();
+            var actors = dbData.RetriveActors();
+            var directors = dbData.RetriveDirectors();
+            
+
             return View(movies);
         }
+
+
 
         [HttpGet]
         public ActionResult FilmDetails(String ID)
@@ -28,13 +35,18 @@ namespace IMDB.Controllers
             int MovieID = Int32.Parse(ID);
             Session["Movie_ID"] = MovieID;
             Session["User_ID"] = 2;
-            User loggedOnUser = _context.Users.Find(2);
-            Movie movie = _context.Movies.Find(MovieID);
+            User loggedOnUser = dbData.RetrieveUser(2);
+            Movie movie = dbData.RetriveMovies(MovieID);
+
             int? directorID = movie.Director_ID;
-            var movieActors = _context.MovieActors.ToList().Where(x => MovieID == x.Movie_ID);
-            Director director = _context.Directors.Find(directorID);
-            IEnumerable<Comment> comment = _context.Comments.ToList().Where(x=> MovieID == x.Movie_ID);
-            Like like = _context.Likes.SingleOrDefault(x => MovieID == x.Movie_ID && x.User_ID == 2 );
+
+            var movieActors = dbData.RetriveMovieActors(MovieID);
+
+            Director director = dbData.RetriveDirectors(directorID);
+
+            IEnumerable<Comment> comment = dbData.RetrieveFilmComments(MovieID);
+
+            Like like = dbData.RetrieveUserMovieLike(loggedOnUser.User_ID,MovieID);
             
 
             FilmDetailsViewModel filmDetailsViewModel = new FilmDetailsViewModel()
@@ -76,6 +88,7 @@ namespace IMDB.Controllers
                         isRated.Update(fdvm.Like.LikeValue);
                         
                     }
+
                     else
                     {
                         isRated.Insert(fdvm.Like.LikeValue);
