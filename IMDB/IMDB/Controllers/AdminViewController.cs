@@ -137,15 +137,12 @@ namespace IMDB.Controllers
 
             return View(Directors);
         }
+        [HttpGet]
         public ActionResult AddDirectors()
         {
             return View();
         }
-        [HttpGet]
-        public ActionResult AdddDirectors()
-        {
-            return View();
-        }
+
         [HttpPost]
         public ActionResult AddDirectors(Director director)
         {
@@ -233,7 +230,7 @@ namespace IMDB.Controllers
 
                 foreach (var sMovies in movie)
                 {
-                    sMovies.Director_ID = 9;
+                    sMovies.Director_ID = 4;
                 }
                 Director director = db.Directors.Find(id);
                 db.Directors.Remove(director);
@@ -265,7 +262,7 @@ namespace IMDB.Controllers
             var directors = db.Directors.ToList();
             Director defultdirector = new Director();
 
-            directors.RemoveAll(x => x.Director_ID == 9);
+            directors.RemoveAll(x => x.Director_ID == 4);
             Movie_Director movieDirector = new Movie_Director
             {
                 directors = directors,
@@ -297,7 +294,7 @@ namespace IMDB.Controllers
 
             }
             var directors = db.Directors.ToList();
-            directors.RemoveAll(x => x.Director_ID == 9);
+            directors.RemoveAll(x => x.Director_ID == 4);
             movieDirectorViewModel.directors = directors;
             return View("AddMovies", movieDirectorViewModel);
         }
@@ -385,7 +382,7 @@ namespace IMDB.Controllers
                 var directors = db.Directors.ToList();
                
 
-                directors.RemoveAll(x => x.Director_ID == 9);
+                directors.RemoveAll(x => x.Director_ID == 4);
                 Movie_Director movieDirector = new Movie_Director
                 {
                     directors = directors,
@@ -443,7 +440,7 @@ namespace IMDB.Controllers
             {
 
                 var Directors = db.Directors.ToList();
-                Directors.RemoveAll(x => x.Director_ID == 9);
+                Directors.RemoveAll(x => x.Director_ID == 4);
                 movievar.directors = Directors;
                 movievar.movie = movie;
                 return View(movievar);
@@ -481,6 +478,14 @@ namespace IMDB.Controllers
             foreach (var item in db.MovieActors.Where(x => x.Movie_ID == id))
             {
                 db.MovieActors.Remove(item);
+            }
+            foreach (var item in db.Comments.Where(x => x.Movie_ID == id))
+            {
+                db.Comments.Remove(item);
+            }
+            foreach (var item in db.Likes.Where(x => x.Movie_ID == id))
+            {
+                db.Likes.Remove(item);
             }
 
             db.Movies.Remove(movie);
