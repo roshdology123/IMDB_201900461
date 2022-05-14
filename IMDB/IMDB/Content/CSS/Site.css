@@ -104,7 +104,10 @@ body {
     border-radius: 50%;
     object-fit: cover;
 }
-
+.profile-text{
+    text-decoration: none;
+    color: whitesmoke;
+}
 .profile-text-container {
     margin: 0 10px;
 }

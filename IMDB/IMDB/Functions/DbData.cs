@@ -26,7 +26,6 @@ namespace IMDB.Functions
         private Director Director { get; set; }
 
         private IEnumerable<Comment> Comments { get; set; }
-        private Comment Comment { get; set; }
 
         private IEnumerable<Like> Likes { get; set; }
         private Like Like { get; set; }
@@ -67,7 +66,7 @@ namespace IMDB.Functions
         }
         public IEnumerable<MovieActor> RetriveMovieActors(int MovieId)
         {
-            MovieActors = _context.MovieActors.ToList().Where(x => MovieId == x.Movie_ID);
+            MovieActors = _context.MovieActors.Where(x => MovieId == x.Movie_ID).ToList();
             return MovieActors;
         }
 
@@ -98,5 +97,6 @@ namespace IMDB.Functions
             Like = _context.Likes.SingleOrDefault(x => MovieId == x.Movie_ID && x.User_ID == UserId);
             return Like;
         }
+
     }
 }

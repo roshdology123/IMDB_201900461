@@ -29,12 +29,21 @@
 
                     </ul>
                 </div>
+                @if (Session["UserName"] !=null)
+                {
+
+
                 <div class="profile-container">
-                    <img class="profile-picture" src="~/Content/Images/man.png" alt="">
+                    <img class="profile-picture" src="~/Content/Images/man.png" alt="" />
                     <div class="profile-text-container">
-                        <span class="profile-text">Profile</span>
+                        <span class="profile-text">@Session["UserName"].ToString()</span>
                     </div>
                 </div>
+                }
+                else
+                {
+                    @Html.ActionLink("Sign In", "Login", "LoginRegister",null, new { @class = "profile-text" })
+                }
             </div>
         </div>
         <div>

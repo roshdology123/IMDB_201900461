@@ -16,6 +16,7 @@ namespace IMDB.Controllers
         IMdbDBContext _context = new IMdbDBContext();
         IsRated isRated = new IsRated();
         DbData dbData = new DbData();
+        DbAdd dbAdd = new DbAdd();
         HomeViewModel HomeVM = new HomeViewModel();
         public ActionResult Home()
         {
@@ -34,8 +35,8 @@ namespace IMDB.Controllers
         {
             int MovieID = Int32.Parse(ID);
             Session["Movie_ID"] = MovieID;
-            Session["User_ID"] = 2;
-            User loggedOnUser = dbData.RetrieveUser(2);
+            int userId = (int) Session["User_ID"];
+            User loggedOnUser = dbData.RetrieveUser(userId);
             Movie movie = dbData.RetriveMovies(MovieID);
 
             int? directorID = movie.Director_ID;
@@ -71,12 +72,9 @@ namespace IMDB.Controllers
             switch (PressedBtn)
             {
                 case 1:
-                    Comment comment = new Comment();
-                    comment.CommentData = fdvm.Upcomment.CommentData;       
-                    comment.Movie_ID = (int)Session["Movie_ID"];
-                    comment.User_ID = (int)Session["User_ID"];
-                    _context.Comments.Add(comment);
-                    _context.SaveChanges();
+                    dbAdd.MovieID = (int)Session["Movie_ID"];
+                    dbAdd.UserID = (int)Session["User_ID"];
+                    dbAdd.CommentDb(fdvm.Upcomment.CommentData);
                     break;
                 case 2:
                     isRated.MovieID = (int)Session["Movie_ID"];

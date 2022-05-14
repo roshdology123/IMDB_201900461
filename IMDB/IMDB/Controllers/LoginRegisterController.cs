@@ -21,12 +21,13 @@ namespace IMDB.Controllers
         [HttpPost]
         public ActionResult Login(User log)
         {
-           var User=db.Users.Where(x => x.Email == log.Email && x.Password == log.Password).Count();
-            if (User>0 && log.Role_ID==0)
+           var User=db.Users.FirstOrDefault(x => x.Email == log.Email && x.Password == log.Password);
+            if (log.Role_ID==0)
             {
-                Session["User_ID"]=log.User_ID;
+                Session["User_ID"] = User.User_ID;
+                Session["UserName"] = User.FName + " " + User.LName;
 
-                return RedirectToAction("HomePage", "HomePage");
+                return RedirectToAction("Home", "Home");
             }
             else { 
             return RedirectToAction("AdminHomePage","AdminView");
