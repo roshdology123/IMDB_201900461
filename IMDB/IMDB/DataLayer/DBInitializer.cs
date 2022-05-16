@@ -72,9 +72,9 @@ namespace IMDB.DataLayer
             }
 
 
-                if (!context.Users.Any())
+                if (context.Users.Any())
             {
-                    Image fileImage = Image.FromFile("C:/Users/roshd/Git-Hub/IMDB_201900461/IMDB/IMDB/Content/Images/man.png");
+                    Image fileImage = Image.FromFile("C:/Users/roshd/Git-Hub/IMDB_201900461/IMDB/IMDB/Content/Images/47857.jpg");
 
                     byte[] ImageData = ImageConversion.ImageToByteArray(fileImage);
 
@@ -93,7 +93,7 @@ namespace IMDB.DataLayer
                     {
                         FName = "Roshdy",
                         LName = "Raghep",
-                        Email = "abdallahelswify@gmail.com",
+                        Email = "roshdyraghep@gmail.com",
                         Password = "@Bdallah123",
                         User_Img = ImageData
                     }

@@ -95,9 +95,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\CSS\ActorDetails.css" />
     <Content Include="Content\CSS\AddActors.css" />
     <Content Include="Content\CSS\AddDirectors.css" />
     <Content Include="Content\CSS\AddMovies.css" />
+    <Content Include="Content\CSS\AssignActor.css" />
+    <Content Include="Content\CSS\Delete.css" />
+    <Content Include="Content\CSS\DirectorDetails.css" />
+    <Content Include="Content\CSS\Edit.css" />
+    <Content Include="Content\CSS\FavoriteActors.css" />
+    <Content Include="Content\CSS\FavoriteDirectors.css" />
+    <Content Include="Content\CSS\FavoriteMovies.css" />
     <Content Include="Content\CSS\NavBar.css" />
     <Content Include="Content\CSS\NavBarAdmin.css" />
     <Content Include="Content\CSS\Search.css" />
@@ -137,31 +145,34 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\HomePageController.cs" />
-    <Compile Include="Controllers\ImageConversion.cs" />
+    <Compile Include="Controllers\DirectorsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AdminViewController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="DataLayer\DBInitializer.cs" />
     <Compile Include="DataLayer\IMdbDBContext.cs" />
     <Compile Include="Controllers\LoginRegisterController.cs" />
+    <Compile Include="Functions\DbAdd.cs" />
     <Compile Include="Functions\IsRated.cs" />
     <Compile Include="Functions\DbData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202205061455009_like-update.cs" />
-    <Compile Include="Migrations\202205061455009_like-update.designer.cs">
-      <DependentUpon>202205061455009_like-update.cs</DependentUpon>
+    <Compile Include="Migrations\202205132339077_Admin.cs" />
+    <Compile Include="Migrations\202205132339077_Admin.designer.cs">
+      <DependentUpon>202205132339077_Admin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202205101536318_userFmovieUpdata.cs" />
-    <Compile Include="Migrations\202205101536318_userFmovieUpdata.designer.cs">
-      <DependentUpon>202205101536318_userFmovieUpdata.cs</DependentUpon>
+    <Compile Include="Migrations\202205161044365_usererro.cs" />
+    <Compile Include="Migrations\202205161044365_usererro.designer.cs">
+      <DependentUpon>202205161044365_usererro.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Actor.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Director.cs" />
+    <Compile Include="Controllers\ImageConversion.cs" />
     <Compile Include="Models\Like.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\MovieActor.cs" />
@@ -170,7 +181,15 @@
     <Compile Include="Models\UserFDirector.cs" />
     <Compile Include="Models\UserFMovie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\ActorDetailsViewModel.cs" />
+    <Compile Include="ViewModel\DirectorDetailsViewModel.cs" />
+    <Compile Include="ViewModel\FavoriteActorViewModel.cs" />
+    <Compile Include="ViewModel\FavoriteDirectorViewModel.cs" />
+    <Compile Include="ViewModel\FavoriteMovieViewModel.cs" />
     <Compile Include="ViewModel\FilmDetailsViewModel.cs" />
+    <Compile Include="ViewModel\HomeViewModel.cs" />
+    <Compile Include="ViewModel\MovieActorViewModel.cs" />
+    <Compile Include="ViewModel\Movie_Director.cs" />
     <Compile Include="ViewModel\SearchViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -185,8 +204,6 @@
     <Content Include="Content\Font\static\Cairo-Regular.ttf" />
     <Content Include="Content\Font\static\Cairo-SemiBold.ttf" />
     <None Include="packages.config" />
-    <Content Include="Views\HomePage\HomePage.cshtml" />
-    <Content Include="Views\HomePage\FilmDetails.cshtml" />
     <Content Include="Views\LoginRegister\Login.cshtml" />
     <Content Include="Views\LoginRegister\Register.cshtml" />
     <Content Include="Views\Shared\_MainLayoutPage.cshtml" />
@@ -198,8 +215,23 @@
     <Content Include="Views\AdminView\Movies.cshtml" />
     <Content Include="Views\UserProfile\UserSettings.cshtml" />
     <Content Include="Views\AdminView\AdminHomePage.cshtml" />
-    <Content Include="Views\Shared\_LikeDislike.cshtml" />
     <Content Include="Views\Search\Search.cshtml" />
+    <Content Include="Views\Profile\ActorDetails.cshtml" />
+    <Content Include="Views\Profile\DirectorDetails.cshtml" />
+    <Content Include="Views\Home\FilmDetails.cshtml" />
+    <Content Include="Views\Home\Home.cshtml" />
+    <Content Include="Views\AdminView\Delete.cshtml" />
+    <Content Include="Views\AdminView\DeleteActor.cshtml" />
+    <Content Include="Views\AdminView\DeleteDirector.cshtml" />
+    <Content Include="Views\AdminView\EditActor.cshtml" />
+    <Content Include="Views\AdminView\EditDirector.cshtml" />
+    <Content Include="Views\AdminView\EditMovie.cshtml" />
+    <Content Include="Views\AdminView\MovieToActor.cshtml" />
+    <Content Include="Views\Shared\NavBarAdmin.cshtml" />
+    <Content Include="Views\UserProfile\ProfileSettings.cshtml" />
+    <Content Include="Views\UserProfile\FavoriteActors.cshtml" />
+    <Content Include="Views\UserProfile\FavoriteDirectors.cshtml" />
+    <Content Include="Views\UserProfile\FavoriteMovies.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -212,11 +244,11 @@
     <Folder Include="Views\Actors\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202205061455009_like-update.resx">
-      <DependentUpon>202205061455009_like-update.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202205132339077_Admin.resx">
+      <DependentUpon>202205132339077_Admin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202205101536318_userFmovieUpdata.resx">
-      <DependentUpon>202205101536318_userFmovieUpdata.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202205161044365_usererro.resx">
+      <DependentUpon>202205161044365_usererro.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

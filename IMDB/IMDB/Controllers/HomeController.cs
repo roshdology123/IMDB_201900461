@@ -28,42 +28,36 @@ namespace IMDB.Controllers
             return View(movies);
         }
 
-
-
         [HttpGet]
         public ActionResult FilmDetails(String ID)
         {
             int MovieID = Int32.Parse(ID);
             Session["Movie_ID"] = MovieID;
-            int userId = (int) Session["User_ID"];
-            User loggedOnUser = dbData.RetrieveUser(userId);
-            Movie movie = dbData.RetriveMovies(MovieID);
-
-            int? directorID = movie.Director_ID;
-
-            var movieActors = dbData.RetriveMovieActors(MovieID);
-
-            Director director = dbData.RetriveDirectors(directorID);
-
             IEnumerable<Comment> comment = dbData.RetrieveFilmComments(MovieID);
-
-            Like like = dbData.RetrieveUserMovieLike(loggedOnUser.User_ID,MovieID);
-            
+            Movie movie = dbData.RetriveMovies(MovieID);
+            int? directorID = movie.Director_ID;
+            var movieActors = dbData.RetriveMovieActors(MovieID);
+            Director director = dbData.RetriveDirectors(directorID);
 
             FilmDetailsViewModel filmDetailsViewModel = new FilmDetailsViewModel()
             {
-                User = loggedOnUser,
                 Movie = movie,
                 Director = director,
                 MovieActors = movieActors,
                 Comments = comment,
-                Like = like
             };
+            if (Session["User_ID"] != null)
+            {
+                int userId = (int)Session["User_ID"];
+                User loggedOnUser = dbData.RetrieveUser(userId);
+                Like like = dbData.RetrieveUserMovieLike(loggedOnUser.User_ID, MovieID);
+                filmDetailsViewModel.User = loggedOnUser;
+                filmDetailsViewModel.Like = like;
+            }
 
             return View(filmDetailsViewModel);
         }
 
-        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult FilmDetails(FilmDetailsViewModel fdvm, int PressedBtn)

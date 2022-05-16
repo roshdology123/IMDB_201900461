@@ -10,7 +10,7 @@ namespace IMDB.Models
     {
         [Key]
         public int User_ID { get; set; }
-
+        [Required(ErrorMessage = "Please enter your email")]
         [Display(Name = "Email")]
         public String Email { get; set; }
 

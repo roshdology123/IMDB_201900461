@@ -16,7 +16,7 @@
 </head>
 <body>
     <span class="Logo">
-        <a href="HomePage.html"> <img src="https://images-na.ssl-images-amazon.com/images/G/01/imdb/authportal/images/www_imdb_logo._CB667618033_.png" alt="IMDb.com logo"></a>
+        <a href="~/Home/Home"> <img src="~/Content/Images/imdb-logo.svg" class="logo" alt="IMDb.com logo"></a>
     </span>
 
     <div class="All">
@@ -24,19 +24,23 @@
         {
             @Html.AntiForgeryToken()
         <div class="Form-Details">
-            <h1 class="a-spacing small"> Sign-In </h1>
+            <h1 class="a-spacing small"> Login </h1>
             <div class="form-group">
                 @Html.LabelFor(x => x.Email)
                 @Html.TextBoxFor(m => m.Email, new { @class = "textinput", size = "50" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
             </div>
             <div class="form-group">
                 @Html.LabelFor(x => x.Password)
-                @Html.TextBoxFor(m => m.Password, new { @class = "textinput", size = "50" })
-
+                @Html.PasswordFor(m => m.Password, new { @class = "textinput", size = "50" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
             </div>
+
             <input type="submit" id="submit-btn" class="Submit" required value="Sign-In" />
+            <h4 style="color:red;">@TempData["Message"]</h4>
+            <h4 style="color:red;">@TempData["Message2"]</h4>
             <div class="register-Link">
-                <p>New to IMDb? @Html.ActionLink("Create new IMDb Account","Register") </p>
+                <p>New to IMDb?  @Html.ActionLink("Create your IMDb Account", "Register") </p>
             </div>
         </div>
         }
