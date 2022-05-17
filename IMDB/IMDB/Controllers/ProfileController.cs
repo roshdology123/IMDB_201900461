@@ -11,29 +11,29 @@ namespace IMDB.Controllers
 {
     public class ProfileController : Controller
     {
+        UserFunctions userFunction = new UserFunctions();
         // GET: Profile
         DbData dbData = new DbData();
-        ActorDetailsViewModel actorDetailsVM = new ActorDetailsViewModel();
-        DirectorDetailsViewModel directorDetailsVM = new DirectorDetailsViewModel();
+        ActorDetailsViewModel actorDetailsVm = new ActorDetailsViewModel();
+        DirectorDetailsViewModel directorDetailsVm = new DirectorDetailsViewModel();
         public ActionResult ActorDetails(string id)
         {
 
-            int actorId =  Int32.Parse(id);
-            actorDetailsVM.Actor = dbData.RetriveActors(actorId);
-            actorDetailsVM.movieActors = dbData.RetrieveActorMovies(actorId);
+            int actorId = Int32.Parse(id);
+            AssignActorsToVm(actorId);
 
-            return View(actorDetailsVM);
+            return View(actorDetailsVm);
         }
 
-
+       
 
         public ActionResult DirectorDetails(string id)
         {
             int directorId = Int32.Parse(id);
-            directorDetailsVM.Director = dbData.RetriveDirectors(directorId);
-            directorDetailsVM.Movies = dbData.RetrieveDirectorMovies(directorId);
+            directorDetailsVm.Director = dbData.RetriveDirectors(directorId);
+            directorDetailsVm.Movies = dbData.RetrieveDirectorMovies(directorId);
 
-            return View(directorDetailsVM);
+            return View(directorDetailsVm);
         }
     }
 }
