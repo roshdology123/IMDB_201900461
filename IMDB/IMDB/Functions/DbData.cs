@@ -8,8 +8,9 @@ using System.Web;
 namespace IMDB.Functions
 {
 
-    public class DbData : IMdbDBContext
+    public class DbData
     {
+        private IMdbDBContext context = new IMdbDBContext();
         private User User { get; set;  }
 
         private IEnumerable<Actor> Actors { get; set; }
@@ -123,6 +124,11 @@ namespace IMDB.Functions
         public IEnumerable<Like> RetrieveMovieLikes(int movieId)
         {
             return context.Likes.Where(x => x.Movie_ID == movieId);
+        }
+
+        public int ActorExistMovie(int actorId, int movieId)
+        {
+            return context.MovieActors.Where(id => id.Actor_ID == actorId && id.Movie_ID == movieId).Count();
         }
     }
 }

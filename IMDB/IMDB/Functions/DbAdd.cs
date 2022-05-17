@@ -9,7 +9,8 @@ namespace IMDB.Functions
 {
 
     public class DbAdd : IMdbDBContext
-    { 
+    {
+        private IMdbDBContext context = new IMdbDBContext();
         public int MovieID { get; set; }
         public int UserID { get; set; }
 
@@ -47,5 +48,6 @@ namespace IMDB.Functions
             context.MovieActors.Add(movieActor);
             context.SaveChanges();
         }
+
     }
 }

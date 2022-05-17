@@ -10,8 +10,8 @@ namespace IMDB.Functions
 {
     public class DbUpdate: IMdbDBContext
     {
-        
 
+        private IMdbDBContext context = new IMdbDBContext();
         public void ActorDb(Actor actor)
         {
             context.Entry(actor).State = EntityState.Modified;

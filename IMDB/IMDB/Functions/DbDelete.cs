@@ -9,7 +9,7 @@ namespace IMDB.Functions
 {
     public class DbDelete : IMdbDBContext
     {
-
+        private IMdbDBContext context = new IMdbDBContext();
         public void ActorDb(Actor actor)
         {
             context.Actors.Remove(actor);
