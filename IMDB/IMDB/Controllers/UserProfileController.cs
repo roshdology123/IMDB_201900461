@@ -8,12 +8,13 @@ using IMDB.Models;
 using System.Data.Entity;
 using System.IO;
 using IMDB.ViewModel;
+using IMDB.Functions;
 
 namespace IMDB.Controllers
 {
     public class UserProfileController : Controller
     {
-        private IMdbDBContext db = new IMdbDBContext();
+        DbData dbData = new DbData();
         // GET: UserSettings
         [HttpGet]
         public ActionResult ProfileSettings()
@@ -22,7 +23,7 @@ namespace IMDB.Controllers
             {
                 User user = new User();
                 int userId = (int)Session["User_ID"];
-                user = db.Users.Find(userId);
+                user = dbData.RetrieveUser(userId);
                 Session["User_Img"] = user.User_Img;
                 return View(user);
             }
