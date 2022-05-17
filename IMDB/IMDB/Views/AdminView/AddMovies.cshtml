@@ -12,7 +12,7 @@
     <title>AddMoviesPage</title>
 </head>
 <body>
-    < @Html.Partial("NavBarAdmin")
+     @Html.Partial("NavBarAdmin")
     <div class="addform">
         <h1>Add Movie</h1>
         @using (Html.BeginForm("AddMovies", "AdminView", FormMethod.Post, new { enctype = "multipart/form-data" }))
