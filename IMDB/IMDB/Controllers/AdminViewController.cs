@@ -1,4 +1,5 @@
 ﻿using IMDB.DataLayer;
+using IMDB.Functions;
 using IMDB.Models;
 using IMDB.ViewModel;
 using System;
@@ -14,7 +15,10 @@ namespace IMDB.Controllers
 {
     public class AdminViewController : Controller
     {
-        private IMdbDBContext db = new IMdbDBContext();
+        DbData dbData = new DbData();
+        DbAdd dbAdd = new DbAdd();
+        DbDelete dbDelete = new DbDelete();
+        DbUpdate dbUpdate = new DbUpdate();
         // GET: AdminHomePage
         public ActionResult AdminHomePage()
         {
@@ -25,8 +29,8 @@ namespace IMDB.Controllers
         // GET: Actors
         public ActionResult Actors()
         {
-            List<Actor> Actors = db.Actors.ToList();
-            return View(Actors);
+            IEnumerable<Actor> actors = dbData.RetriveActors();
+            return View(actors);
         }
 
         [HttpGet]
@@ -39,8 +43,7 @@ namespace IMDB.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Actors.Add(actor);
-                db.SaveChanges();
+                dbAdd.ActorDb(actor);
                 return RedirectToAction("Actors");
             }
             return View();
@@ -51,20 +54,13 @@ namespace IMDB.Controllers
         {
             if (id != null)
             {
-                var actor = db.Actors.SingleOrDefault(a => a.Actor_ID == id);
+                Actor actor = dbData.RetriveActors(id);
                 if (actor == null)
                 {
                     return HttpNotFound();
                 }
-                Actor ActorData = new Actor
-                {
-                    Actor_ID = actor.Actor_ID,
-                    FName = actor.FName,
-                    LName = actor.LName,
-                    Age = actor.Age
 
-                };
-                return View(ActorData);
+                return View(actor);
             }
             else
             {
@@ -74,19 +70,16 @@ namespace IMDB.Controllers
 
         }
         [HttpPost]
-        public ActionResult EditActor(Actor actorvar)
+        public ActionResult EditActor(Actor actorModel)
         {
             if (ModelState.IsValid)
             {
-                var actor = db.Actors.SingleOrDefault(a => a.Actor_ID == actorvar.Actor_ID);
-                actor.FName = actorvar.FName;
-                actor.LName = actorvar.LName;
-                actor.Age = actorvar.Age;
-                db.Entry(actor).State = EntityState.Modified;
-                db.SaveChanges();
+                var searchedActor = dbData.RetriveActors(actorModel.Actor_ID);
+                searchedActor.FName = actorModel.FName;
+                searchedActor.LName = actorModel.LName;
+                searchedActor.Age = actorModel.Age;
+                dbUpdate.ActorDb(searchedActor);
                 return RedirectToAction("Actors");
-
-
             }
             return View();
 
@@ -104,7 +97,7 @@ namespace IMDB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Actor actor = db.Actors.Find(id);
+            Actor actor = dbData.RetriveActors(id);
             if (actor == null)
             {
                 return HttpNotFound();
@@ -117,15 +110,14 @@ namespace IMDB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteActorConfirmed(int id)
         {
-            Actor actor = db.Actors.Find(id);
+            Actor actor = dbData.RetriveActors(id);
 
-            foreach (var item in db.MovieActors.Where(x => x.Actor_ID == id))
+            foreach (var item in dbData.RetrieveActorMovies(id))
             {
-                db.MovieActors.Remove(item);
+                dbDelete.ActorMoviesDb(item);
             }
+            dbDelete.ActorDb(actor);
 
-            db.Actors.Remove(actor);
-            db.SaveChanges();
             return RedirectToAction("Actors");
         }
 
@@ -133,7 +125,7 @@ namespace IMDB.Controllers
         public ActionResult Directors()
         {
 
-            List<Director> Directors = db.Directors.ToList();
+            IEnumerable<Director> Directors = dbData.RetriveDirectors();
 
             return View(Directors);
         }
@@ -148,8 +140,7 @@ namespace IMDB.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Directors.Add(director);
-                db.SaveChanges();
+                dbAdd.DirectorDb(director);
                 return RedirectToAction("Directors");
             }
             return View();
@@ -160,20 +151,12 @@ namespace IMDB.Controllers
         {
             if (id != null)
             {
-                var director = db.Directors.SingleOrDefault(a => a.Director_ID == id);
+                var director = dbData.RetriveDirectors(id);
                 if (director == null)
                 {
                     return HttpNotFound();
                 }
-                Director DirectorData = new Director
-                {
-                    Director_ID = director.Director_ID,
-                    FName = director.FName,
-                    LName = director.LName,
-                    Age = director.Age
-
-                };
-                return View(DirectorData);
+                return View(director);
             }
             else
             {
@@ -183,24 +166,16 @@ namespace IMDB.Controllers
 
         }
         [HttpPost]
-        public ActionResult EditDirector(Director directorvar)
+        public ActionResult EditDirector(Director directorModel)
         {
             if (ModelState.IsValid)
             {
-                var director = db.Directors.SingleOrDefault(a => a.Director_ID == directorvar.Director_ID);
-                director.FName = directorvar.FName;
-                director.LName = directorvar.LName;
-                director.Age = directorvar.Age;
-                db.Entry(director).State = EntityState.Modified;
-                db.SaveChanges();
+                var director = dbData.RetriveDirectors(directorModel.Director_ID);
+                dbUpdate.DirectorDb(directorModel);
                 return RedirectToAction("Directors");
-
 
             }
             return View();
-
-
-
 
         }
 
@@ -211,7 +186,7 @@ namespace IMDB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Director director = db.Directors.Find(id);
+            Director director = dbData.RetriveDirectors(id);
             if (director == null)
             {
                 return HttpNotFound();
@@ -224,25 +199,23 @@ namespace IMDB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteDirectorConfirmed(int id)
         {
-            IEnumerable<Movie> movie = db.Movies.Where(a => a.Director_ID == id);
-            if (db.Movies.Where(a => a.Director_ID == id).Count() > 0)
+            IEnumerable<Movie> movie = dbData.RetrieveDirectorMovies(id);
+            if (dbData.RetrieveDirectorMoviesCount(id) > 0)
             {
 
                 foreach (var sMovies in movie)
                 {
                     sMovies.Director_ID = 4;
                 }
-                Director director = db.Directors.Find(id);
-                db.Directors.Remove(director);
-                db.SaveChanges();
+                Director director = dbData.RetriveDirectors(id);
+                dbDelete.DirectorDb(director);
 
 
             }
             else
             {
-                Director director = db.Directors.Find(id);
-                db.Directors.Remove(director);
-                db.SaveChanges();
+                Director director = dbData.RetriveDirectors(id);
+                dbDelete.DirectorDb(director);
 
             }
             return RedirectToAction("Directors");
@@ -251,7 +224,7 @@ namespace IMDB.Controllers
 
         public ActionResult Movies()
         {
-            List<Movie> Movies = db.Movies.ToList();
+            IEnumerable<Movie> Movies = dbData.RetriveMovies();
             return View(Movies);
         }
 
@@ -259,7 +232,7 @@ namespace IMDB.Controllers
         [HttpGet]
         public ActionResult AddMovies()
         {
-            var directors = db.Directors.ToList();
+            var directors = dbData.RetriveDirectors().ToList();
             Director defultdirector = new Director();
 
             directors.RemoveAll(x => x.Director_ID == 4);
@@ -286,14 +259,13 @@ namespace IMDB.Controllers
                     byte[] movieImageByteArray = target.ToArray();
 
                     movieDirectorViewModel.movie.Img = movieImageByteArray;
-                    db.Movies.Add(movieDirectorViewModel.movie);
-                    db.SaveChanges();
+                    dbAdd.MovieDb(movieDirectorViewModel.movie);
                     return RedirectToAction("Movies");
                 }
 
 
             }
-            var directors = db.Directors.ToList();
+            var directors = dbData.RetriveDirectors().ToList();
             directors.RemoveAll(x => x.Director_ID == 4);
             movieDirectorViewModel.directors = directors;
             return View("AddMovies", movieDirectorViewModel);
@@ -310,8 +282,8 @@ namespace IMDB.Controllers
         public ActionResult MovieToActor(int? id)
         {
 
-            var actor = db.Actors.ToList();
-            var movie = db.Movies.Where(x => x.Movie_ID == id);
+            var actor = dbData.RetriveActors();
+            var movie = dbData.SearchMovies(id);
 
             MovieActorViewModel movieAndActor = new MovieActorViewModel()
             {
@@ -331,20 +303,19 @@ namespace IMDB.Controllers
 
             if (ModelState.IsValid)
             {
-                var actor = db.Actors.ToList();
+                var actor = dbData.RetriveActors();
                 movieAndActor.Actors = actor;
 
-                var movie = db.Movies.ToList();
+                var movie = dbData.RetriveMovies();
                 movieAndActor.Movies = movie;
 
-                if (db.MovieActors.Where(id => id.Actor_ID == movieAndActor.MovieActor.Actor_ID && id.Movie_ID == movieAndActor.MovieActor.Movie_ID).Count() > 0)
+                if (dbData.MovieActors.Where(id => id.Actor_ID == movieAndActor.MovieActor.Actor_ID && id.Movie_ID == movieAndActor.MovieActor.Movie_ID).Count() > 0)
                 {
 
                     TempData["Message"] = "This Actor already existed";
                     return RedirectToAction("MovieToActor");
                 }
-                db.MovieActors.Add(movieAndActor.MovieActor);
-                db.SaveChanges();
+                dbAdd.MovieActor(movieAndActor.MovieActor);
                 return RedirectToAction("Movies");
 
             }
@@ -354,32 +325,20 @@ namespace IMDB.Controllers
 
                 return RedirectToAction("MovieToActor");
             }
-
-
-
-
-
-
         }
 
-
-
-
-
-
-       
         [HttpGet]
         public ActionResult EditMovie(int? id)
         {
             if (id != null)
             {
-                var movie = db.Movies.SingleOrDefault(a => a.Movie_ID == id);
+                var movie = dbData.RetriveMovies(id);
                 if (movie == null)
                 {
                     return HttpNotFound();
                 }
 
-                var directors = db.Directors.ToList();
+                var directors = dbData.RetriveDirectors().ToList();
                
 
                 directors.RemoveAll(x => x.Director_ID == 4);
@@ -403,9 +362,9 @@ namespace IMDB.Controllers
 
         }
         [HttpPost]
-        public ActionResult EditMovie(Movie_Director movievar, HttpPostedFileBase MovieImage)
+        public ActionResult EditMovie(Movie_Director movieVar, HttpPostedFileBase MovieImage)
         {
-            var movie = db.Movies.SingleOrDefault(a => a.Movie_ID == movievar.movie.Movie_ID);
+            var movie = dbData.RetriveMovies(movieVar.movie.Movie_ID);
           
             
             if (ModelState.IsValid)
@@ -422,28 +381,27 @@ namespace IMDB.Controllers
                     movie.Img = (byte[])Session["Movie_Img"];
                 }
 
-                movie.Movie_Name = movievar.movie.Movie_Name;
-                movie.Movie_TLink = movievar.movie.Movie_TLink;
+                movie.Movie_Name = movieVar.movie.Movie_Name;
+                movie.Movie_TLink = movieVar.movie.Movie_TLink;
                 
              
-                movie.Director_ID = movievar.movie.Director_ID;
-               
-              
-              
-             
-                    db.Entry(movie).State = EntityState.Modified;
-                    db.SaveChanges();
+                movie.Director_ID = movieVar.movie.Director_ID;
+
+
+
+
+                dbUpdate.MovieDb(movie);
                     return RedirectToAction("Movies");
               
             }
             else
             {
 
-                var Directors = db.Directors.ToList();
+                var Directors = dbData.RetriveDirectors().ToList();
                 Directors.RemoveAll(x => x.Director_ID == 4);
-                movievar.directors = Directors;
-                movievar.movie = movie;
-                return View(movievar);
+                movieVar.directors = Directors;
+                movieVar.movie = movie;
+                return View(movieVar);
             }
 
 
@@ -460,7 +418,7 @@ namespace IMDB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Movie movie = db.Movies.Find(id);
+            Movie movie = dbData.RetriveMovies(id);
             if (movie == null)
             {
                 return HttpNotFound();
@@ -473,27 +431,26 @@ namespace IMDB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Movie movie = db.Movies.Find(id);
+            Movie movie = dbData.RetriveMovies(id);
 
-            foreach (var item in db.MovieActors.Where(x => x.Movie_ID == id))
+            foreach (var item in dbData.RetriveMovieActors(id))
             {
-                db.MovieActors.Remove(item);
+                dbDelete.ActorMoviesDb(item);
             }
-            foreach (var item in db.Comments.Where(x => x.Movie_ID == id))
+            foreach (var item in dbData.RetrieveFilmComments(id))
             {
-                db.Comments.Remove(item);
+                dbDelete.FilmComments(item);
             }
-            foreach (var item in db.Likes.Where(x => x.Movie_ID == id))
+            foreach (var item in dbData.RetrieveMovieLikes(id))
             {
-                db.Likes.Remove(item);
+                dbDelete.FilmLikes(item);
             }
-
-            db.Movies.Remove(movie);
-            db.SaveChanges();
+            dbDelete.MovieDb(movie);
+            
             return RedirectToAction("Movies");
         }
 
-
+        
 
     }
 

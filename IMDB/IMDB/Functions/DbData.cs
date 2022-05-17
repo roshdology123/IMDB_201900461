@@ -8,9 +8,8 @@ using System.Web;
 namespace IMDB.Functions
 {
 
-    public class DbData
+    public class DbData : IMdbDBContext
     {
-        IMdbDBContext _context = new IMdbDBContext();
         private User User { get; set;  }
 
         private IEnumerable<Actor> Actors { get; set; }
@@ -32,71 +31,98 @@ namespace IMDB.Functions
 
         public User RetrieveUser(int userId)
         {
-            User = _context.Users.Find(userId);
+            User = context.Users.Find(userId);
             return User;
         }
 
         public IEnumerable<Actor> RetriveActors()
         {
-            Actors = _context.Actors;
+            Actors = context.Actors;
             return Actors;
+        }
+
+        public Actor RetriveActors(int? actorId)
+        {
+            Actor = context.Actors.SingleOrDefault(x=>x.Actor_ID == actorId);
+            return Actor;
         }
 
         public Actor RetriveActors(int actorId)
         {
-            Actor = _context.Actors.SingleOrDefault(x=>x.Actor_ID == actorId);
+            Actor = context.Actors.SingleOrDefault(x => x.Actor_ID == actorId);
             return Actor;
         }
 
         public IEnumerable<Movie> RetriveMovies()
         {
-            Movies = _context.Movies;
+            Movies = context.Movies;
             return Movies;
         }
 
         public Movie RetriveMovies(int movieId)
         {
-            Movie = _context.Movies.SingleOrDefault(x=>x.Movie_ID == movieId);
+            Movie = context.Movies.SingleOrDefault(x=>x.Movie_ID == movieId);
             return Movie;
         }
+
+        public Movie RetriveMovies(int? movieId)
+        {
+            Movie = context.Movies.SingleOrDefault(x => x.Movie_ID == movieId);
+            return Movie;
+        }
+
+        public IEnumerable<Movie> SearchMovies(int? movieId)
+        {
+            Movies = context.Movies.Where(x => x.Movie_ID == movieId);
+            return Movies;
+        }
+
         public IEnumerable<Movie> RetrieveDirectorMovies(int? directorId)
         {
-            Movies = _context.Movies.ToList().Where(x=> x.Director_ID == directorId);
+            Movies = context.Movies.ToList().Where(x=> x.Director_ID == directorId);
             return Movies;
+        }
+        public int RetrieveDirectorMoviesCount(int? directorId)
+        {
+            int count = context.Movies.ToList().Where(x => x.Director_ID == directorId).Count();
+            return count;
         }
         public IEnumerable<MovieActor> RetriveMovieActors(int MovieId)
         {
-            MovieActors = _context.MovieActors.Where(x => MovieId == x.Movie_ID).ToList();
+            MovieActors = context.MovieActors.Where(x => MovieId == x.Movie_ID).ToList();
             return MovieActors;
         }
 
         public IEnumerable<MovieActor> RetrieveActorMovies(int ActorId)
         {
-            ActorMovies = _context.MovieActors.ToList().Where(x => ActorId == x.Actor_ID);
+            ActorMovies = context.MovieActors.ToList().Where(x => ActorId == x.Actor_ID);
             return ActorMovies;
         }
         public IEnumerable<Director> RetriveDirectors()
         {
-            Directors = _context.Directors;
+            Directors = context.Directors;
             return Directors;
         }
         public Director RetriveDirectors(int? directorId)
         {
-            Director = _context.Directors.Find(directorId);
+            Director = context.Directors.Find(directorId);
             return Director;
         }
 
         public IEnumerable<Comment> RetrieveFilmComments(int MovieId)
         {
-            Comments = _context.Comments.Where(x => MovieId == x.Movie_ID);
+            Comments = context.Comments.Where(x => MovieId == x.Movie_ID);
             return Comments;
         }
 
         public Like RetrieveUserMovieLike(int UserId, int MovieId )
         {
-            Like = _context.Likes.SingleOrDefault(x => MovieId == x.Movie_ID && x.User_ID == UserId);
+            Like = context.Likes.SingleOrDefault(x => MovieId == x.Movie_ID && x.User_ID == UserId);
             return Like;
         }
-
+        public IEnumerable<Like> RetrieveMovieLikes(int movieId)
+        {
+           return context.Likes.Where(x => x.Movie_ID == movieId)
+        }
     }
 }
