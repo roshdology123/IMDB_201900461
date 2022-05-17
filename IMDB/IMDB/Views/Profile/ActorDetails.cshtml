@@ -20,13 +20,15 @@
     <div class="Form-Container">
         <div class="Head-Container"><h1 class="HeadText">@Model.Actor.FName @Model.Actor.LName</h1></div>
         <!--..........................................-->
-        <div class="Movie-Container">
-            @foreach(var item in Model.movieActors)
-            {
-                @item.Movie.Movie_Name
-            }
 
-        </div>
+        @foreach (var item in Model.movieActors)
+        {
+            <div class="Movie-Container">
+                @item.Movie.Movie_Name
+            </div>
+        }
+
+
 
         <!--............................. Back Button ........................-->
 

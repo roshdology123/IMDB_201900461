@@ -24,7 +24,16 @@
         @Html.HiddenFor(model => model.User_ID)
         <!--........................... Change Image ...............................-->
         <div class="ChangeImg-Container">
-            <img class="ImgStyle" src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(Model.User_Img))" id="output" width="200" />
+            @{
+                if (Model.User_Img != null)
+                {
+                    <img class="ImgStyle" src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(Model.User_Img))" id="output" width="200" />
+                }
+                else
+                {
+                    <img class="ImgStyle" src="~/Content/Images/man.png" id="output" width="200" />
+                }
+            }
             <br />
             <div class="ChangeImgBtn">
                 <label for="file">

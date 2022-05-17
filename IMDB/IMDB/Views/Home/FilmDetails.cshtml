@@ -62,7 +62,7 @@
 
                 <h2 style="color:white; font-size:large; display: inline-block; padding-bottom:8px; padding-top: 8px; "> Directors </h2>
                 <ul class="person-director">
-                    <li class="person-director-item"> @Html.ActionLink(Model.Director.FName + " " + Model.Director.LName, "DirectorDetails", new { id = Model.Director.Director_ID }, new { @class = "DirectorLink" })   </li>
+                    <li class="person-director-item"> @Html.ActionLink(Model.Director.FName + " " + Model.Director.LName, "DirectorDetails","Profile", new { id = Model.Director.Director_ID }, new { @class = "DirectorLink" })   </li>
                 </ul>
 
                 <hr style="width:50%;text-align:left;margin-left:0;">

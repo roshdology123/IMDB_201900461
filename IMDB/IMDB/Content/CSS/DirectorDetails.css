@@ -35,13 +35,13 @@ body {
 }
 /* movie div style*/
 .Movie-Container{
-    border:3px solid red;
     display:inline-flex;
     float:left;
     width:190px;
-    height:200px;
+    height:100px;
     margin-left:20px;
     margin-top:20px;
+    font-size: 25px;
 }
 /* back Button Style */
 .BackBtn {

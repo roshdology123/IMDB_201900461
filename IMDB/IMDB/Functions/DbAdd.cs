@@ -8,20 +8,46 @@ using System.Web;
 namespace IMDB.Functions
 {
 
-    public class DbAdd
-    { 
+    public class DbAdd : IMdbDBContext
+    {
+        private IMdbDBContext context = new IMdbDBContext();
         public int MovieID { get; set; }
         public int UserID { get; set; }
-        IMdbDBContext _context = new IMdbDBContext();
 
         public void CommentDb(string CommentString)
         {
-            Comment Comment = new Comment();
-            Comment.Movie_ID = MovieID;
-            Comment.User_ID = UserID;
-            Comment.CommentData = CommentString;
-            _context.Comments.Add(Comment);
-            _context.SaveChanges();
+            Comment Comment = new Comment
+            {
+                Movie_ID = MovieID,
+                User_ID = UserID,
+                CommentData = CommentString
+            };
+            context.Comments.Add(Comment);
+            context.SaveChanges();
         }
+
+        public void ActorDb(Actor actor)
+        {
+            context.Actors.Add(actor);
+            context.SaveChanges();
+        }
+
+       public void DirectorDb(Director director)
+        {
+            context.Directors.Add(director);
+            context.SaveChanges();
+        }
+
+        public void MovieDb(Movie movie)
+        {
+            context.Movies.Add(movie);
+            context.SaveChanges();
+        }
+        public void MovieActor(MovieActor movieActor)
+        {
+            context.MovieActors.Add(movieActor);
+            context.SaveChanges();
+        }
+
     }
 }

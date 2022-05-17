@@ -25,7 +25,6 @@ namespace IMDB.Models
         [Required(AllowEmptyStrings = false, ErrorMessage = "please choose director")]
         public int? Director_ID { get; set; }
 
-        
         [Display(Name = "Movie Image")]
         public byte[] Img { get; set; }
 

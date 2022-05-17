@@ -675,3 +675,8 @@ button.disliked i {
     border-radius: 12px;
     float: right;
 }
+.ProfileSettingsBtn
+{
+    text-decoration: none;
+    color:white;
+}

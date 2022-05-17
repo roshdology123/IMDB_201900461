@@ -31,12 +31,10 @@
                 </div>
                 @if (Session["UserName"] !=null)
                 {
-
-
                 <div class="profile-container">
-                    <img class="profile-picture" src="~/Content/Images/man.png" alt="" />
                     <div class="profile-text-container">
-                        <span class="profile-text">@Session["UserName"].ToString()</span>
+                        
+                        <span class="profile-text">@Html.ActionLink(Session["UserName"].ToString(), "ProfileSettings", "UserProfile",null ,new {@class = "ProfileSettingsBtn" })</span>
                     </div>
                 </div>
                 }
