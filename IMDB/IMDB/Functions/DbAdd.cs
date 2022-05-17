@@ -8,7 +8,7 @@ using System.Web;
 namespace IMDB.Functions
 {
 
-    public class DbAdd : IMdbDBContext
+    public class DbAdd
     {
         private IMdbDBContext context = new IMdbDBContext();
         public int MovieID { get; set; }

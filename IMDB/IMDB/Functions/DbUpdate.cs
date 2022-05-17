@@ -8,7 +8,7 @@ using System.Web;
 
 namespace IMDB.Functions
 {
-    public class DbUpdate: IMdbDBContext
+    public class DbUpdate
     {
 
         private IMdbDBContext context = new IMdbDBContext();

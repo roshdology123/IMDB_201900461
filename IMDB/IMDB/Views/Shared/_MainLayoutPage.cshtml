@@ -37,7 +37,11 @@
                         <span class="profile-text">@Html.ActionLink(Session["UserName"].ToString(), "ProfileSettings", "UserProfile",null ,new {@class = "ProfileSettingsBtn" })</span>
                     </div>
                 </div>
+                <div>
+                    @Html.ActionLink("Logout", "Login","LoginRegister")
+                </div>
                 }
+
                 else
                 {
                     @Html.ActionLink("Sign In", "Login", "LoginRegister",null, new { @class = "profile-text" })
