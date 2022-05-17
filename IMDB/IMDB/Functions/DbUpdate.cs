@@ -27,5 +27,10 @@ namespace IMDB.Functions
             context.Entry(movie).State = EntityState.Modified;
             context.SaveChanges();
         }
+        public void UserDb(User user)
+        {
+            context.Entry(user).State = EntityState.Modified;
+            context.SaveChanges();
+        }
     }
 }

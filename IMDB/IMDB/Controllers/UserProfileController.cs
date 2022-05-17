@@ -15,6 +15,7 @@ namespace IMDB.Controllers
     public class UserProfileController : Controller
     {
         DbData dbData = new DbData();
+        DbUpdate dbUpdate = new DbUpdate();
         // GET: UserSettings
         [HttpGet]
         public ActionResult ProfileSettings()
@@ -53,8 +54,7 @@ namespace IMDB.Controllers
                 {
                     user.User_Img = (byte[])Session["User_Img"];
                 }
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
+                dbUpdate.UserDb(user);
                 return RedirectToAction("ProfileSettings");
 
             }
