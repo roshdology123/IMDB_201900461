@@ -122,7 +122,7 @@ namespace IMDB.Functions
         }
         public IEnumerable<Like> RetrieveMovieLikes(int movieId)
         {
-           return context.Likes.Where(x => x.Movie_ID == movieId)
+            return context.Likes.Where(x => x.Movie_ID == movieId);
         }
     }
 }

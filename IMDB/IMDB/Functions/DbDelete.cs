@@ -33,7 +33,12 @@ namespace IMDB.Functions
         }
         public void FilmLikes(Like like)
         {
-            context.like.Remove(like);
+            context.Likes.Remove(like);
+            context.SaveChanges();
+        }
+        public void MovieDb(Movie movie)
+        {
+            context.Movies.Remove(movie);
             context.SaveChanges();
         }
     }
