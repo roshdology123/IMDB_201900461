@@ -19,6 +19,7 @@ namespace IMDB.Controllers
         DbAdd dbAdd = new DbAdd();
         DbDelete dbDelete = new DbDelete();
         DbUpdate dbUpdate = new DbUpdate();
+        private IMdbDBContext context = new IMdbDBContext();
         // GET: AdminHomePage
         public ActionResult AdminHomePage()
         {
@@ -309,7 +310,7 @@ namespace IMDB.Controllers
                 var movie = dbData.RetriveMovies();
                 movieAndActor.Movies = movie;
 
-                if (dbData.MovieActors.Where(id => id.Actor_ID == movieAndActor.MovieActor.Actor_ID && id.Movie_ID == movieAndActor.MovieActor.Movie_ID).Count() > 0)
+                if (context.MovieActors.Where(id => id.Actor_ID == movieAndActor.MovieActor.Actor_ID && id.Movie_ID == movieAndActor.MovieActor.Movie_ID).Count() > 0)
                 {
 
                     TempData["Message"] = "This Actor already existed";

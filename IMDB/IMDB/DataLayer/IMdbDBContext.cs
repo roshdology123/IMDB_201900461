@@ -12,7 +12,6 @@ namespace IMDB.DataLayer
         public IMdbDBContext(): base("IMDB-app-db")
         {
         }
-        public IMdbDBContext context { get; set; }
         public DbSet<Actor> Actors { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Director> Directors { get; set; }
