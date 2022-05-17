@@ -20,7 +20,7 @@ namespace IMDB.Controllers
         {
 
             int actorId = Int32.Parse(id);
-            AssignActorsToVm(actorId);
+            userFunction.AssignActorsToVm(actorId);
 
             return View(actorDetailsVm);
         }
