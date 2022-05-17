@@ -23,6 +23,7 @@ namespace IMDB.Controllers
                 User user = new User();
                 int userId = (int)Session["User_ID"];
                 user = db.Users.Find(userId);
+                Session["User_Img"] = user.User_Img;
                 return View(user);
             }
             catch (Exception)
@@ -61,29 +62,31 @@ namespace IMDB.Controllers
         [HttpGet]
         public ActionResult FavoriteActors()
         {
-            if (ModelState.IsValid)
-            {
                 int userId = (int)Session["User_ID"];
                 FavoriteActorViewModel favoActorVM = new FavoriteActorViewModel();
                 favoActorVM.favoActors = db.UserFActors.Where(x => x.User_ID == userId);
                 favoActorVM.Actors = db.Actors.ToList();
                 return View(favoActorVM);
-            }
-            return View();
         }
         [HttpPost]
         public ActionResult FavoriteActors(FavoriteActorViewModel favoActorVM, int BtnType)
         {
-            if (ModelState.IsValid)
-            {
                 int userId = (int)Session["User_ID"];
-
                 switch (BtnType)
                 {
                     case 0:
-                        var DFActor = db.UserFActors.SingleOrDefault(m => m.Actor_ID == favoActorVM.FActor.Actor_ID);
-                        db.UserFActors.Remove(DFActor);
-                        db.SaveChanges();
+                        var DFActor = db.UserFActors.SingleOrDefault(m => m.Actor_ID == favoActorVM.FActor.Actor_ID && m.User_ID == userId);
+                        
+                        if (DFActor != null)
+                        {
+                            db.UserFActors.Remove(DFActor);
+                            db.SaveChanges();
+                        }
+                        else
+                        {
+                        TempData["ErrorChooseRemoveDropList"] = "Please choose from DropList";
+                        break;
+                        }
                         break;
                     case 1:
                         int rowsCount = db.UserFActors.Where(fActorModel => fActorModel.Actor_ID == favoActorVM.Actor.Actor_ID && fActorModel.User_ID == userId).Count();
@@ -95,23 +98,27 @@ namespace IMDB.Controllers
                         {
                             UserFActor UFActor = new UserFActor();
                             UFActor.Actor_ID = favoActorVM.Actor.Actor_ID;
-                            //TODO
                             UFActor.User_ID = userId;
+                        if (UFActor.Actor_ID != 0)
+                        {
                             db.UserFActors.Add(UFActor);
                             db.SaveChanges();
+                        }
+                        else
+                        {
+                            TempData["ErrorChooseAddDropList"] = "Please choose from DropList";
+                            break;
+                        }
                         }
                         break;
                 }
                 return RedirectToAction("FavoriteActors");
             }
-            return View();
-        }
         [HttpGet]
         public ActionResult FavoriteMovies()
         {
             int userId = (int)Session["User_ID"];
             FavoriteMovieViewModel favoMovieVM = new FavoriteMovieViewModel();
-            //TODO
             favoMovieVM.favoMovies = db.UserFMovies.Where(x => x.User_ID == userId);
             favoMovieVM.Movies = db.Movies.ToList();
             return View(favoMovieVM);
@@ -120,33 +127,47 @@ namespace IMDB.Controllers
         public ActionResult FavoriteMovies(FavoriteMovieViewModel favoMovieVM, int BtnType)
         {
             int userId = (int)Session["User_ID"];
-
-            switch (BtnType)
-            {
-                case 0:
-                    var DFMovie = db.UserFMovies.SingleOrDefault(m => m.Movie_ID == favoMovieVM.FMovie.Movie_ID);
-                    db.UserFMovies.Remove(DFMovie);
-                    db.SaveChanges();
-                    break;
-                case 1:
-                    int rowsCount = db.UserFMovies.Where(fMovieModel => fMovieModel.Movie_ID == favoMovieVM.Movie.Movie_ID && fMovieModel.User_ID == userId).Count();
-                    if (rowsCount > 0)
-                    {
-                        TempData["Message"] = "This Movie is already in your Favorites";
-                    }
-                    else
-                    {
-                        UserFMovie UFMovie = new UserFMovie();
-                        UFMovie.Movie_ID = favoMovieVM.Movie.Movie_ID;
-                        //TODO
-                        UFMovie.User_ID = userId;
-                        db.UserFMovies.Add(UFMovie);
-                        db.SaveChanges();
-                    }
-                    break;
+                switch (BtnType)
+                {
+                    case 0:
+                        var DFMovie = db.UserFMovies.SingleOrDefault(m => m.Movie_ID == favoMovieVM.FMovie.Movie_ID && m.User_ID == userId);
+                        if (DFMovie != null)
+                        {
+                            db.UserFMovies.Remove(DFMovie);
+                            db.SaveChanges();
+                        }
+                        else
+                        {
+                            TempData["ErrorChooseRemoveDropList"] = "Please choose from DropList";
+                            break;
+                        }
+                        break;
+                    case 1:
+                        int rowsCount = db.UserFMovies.Where(fMovieModel => fMovieModel.Movie_ID == favoMovieVM.Movie.Movie_ID && fMovieModel.User_ID == userId).Count();
+                        if (rowsCount > 0)
+                        {
+                            TempData["Message"] = "This Movie is already in your Favorites";
+                        }
+                        else
+                        {
+                            UserFMovie UFMovie = new UserFMovie();
+                            UFMovie.Movie_ID = favoMovieVM.Movie.Movie_ID;
+                            UFMovie.User_ID = userId;
+                            if (UFMovie.Movie_ID != 0)
+                            {
+                                db.UserFMovies.Add(UFMovie);
+                                db.SaveChanges();
+                            }
+                            else
+                            {
+                                TempData["ErrorChooseAddDropList"] = "Please choose from DropList";
+                                break;
+                            }
+                        }
+                        break;
+                }
+                return RedirectToAction("FavoriteMovies");
             }
-            return RedirectToAction("FavoriteMovies");
-        }
         [HttpGet]
         public ActionResult FavoriteDirectors()
         {
@@ -161,32 +182,47 @@ namespace IMDB.Controllers
         {
             int userId = (int)Session["User_ID"];
 
-            switch (BtnType)
-            {
-                case 0:
-                    var DFDirector = db.UserFDirectors.SingleOrDefault(m => m.Director_ID == favoDirectorVM.FDirector.Director_ID);
-                    db.UserFDirectors.Remove(DFDirector);
-                    db.SaveChanges();
-                    break;
-                case 1:
-                    int rowsCount = db.UserFDirectors.Where(fDirectorModel => fDirectorModel.Director_ID == favoDirectorVM.Director.Director_ID && fDirectorModel.User_ID == userId).Count();
-                    if (rowsCount > 0)
-                    {
-                        TempData["Message"] = "This Director is already in your Favorites";
-                    }
-                    else
-                    {
-                        UserFDirector UFDirector = new UserFDirector();
-                        UFDirector.Director_ID = favoDirectorVM.Director.Director_ID;
-                        //TODO
-                        UFDirector.User_ID = userId;
-                        db.UserFDirectors.Add(UFDirector);
-                        db.SaveChanges();
-                    }
-                    break;
+                switch (BtnType)
+                {
+                    case 0:
+                        var DFDirector = db.UserFDirectors.SingleOrDefault(m => m.Director_ID == favoDirectorVM.FDirector.Director_ID && m.User_ID == userId);
+                        if (DFDirector != null)
+                        {
+                            db.UserFDirectors.Remove(DFDirector);
+                            db.SaveChanges();
+                        }
+                        else
+                        {
+                            TempData["ErrorChooseRemoveDropList"] = "Please choose from DropList";
+                            break;
+                        }
+                        break;
+                    case 1:
+                        int rowsCount = db.UserFDirectors.Where(fDirectorModel => fDirectorModel.Director_ID == favoDirectorVM.Director.Director_ID && fDirectorModel.User_ID == userId).Count();
+                        if (rowsCount > 0)
+                        {
+                            TempData["Message"] = "This Director is already in your Favorites";
+                        }
+                        else
+                        {
+                            UserFDirector UFDirector = new UserFDirector();
+                            UFDirector.Director_ID = favoDirectorVM.Director.Director_ID;
+                            UFDirector.User_ID = userId;
+                            if (UFDirector.Director_ID != 0)
+                            {
+                                db.UserFDirectors.Add(UFDirector);
+                                db.SaveChanges();
+                            }
+                            else
+                            {
+                                TempData["ErrorChooseAddDropList"] = "Please choose from DropList";
+                                break;
+                            }
+                        }
+                        break;
+                }
+                return RedirectToAction("FavoriteDirectors");
             }
-            return RedirectToAction("FavoriteDirectors");
-        }
     }
 
 }

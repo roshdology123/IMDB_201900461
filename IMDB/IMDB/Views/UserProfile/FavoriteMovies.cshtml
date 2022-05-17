@@ -30,6 +30,7 @@
                     then click on remove button to delete him from your favorites.
                 </p>
                 <button name="BtnType" value="0" type="submit" class="EditFavoBtn">Remove Favorite</button>
+                <h4 style="color:red;">@TempData["ErrorChooseRemoveDropList"]</h4>
             </div>
         }
         @using (Html.BeginForm("FavoriteMovies", "UserProfile", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -44,6 +45,7 @@
                 </p>
                 <h4 style="color:red;">@TempData["Message"]</h4>
                 <button name="BtnType" type="submit" value="1" class="EditFavoBtn">Add<br /> Favorite</button>
+                <h4 style="color:red;">@TempData["ErrorChooseAddDropList"]</h4>
             </div>
             <!--............................. Back Button ........................-->
             @Html.ActionLink("Back to Profile Settings", "ProfileSettings", new { id = 1 }, new { @class = "GoBackProfileSettings" })

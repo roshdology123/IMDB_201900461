@@ -1,4 +1,7 @@
-﻿@{
+﻿@using IMDB.ViewModel
+@model DirectorDetailsViewModel
+
+@{
     Layout = "~/Views/Shared/_MainLayoutPage.cshtml";
 }
 
@@ -17,20 +20,20 @@
     @section navbar{}
     <!--............................... Form & head .............................-->
     <div class="Form-Container">
-        <div class="Head-Container"><h1 class="HeadText">Director Name</h1></div>
-        <!--..........................................-->
-        <div class="Movie-Container">
-            <img class="ImgStyle" src="~/Content/Images/TheGodfather poster.jpg" width="200" />
-            <p class="name">movie name</p>
-        </div>
+        <div class="Head-Container"><h1 class="HeadText">@Model.Director.FName @Model.Director.LName</h1></div>
+
         <!--...............................................-->
-        <div class="Movie-Container">
-            Movie Name
-            
-        </div>
+        @foreach (var item in Model.Movies)
+        {
+            int counter = 1; 
+            <div class="Movie-Container">
+                @item.Movie_Name
+            </div>
+            counter++;
+        }
         <!--............................. Back Button ........................-->
 
-        @Html.ActionLink("Back", "FilmDetails", new { id = 1 }, new { @class = "BackBtn" })
+        @Html.ActionLink("Back", "Home", "Home", null, new { @class = "BackBtn" })
     </div>
 </body>
 </html>
