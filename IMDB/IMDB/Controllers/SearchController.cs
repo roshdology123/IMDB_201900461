@@ -14,35 +14,35 @@ namespace IMDB.Controllers
     {
         DbData dbData = new DbData();
         IMdbDBContext _context = new IMdbDBContext();
-        SearchViewModel searchVM = new SearchViewModel();
+        SearchViewModel searchVm = new SearchViewModel();
         // GET: Search
         [HttpGet]
         public ActionResult Search()
         {
-            searchVM.Actors = _context.Actors.ToList();
-            searchVM.Directors = _context.Directors.ToList();
-            searchVM.Movies = _context.Movies.ToList();
-            return View(searchVM);
+            searchVm.Actors = _context.Actors.ToList();
+            searchVm.Directors = _context.Directors.ToList();
+            searchVm.Movies = _context.Movies.ToList();
+            return View(searchVm);
         }
 
 
         [HttpPost]
-        public ActionResult Search(string SearchValue)
+        public ActionResult Search(string searchValue)
         {
-            if(SearchValue == null || SearchValue == "")
+            if(searchValue == null || searchValue == "")
             {
-                return View(searchVM);
+                return View(searchVm);
             }
             else {
 
-                string[] SearchSplit = SearchValue.Split(' ');
-                foreach(var item in SearchSplit) { 
-                searchVM.Actors = _context.Actors.Where(ActorModel => ActorModel.FName.ToLower().StartsWith(item) || ActorModel.LName.ToLower().StartsWith(item) || SearchValue == null);
-                searchVM.Directors = _context.Directors.Where(DirectorModel => DirectorModel.FName.ToLower().StartsWith(item) || DirectorModel.LName.StartsWith(item) || SearchValue == null);
-                searchVM.Movies = _context.Movies.Where(MovieModel => MovieModel.Movie_Name.ToLower().StartsWith(item) || SearchValue == null);
-                    return View(searchVM);
+                string[] searchSplit = searchValue.Split(' ');
+                foreach(var item in searchSplit) {
+                    searchVm.Actors = _context.Actors.Where(ActorModel => ActorModel.FName.ToLower().StartsWith(item) || ActorModel.LName.ToLower().StartsWith(item) || searchValue == null);
+                    searchVm.Directors = _context.Directors.Where(DirectorModel => DirectorModel.FName.ToLower().StartsWith(item) || DirectorModel.LName.StartsWith(item) || searchValue == null);
+                    searchVm.Movies = _context.Movies.Where(MovieModel => MovieModel.Movie_Name.ToLower().StartsWith(item) || searchValue == null);
+                    return View(searchVm);
                 }
-                return View(searchVM);
+                return View(searchVm);
             }
         }
     }

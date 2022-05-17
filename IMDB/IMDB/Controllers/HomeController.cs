@@ -17,7 +17,7 @@ namespace IMDB.Controllers
         IsRated isRated = new IsRated();
         DbData dbData = new DbData();
         DbAdd dbAdd = new DbAdd();
-        HomeViewModel HomeVM = new HomeViewModel();
+        HomeViewModel homeVm = new HomeViewModel();
         public ActionResult Home()
         {
             var movies = dbData.RetriveMovies();
@@ -29,15 +29,15 @@ namespace IMDB.Controllers
         }
 
         [HttpGet]
-        public ActionResult FilmDetails(String ID)
+        public ActionResult FilmDetails(String id)
         {
-            int MovieID = Int32.Parse(ID);
-            Session["Movie_ID"] = MovieID;
-            IEnumerable<Comment> comment = dbData.RetrieveFilmComments(MovieID);
-            Movie movie = dbData.RetriveMovies(MovieID);
-            int? directorID = movie.Director_ID;
-            var movieActors = dbData.RetriveMovieActors(MovieID);
-            Director director = dbData.RetriveDirectors(directorID);
+            int movieId = Int32.Parse(id);
+            Session["Movie_ID"] = movieId;
+            IEnumerable<Comment> comment = dbData.RetrieveFilmComments(movieId);
+            Movie movie = dbData.RetriveMovies(movieId);
+            int? directorId = movie.Director_ID;
+            var movieActors = dbData.RetriveMovieActors(movieId);
+            Director director = dbData.RetriveDirectors(directorId);
 
             FilmDetailsViewModel filmDetailsViewModel = new FilmDetailsViewModel()
             {
@@ -50,7 +50,7 @@ namespace IMDB.Controllers
             {
                 int userId = (int)Session["User_ID"];
                 User loggedOnUser = dbData.RetrieveUser(userId);
-                Like like = dbData.RetrieveUserMovieLike(loggedOnUser.User_ID, MovieID);
+                Like like = dbData.RetrieveUserMovieLike(loggedOnUser.User_ID, movieId);
                 filmDetailsViewModel.User = loggedOnUser;
                 filmDetailsViewModel.Like = like;
             }
@@ -60,15 +60,15 @@ namespace IMDB.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult FilmDetails(FilmDetailsViewModel fdvm, int PressedBtn)
+        public ActionResult FilmDetails(FilmDetailsViewModel filmDetails, int pressedBtn)
         {
            
-            switch (PressedBtn)
+            switch (pressedBtn)
             {
                 case 1:
-                    dbAdd.MovieID = (int)Session["Movie_ID"];
+                    dbAdd.MovieID= (int)Session["Movie_ID"];
                     dbAdd.UserID = (int)Session["User_ID"];
-                    dbAdd.CommentDb(fdvm.Upcomment.CommentData);
+                    dbAdd.CommentDb(filmDetails.Upcomment.CommentData);
                     break;
                 case 2:
                     isRated.MovieID = (int)Session["Movie_ID"];
@@ -77,13 +77,13 @@ namespace IMDB.Controllers
 
                     if (valid)
                     {
-                        isRated.Update(fdvm.Like.LikeValue);
+                        isRated.Update(filmDetails.Like.LikeValue);
                         
                     }
 
                     else
                     {
-                        isRated.Insert(fdvm.Like.LikeValue);
+                        isRated.Insert(filmDetails.Like.LikeValue);
                     }
                     
                     break;

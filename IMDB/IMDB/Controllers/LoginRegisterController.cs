@@ -21,28 +21,28 @@ namespace IMDB.Controllers
         public ActionResult Login(User log)
         {
 
-            User User = db.Users.FirstOrDefault(x => x.Email == log.Email && x.Password == log.Password);
+            User user = db.Users.FirstOrDefault(x => x.Email == log.Email && x.Password == log.Password);
 
             if (log.Email == null || log.Password == null)
             {
                 TempData["Message2"] = "Please fill all fields";
                 return RedirectToAction("Login");
 
-            }else if(User == null)
+            }else if(user == null)
             {
                 TempData["Message"] = "Wrong email or password";
                 return RedirectToAction("Login");
             }
-            else if (User.Role_ID == 0)
+            else if (user.Role_ID == 0)
             {
-                Session["User_ID"] = User.User_ID;
-                Session["UserName"] = User.FName + " " + User.LName;
+                Session["User_ID"] = user.User_ID;
+                Session["UserName"] = user.FName + " " + user.LName;
 
                 return RedirectToAction("Home", "Home");
             }
-            else if(User.Role_ID == 1)
+            else if(user.Role_ID == 1)
             {
-                Session["Admin_ID"] = User.User_ID;
+                Session["Admin_ID"] = user.User_ID;
 
                 return RedirectToAction("AdminHomePage", "AdminView");
 
