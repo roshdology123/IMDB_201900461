@@ -13,15 +13,14 @@ namespace IMDB.Controllers
     public class SearchController : Controller
     {
         DbData dbData = new DbData();
-        IMdbDBContext _context = new IMdbDBContext();
         SearchViewModel searchVm = new SearchViewModel();
         // GET: Search
         [HttpGet]
         public ActionResult Search()
         {
-            searchVm.Actors = _context.Actors.ToList();
-            searchVm.Directors = _context.Directors.ToList();
-            searchVm.Movies = _context.Movies.ToList();
+            searchVm.Actors = dbData.RetriveActors();
+            searchVm.Directors = dbData.RetriveDirectors();
+            searchVm.Movies = dbData.RetriveMovies();
             return View(searchVm);
         }
 
@@ -37,9 +36,9 @@ namespace IMDB.Controllers
 
                 string[] searchSplit = searchValue.Split(' ');
                 foreach(var item in searchSplit) {
-                    searchVm.Actors = _context.Actors.Where(ActorModel => ActorModel.FName.ToLower().StartsWith(item) || ActorModel.LName.ToLower().StartsWith(item) || searchValue == null);
-                    searchVm.Directors = _context.Directors.Where(DirectorModel => DirectorModel.FName.ToLower().StartsWith(item) || DirectorModel.LName.StartsWith(item) || searchValue == null);
-                    searchVm.Movies = _context.Movies.Where(MovieModel => MovieModel.Movie_Name.ToLower().StartsWith(item) || searchValue == null);
+                    searchVm.Actors = dbData.RetriveActors().Where(actorModel => actorModel.FName.ToLower().StartsWith(item) || actorModel.LName.ToLower().StartsWith(item) || searchValue == null);
+                    searchVm.Directors = dbData.RetriveDirectors().Where(directorModel => directorModel.FName.ToLower().StartsWith(item) || directorModel.LName.StartsWith(item) || searchValue == null);
+                    searchVm.Movies = dbData.RetriveMovies().Where(movieModel => movieModel.Movie_Name.ToLower().StartsWith(item) || searchValue == null);
                     return View(searchVm);
                 }
                 return View(searchVm);

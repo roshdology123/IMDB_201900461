@@ -13,7 +13,6 @@ namespace IMDB.Controllers
 {
     public class HomeController : Controller
     {
-        IMdbDBContext _context = new IMdbDBContext();
         IsRated isRated = new IsRated();
         DbData dbData = new DbData();
         DbAdd dbAdd = new DbAdd();
@@ -23,8 +22,6 @@ namespace IMDB.Controllers
             var movies = dbData.RetriveMovies();
             var actors = dbData.RetriveActors();
             var directors = dbData.RetriveDirectors();
-            
-
             return View(movies);
         }
 
@@ -38,7 +35,6 @@ namespace IMDB.Controllers
             int? directorId = movie.Director_ID;
             var movieActors = dbData.RetriveMovieActors(movieId);
             Director director = dbData.RetriveDirectors(directorId);
-
             FilmDetailsViewModel filmDetailsViewModel = new FilmDetailsViewModel()
             {
                 Movie = movie,
@@ -54,7 +50,6 @@ namespace IMDB.Controllers
                 filmDetailsViewModel.User = loggedOnUser;
                 filmDetailsViewModel.Like = like;
             }
-
             return View(filmDetailsViewModel);
         }
 
@@ -62,7 +57,6 @@ namespace IMDB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult FilmDetails(FilmDetailsViewModel filmDetails, int pressedBtn)
         {
-           
             switch (pressedBtn)
             {
                 case 1:
@@ -77,25 +71,15 @@ namespace IMDB.Controllers
 
                     if (valid)
                     {
-                        isRated.Update(filmDetails.Like.LikeValue);
-                        
+                        isRated.Update(filmDetails.Like.LikeValue);   
                     }
-
                     else
                     {
                         isRated.Insert(filmDetails.Like.LikeValue);
-                    }
-                    
+                    }       
                     break;
             }
-           
-
-
             return RedirectToAction("FilmDetails");
         }
-
-
-
-
     }
 }

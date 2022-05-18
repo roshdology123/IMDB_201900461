@@ -18,21 +18,15 @@ namespace IMDB.Controllers
         DirectorDetailsViewModel directorDetailsVm = new DirectorDetailsViewModel();
         public ActionResult ActorDetails(string id)
         {
-
             int actorId = Int32.Parse(id);
             userFunction.AssignActorsToVm(actorId);
-
             return View(actorDetailsVm);
         }
-
-       
-
+        
         public ActionResult DirectorDetails(string id)
         {
             int directorId = Int32.Parse(id);
-            directorDetailsVm.Director = dbData.RetriveDirectors(directorId);
-            directorDetailsVm.Movies = dbData.RetrieveDirectorMovies(directorId);
-
+           userFunction.AssignDirectorsToVm(directorId);
             return View(directorDetailsVm);
         }
     }

@@ -19,5 +19,16 @@ namespace IMDB.Functions
             actorDetailsVm.Actor = dbData.RetriveActors(actorId);
             actorDetailsVm.movieActors = dbData.RetrieveActorMovies(actorId);
         }
+        /// <summary>
+        /// Assign Directors and its movies into actor Details view model
+        /// </summary>
+        /// <param name="directorId"></param>
+        public void AssignDirectorsToVm(int directorId)
+        {
+            DirectorDetailsViewModel directorDetailsVm = new DirectorDetailsViewModel();
+            directorDetailsVm.Director = dbData.RetriveDirectors(directorId);
+            directorDetailsVm.Movies = dbData.RetrieveDirectorMovies(directorId);
+        }
+
     }
 }

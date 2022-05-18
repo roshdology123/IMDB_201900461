@@ -33,7 +33,6 @@ namespace IMDB.Controllers
                 return RedirectToAction("Login", "LoginRegister");
                 throw;
             }
-            
         }
 
         [HttpPost]
@@ -42,7 +41,6 @@ namespace IMDB.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 MemoryStream ms = new MemoryStream();
                 if (profileImg != null)
                 {
@@ -56,19 +54,20 @@ namespace IMDB.Controllers
                 }
                 dbUpdate.UserDb(user);
                 return RedirectToAction("ProfileSettings");
-
             }
             return View(user);
         }
+
         [HttpGet]
         public ActionResult FavoriteActors()
         {
                 int userId = (int)Session["User_ID"];
                 FavoriteActorViewModel favoActorVm = new FavoriteActorViewModel();
             favoActorVm.favoActors = db.UserFActors.Where(x => x.User_ID == userId);
-            favoActorVm.Actors = db.Actors.ToList();
+            favoActorVm.Actors = dbData.RetriveActors().ToList();
                 return View(favoActorVm);
         }
+
         [HttpPost]
         public ActionResult FavoriteActors(FavoriteActorViewModel favoActorVm, int btnType)
         {
@@ -76,7 +75,7 @@ namespace IMDB.Controllers
                 switch (btnType)
                 {
                     case 0:
-                        var deleteFavoActor = db.UserFActors.SingleOrDefault(m => m.Actor_ID == favoActorVm.FActor.Actor_ID && m.User_ID == userId);
+                        var deleteFavoActor = db.SingleOrDefault(m => m.Actor_ID == favoActorVm.FActor.Actor_ID && m.User_ID == userId);
                         
                         if (deleteFavoActor != null)
                         {
@@ -115,6 +114,7 @@ namespace IMDB.Controllers
                 }
                 return RedirectToAction("FavoriteActors");
             }
+
         [HttpGet]
         public ActionResult FavoriteMovies()
         {
@@ -124,6 +124,7 @@ namespace IMDB.Controllers
             favoMovieVm.Movies = db.Movies.ToList();
             return View(favoMovieVm);
         }
+
         [HttpPost]
         public ActionResult FavoriteMovies(FavoriteMovieViewModel favoMovieVm, int btnType)
         {
@@ -169,6 +170,7 @@ namespace IMDB.Controllers
                 }
                 return RedirectToAction("FavoriteMovies");
             }
+
         [HttpGet]
         public ActionResult FavoriteDirectors()
         {
@@ -178,11 +180,11 @@ namespace IMDB.Controllers
             favoDirectorVm.Directors = db.Directors.ToList();
             return View(favoDirectorVm);
         }
+
         [HttpPost]
         public ActionResult FavoriteDirectors(FavoriteDirectorViewModel favoDirectorVm, int btnType)
         {
             int userId = (int)Session["User_ID"];
-
                 switch (btnType)
                 {
                     case 0:
@@ -225,5 +227,4 @@ namespace IMDB.Controllers
                 return RedirectToAction("FavoriteDirectors");
             }
     }
-
 }

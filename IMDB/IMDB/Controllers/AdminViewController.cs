@@ -27,8 +27,7 @@ namespace IMDB.Controllers
         {
             return View();
         }
-
-
+        
         // GET: Actors
         public ActionResult Actors()
         {
@@ -41,6 +40,7 @@ namespace IMDB.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult AddActors(Actor actor)
         {
@@ -62,16 +62,14 @@ namespace IMDB.Controllers
                 {
                     return HttpNotFound();
                 }
-
                 return View(actor);
             }
             else
             {
                 return RedirectToAction("Actors");
             }
-
-
         }
+
         [HttpPost]
         public ActionResult EditActor(Actor actorModel)
         {
@@ -83,12 +81,8 @@ namespace IMDB.Controllers
                 return RedirectToAction("Actors");
             }
             return View();
-
         }
         
-
-
-
         // GET: Actors/Delete/5
         public ActionResult DeleteActor(int? id)
         {
@@ -110,21 +104,17 @@ namespace IMDB.Controllers
         public ActionResult DeleteActorConfirmed(int id)
         {
             Actor actor = dbData.RetriveActors(id);
-
             adminFunction.DeleteActorMovies(id);
             dbDelete.ActorDb(actor);
-
             return RedirectToAction("Actors");
         }
        
-
         public ActionResult Directors()
         {
-
             IEnumerable<Director> Directors = dbData.RetriveDirectors();
-
             return View(Directors);
         }
+
         [HttpGet]
         public ActionResult AddDirectors()
         {
@@ -158,9 +148,8 @@ namespace IMDB.Controllers
             {
                 return RedirectToAction("Directors");
             }
-
-
         }
+
         [HttpPost]
         public ActionResult EditDirector(Director directorModel)
         {
@@ -169,10 +158,8 @@ namespace IMDB.Controllers
                 var director = dbData.RetriveDirectors(directorModel.Director_ID);
                 dbUpdate.DirectorDb(directorModel);
                 return RedirectToAction("Directors");
-
             }
             return View();
-
         }
 
         // GET: Directors/Delete/5
@@ -201,8 +188,6 @@ namespace IMDB.Controllers
                 adminFunction.UpdateDirectorToNull(movie);
                 Director director = dbData.RetriveDirectors(id);
                 dbDelete.DirectorDb(director);
-
-
             }
             else
             {
@@ -211,23 +196,19 @@ namespace IMDB.Controllers
 
             }
             return RedirectToAction("Directors");
-
         }
         
-
         public ActionResult Movies()
         {
             IEnumerable<Movie> Movies = dbData.RetriveMovies();
             return View(Movies);
         }
 
-
         [HttpGet]
         public ActionResult AddMovies()
         {
             var directors = dbData.RetriveDirectors().ToList();
             Director defultdirector = new Director();
-
             directors.RemoveAll(x => x.Director_ID == nullDirector);
             Movie_Director movieDirector = new Movie_Director
             {
@@ -235,6 +216,7 @@ namespace IMDB.Controllers
             };
             return View(movieDirector);
         }
+
         [HttpPost]
         public ActionResult AddMovies(Movie_Director movieDirectorViewModel, HttpPostedFileBase image)
         {
@@ -250,13 +232,10 @@ namespace IMDB.Controllers
                     MemoryStream target = new MemoryStream();
                     image.InputStream.CopyTo(target);
                     byte[] movieImageByteArray = target.ToArray();
-
                     movieDirectorViewModel.movie.Img = movieImageByteArray;
                     dbAdd.MovieDb(movieDirectorViewModel.movie);
                     return RedirectToAction("Movies");
                 }
-
-
             }
             var directors = dbData.RetriveDirectors().ToList();
             directors.RemoveAll(x => x.Director_ID == nullDirector);
@@ -264,55 +243,41 @@ namespace IMDB.Controllers
             return View("AddMovies", movieDirectorViewModel);
         }
         
-
         [HttpGet]
         [AllowAnonymous]
         public ActionResult MovieToActor(int? id)
         {
-
             var actor = dbData.RetriveActors();
             var movie = dbData.SearchMovies(id);
-
             MovieActorViewModel movieAndActor = adminFunction.AssignIntoMovieActorVM(actor, movie);
-
             return View(movieAndActor);
         }
-
         
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult MovieToActor(MovieActorViewModel movieAndActor)
         {
-
             if (ModelState.IsValid)
             {
                 var actor = dbData.RetriveActors();
                 movieAndActor.Actors = actor;
-
                 var movie = dbData.RetriveMovies();
                 movieAndActor.Movies = movie;
-
                 if (adminFunction.CountMovieActors(movieAndActor) > 0)
                 {
-
                     TempData["Message"] = "This Actor already existed";
                     return RedirectToAction("MovieToActor");
                 }
                 dbAdd.MovieActor(movieAndActor.MovieActor);
                 return RedirectToAction("Movies");
-
             }
             else
             {
                 TempData["Message2"] = "Please choose the actor and movie";
-
                 return RedirectToAction("MovieToActor");
             }
         }
-
         
-
         [HttpGet]
         public ActionResult EditMovie(int? id)
         {
@@ -323,13 +288,9 @@ namespace IMDB.Controllers
                 {
                     return HttpNotFound();
                 }
-
                 var directors = dbData.RetriveDirectors().ToList();
-
-
                 directors.RemoveAll(x => x.Director_ID == nullDirector);
                 Movie_Director movieDirector = adminFunction.AssignIntoMovieDirectorVM(movie, directors);
-
                 Session["Movie_Img"] = movie.Img;
                 return View(movieDirector);
             }
@@ -337,15 +298,12 @@ namespace IMDB.Controllers
             {
                 return RedirectToAction("Movies");
             }
-
-
         }
+
         [HttpPost]
         public ActionResult EditMovie(Movie_Director movieVar, HttpPostedFileBase MovieImage)
         {
-            var movie = dbData.RetriveMovies(movieVar.movie.Movie_ID);
-          
-            
+            var movie = dbData.RetriveMovies(movieVar.movie.Movie_ID);    
             if (ModelState.IsValid)
             {
                 MemoryStream ms = new MemoryStream();
@@ -357,31 +315,20 @@ namespace IMDB.Controllers
                 {
                     movie.Img = (byte[])Session["Movie_Img"];
                 }
-
                adminFunction.AssignIntoNewMovie(movieVar, movie);
-
                 dbUpdate.MovieDb(movie);
                 return RedirectToAction("Movies");
-
             }
             else
             {
-
                 var Directors = dbData.RetriveDirectors().ToList();
                 Directors.RemoveAll(x => x.Director_ID == nullDirector);
                 movieVar.directors = Directors;
                 movieVar.movie = movie;
                 return View(movieVar);
             }
-
-
-           
         }
         
-
-
-
-
         // GET: Movies/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -407,12 +354,7 @@ namespace IMDB.Controllers
             adminFunction.DeleteFilmComment(id);
             adminFunction.DeleteFilmLikes(id);
             dbDelete.MovieDb(movie);
-
             return RedirectToAction("Movies");
         }
-        
-
-
     }
-
 }
