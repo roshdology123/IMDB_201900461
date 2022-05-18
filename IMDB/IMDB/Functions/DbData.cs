@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
+using IMDB.ViewModel;
 
 namespace IMDB.Functions
 {
@@ -132,6 +133,44 @@ namespace IMDB.Functions
         public int ActorExistMovie(int actorId, int movieId)
         {
             return _context.MovieActors.Where(id => id.Actor_ID == actorId && id.Movie_ID == movieId).Count();
+        }
+        public IEnumerable<UserFActor> RetrieveUserFActor(int userId)
+        {
+            return _context.UserFActors.Where(x => x.User_ID == userId);
+        }
+        public UserFActor RetrieveUserFActor(int? userId,int actorId)
+        {
+            return _context.UserFActors.SingleOrDefault(m => m.Actor_ID == actorId && m.User_ID == userId);
+        }
+        public IEnumerable<UserFMovie> RetrieveUserFMovie(int userId)
+        {
+            return _context.UserFMovies.Where(x => x.User_ID == userId);
+        }
+
+        public UserFMovie RetrieveUserFMovie(int? movieId, int userId)
+        {
+            return _context.UserFMovies.SingleOrDefault(m => m.Movie_ID == movieId && m.User_ID == userId);
+        }
+        public UserFMovie RetrieveUserFMovie(int? movieId, int? userId)
+        {
+            return _context.UserFMovies.SingleOrDefault(m => m.Movie_ID == movieId && m.User_ID == userId);
+        }
+        public int UserFActorCountDb(FavoriteActorViewModel favoActorVm, int userId)
+        {
+            return _context.UserFActors.Where(favActorModel => favActorModel.Actor_ID == favoActorVm.Actor.Actor_ID && favActorModel.User_ID == userId).Count();
+        }
+        public int UserFMoviesCount(FavoriteMovieViewModel favoMovieVm, int userId)
+        {
+            return _context.UserFMovies.Where(favoMovieModel => favoMovieModel.Movie_ID == favoMovieVm.Movie.Movie_ID && favoMovieModel.User_ID == userId).Count();
+        }
+        public UserFDirector UserFDirectorDb(FavoriteDirectorViewModel favoDirectorVm, int userId)
+        {
+            return _context.UserFDirectors.SingleOrDefault(m => m.Director_ID == favoDirectorVm.FDirector.Director_ID && m.User_ID == userId);
+        }
+
+        public int UserFDirectorCount(FavoriteDirectorViewModel favoDirectorVm, int userId)
+        {
+            return _context.UserFDirectors.Where(favoDirectorModel => favoDirectorModel.Director_ID == favoDirectorVm.Director.Director_ID && favoDirectorModel.User_ID == userId).Count();
         }
     }
 }

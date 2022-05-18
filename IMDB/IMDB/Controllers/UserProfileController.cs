@@ -16,6 +16,9 @@ namespace IMDB.Controllers
     {
         DbData dbData = new DbData();
         DbUpdate dbUpdate = new DbUpdate();
+        DbDelete dbDelete = new DbDelete();
+        DbAdd dbAdd = new DbAdd();
+        IMdbDBContext db = new IMdbDBContext();
         // GET: UserSettings
         [HttpGet]
         public ActionResult ProfileSettings()
@@ -61,9 +64,9 @@ namespace IMDB.Controllers
         [HttpGet]
         public ActionResult FavoriteActors()
         {
-                int userId = (int)Session["User_ID"];
-                FavoriteActorViewModel favoActorVm = new FavoriteActorViewModel();
-            favoActorVm.favoActors = db.UserFActors.Where(x => x.User_ID == userId);
+            int userId = (int)Session["User_ID"];
+            FavoriteActorViewModel favoActorVm = new FavoriteActorViewModel();
+            favoActorVm.favoActors = dbData.RetrieveUserFActor(userId);
             favoActorVm.Actors = dbData.RetriveActors().ToList();
                 return View(favoActorVm);
         }
@@ -75,53 +78,56 @@ namespace IMDB.Controllers
                 switch (btnType)
                 {
                     case 0:
-                        var deleteFavoActor = db.SingleOrDefault(m => m.Actor_ID == favoActorVm.FActor.Actor_ID && m.User_ID == userId);
-                        
+                    var deleteFavoActor = dbData.RetrieveUserFActor(userId, favoActorVm.Actor.Actor_ID);
+
+
                         if (deleteFavoActor != null)
-                        {
-                            db.UserFActors.Remove(deleteFavoActor);
-                            db.SaveChanges();
-                        }
-                        else
+                    {
+                         dbDelete.UserFActorDb(deleteFavoActor);
+                    }
+                    else
                         {
                         TempData["ErrorChooseRemoveDropList"] = "Please choose from DropList";
                         break;
                         }
                         break;
-                    case 1:
-                        int rowsCount = db.UserFActors.Where(favActorModel => favActorModel.Actor_ID == favoActorVm.Actor.Actor_ID && favActorModel.User_ID == userId).Count();
-                        if (rowsCount > 0)
-                        {
-                            TempData["Message"] = "This Actor is already in your Favorites";
-                        }
-                        else
-                        {
-                            UserFActor userFavoActor = new UserFActor();
+                case 1:
+                    int rowsCount = dbData.UserFActorCountDb(favoActorVm, userId);
+                    if (rowsCount > 0)
+                    {
+                        TempData["Message"] = "This Actor is already in your Favorites";
+                    }
+                    else
+                    {
+                        UserFActor userFavoActor = new UserFActor();
                         userFavoActor.Actor_ID = favoActorVm.Actor.Actor_ID;
                         userFavoActor.User_ID = userId;
                         if (userFavoActor.Actor_ID != 0)
                         {
-                            db.UserFActors.Add(userFavoActor);
-                            db.SaveChanges();
+                            dbAdd.UserFActorDb(userFavoActor);
                         }
                         else
                         {
                             TempData["ErrorChooseAddDropList"] = "Please choose from DropList";
                             break;
                         }
-                        }
-                        break;
-                }
+                    }
+                    break;
+            }
                 return RedirectToAction("FavoriteActors");
             }
+
+        
+
+
 
         [HttpGet]
         public ActionResult FavoriteMovies()
         {
             int userId = (int)Session["User_ID"];
             FavoriteMovieViewModel favoMovieVm = new FavoriteMovieViewModel();
-            favoMovieVm.favoMovies = db.UserFMovies.Where(x => x.User_ID == userId);
-            favoMovieVm.Movies = db.Movies.ToList();
+            favoMovieVm.favoMovies = dbData.RetrieveUserFMovie(userId);
+            favoMovieVm.Movies = dbData.RetriveMovies();
             return View(favoMovieVm);
         }
 
@@ -131,45 +137,46 @@ namespace IMDB.Controllers
             int userId = (int)Session["User_ID"];
                 switch (btnType)
                 {
-                    case 0:
-                        var deleteFavoMovie = db.UserFMovies.SingleOrDefault(m => m.Movie_ID == favoMovieVm.FMovie.Movie_ID && m.User_ID == userId);
-                        if (deleteFavoMovie != null)
-                        {
-                            db.UserFMovies.Remove(deleteFavoMovie);
-                            db.SaveChanges();
-                        }
-                        else
-                        {
-                            TempData["ErrorChooseRemoveDropList"] = "Please choose from DropList";
-                            break;
-                        }
+                case 0:
+                    UserFMovie deleteFavoMovie = dbData.RetrieveUserFMovie(favoMovieVm.FMovie.Movie_ID, userId);
+                    if (deleteFavoMovie != null)
+                    {
+                        dbDelete.UserFMovieDb(deleteFavoMovie);
+                    }
+                    else
+                    {
+                        TempData["ErrorChooseRemoveDropList"] = "Please choose from DropList";
                         break;
-                    case 1:
-                        int rowsCount = db.UserFMovies.Where(favoMovieModel => favoMovieModel.Movie_ID == favoMovieVm.Movie.Movie_ID && favoMovieModel.User_ID == userId).Count();
-                        if (rowsCount > 0)
-                        {
-                            TempData["Message"] = "This Movie is already in your Favorites";
-                        }
-                        else
-                        {
-                            UserFMovie userFavoMovie = new UserFMovie();
+                    }
+                    break;
+                case 1:
+                    int rowsCount = dbData.UserFMoviesCount(favoMovieVm, userId);
+                    if (rowsCount > 0)
+                    {
+                        TempData["Message"] = "This Movie is already in your Favorites";
+                    }
+                    else
+                    {
+                        UserFMovie userFavoMovie = new UserFMovie();
                         userFavoMovie.Movie_ID = favoMovieVm.Movie.Movie_ID;
                         userFavoMovie.User_ID = userId;
-                            if (userFavoMovie.Movie_ID != 0)
-                            {
-                                db.UserFMovies.Add(userFavoMovie);
-                                db.SaveChanges();
-                            }
-                            else
-                            {
-                                TempData["ErrorChooseAddDropList"] = "Please choose from DropList";
-                                break;
-                            }
+                        if (userFavoMovie.Movie_ID != 0)
+                        {
+                            dbAdd.UserFMovieDb(userFavoMovie);
                         }
-                        break;
-                }
+                        else
+                        {
+                            TempData["ErrorChooseAddDropList"] = "Please choose from DropList";
+                            break;
+                        }
+                    }
+                    break;
+            }
                 return RedirectToAction("FavoriteMovies");
             }
+
+        
+
 
         [HttpGet]
         public ActionResult FavoriteDirectors()
@@ -187,44 +194,48 @@ namespace IMDB.Controllers
             int userId = (int)Session["User_ID"];
                 switch (btnType)
                 {
-                    case 0:
-                        var deleteFavoDirector = db.UserFDirectors.SingleOrDefault(m => m.Director_ID == favoDirectorVm.FDirector.Director_ID && m.User_ID == userId);
-                        if (deleteFavoDirector != null)
-                        {
-                            db.UserFDirectors.Remove(deleteFavoDirector);
-                            db.SaveChanges();
-                        }
-                        else
-                        {
-                            TempData["ErrorChooseRemoveDropList"] = "Please choose from DropList";
-                            break;
-                        }
+                case 0:
+                    UserFDirector deleteFavoDirector = dbData.UserFDirectorDb(favoDirectorVm, userId);
+                    if (deleteFavoDirector != null)
+                    {
+                        dbDelete.UserFDirectorDb(deleteFavoDirector);
+                    }
+                    else
+                    {
+                        TempData["ErrorChooseRemoveDropList"] = "Please choose from DropList";
                         break;
-                    case 1:
-                        int rowsCount = db.UserFDirectors.Where(favoDirectorModel => favoDirectorModel.Director_ID == favoDirectorVm.Director.Director_ID && favoDirectorModel.User_ID == userId).Count();
-                        if (rowsCount > 0)
-                        {
-                            TempData["Message"] = "This Director is already in your Favorites";
-                        }
-                        else
-                        {
-                            UserFDirector userFavoDirector = new UserFDirector();
+                    }
+                    break;
+                case 1:
+                    int rowsCount = dbData.UserFDirectorCount(favoDirectorVm, userId);
+                    if (rowsCount > 0)
+                    {
+                        TempData["Message"] = "This Director is already in your Favorites";
+                    }
+                    else
+                    {
+                        UserFDirector userFavoDirector = new UserFDirector();
                         userFavoDirector.Director_ID = favoDirectorVm.Director.Director_ID;
                         userFavoDirector.User_ID = userId;
-                            if (userFavoDirector.Director_ID != 0)
-                            {
-                                db.UserFDirectors.Add(userFavoDirector);
-                                db.SaveChanges();
-                            }
-                            else
-                            {
-                                TempData["ErrorChooseAddDropList"] = "Please choose from DropList";
-                                break;
-                            }
+                        if (userFavoDirector.Director_ID != 0)
+                        {
+                            dbAdd.UserFDirectorDb(userFavoDirector);
                         }
-                        break;
-                }
+                        else
+                        {
+                            TempData["ErrorChooseAddDropList"] = "Please choose from DropList";
+                            break;
+                        }
+                    }
+                    break;
+            }
                 return RedirectToAction("FavoriteDirectors");
             }
+
+        
+
+
+
+
     }
 }

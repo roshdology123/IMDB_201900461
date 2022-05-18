@@ -48,6 +48,21 @@ namespace IMDB.Functions
             context.MovieActors.Add(movieActor);
             context.SaveChanges();
         }
+        public void UserFActorDb(UserFActor userFavoActor)
+        {
+            context.UserFActors.Add(userFavoActor);
+            context.SaveChanges();
+        }
+        public void UserFMovieDb(UserFMovie userFavoMovie)
+        {
+            context.UserFMovies.Add(userFavoMovie);
+            context.SaveChanges();
+        }
 
+        public void UserFDirectorDb(UserFDirector userFavoDirector)
+        {
+            context.UserFDirectors.Add(userFavoDirector);
+            context.SaveChanges();
+        }
     }
 }

@@ -50,5 +50,26 @@ namespace IMDB.Functions
             context.Movies.Remove(searchedMovie);
             context.SaveChanges();
         }
+
+        public void UserFMovieDb(UserFMovie deleteFavoMovie)
+        {
+            UserFMovie searchedFMovie = dbData.RetrieveUserFMovie(deleteFavoMovie.Movie_ID, deleteFavoMovie.User_ID);
+            context.UserFMovies.Remove(deleteFavoMovie);
+            context.SaveChanges();
+        }
+
+        public void UserFActorDb(UserFActor deleteFavoActor)
+        {
+            var searchedFavoActor = dbData.RetrieveUserFActor(deleteFavoActor.User_ID, deleteFavoActor.Actor.Actor_ID);
+            context.UserFActors.Remove(deleteFavoActor);
+            context.SaveChanges();
+        }
+
+        public void UserFDirectorDb(UserFDirector deleteFavoDirector)
+        {
+            UserFDirector searchedFDirector = context.UserFDirectors.SingleOrDefault(m => m.Director_ID == deleteFavoDirector.Director_ID && m.User_ID == deleteFavoDirector.User_ID);
+            context.UserFDirectors.Remove(deleteFavoDirector);
+            context.SaveChanges();
+        }
     }
 }
