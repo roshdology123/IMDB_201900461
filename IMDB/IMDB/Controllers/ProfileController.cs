@@ -11,7 +11,7 @@ namespace IMDB.Controllers
 {
     public class ProfileController : Controller
     {
-        UserFunctions userFunction = new UserFunctions();
+        
         // GET: Profile
         DbData dbData = new DbData();
         ActorDetailsViewModel actorDetailsVm = new ActorDetailsViewModel();
@@ -19,14 +19,18 @@ namespace IMDB.Controllers
         public ActionResult ActorDetails(string id)
         {
             int actorId = Int32.Parse(id);
-            userFunction.AssignActorsToVm(actorId);
+            ActorDetailsViewModel actorDetailsVm = new ActorDetailsViewModel();
+            actorDetailsVm.Actor = dbData.RetriveActors(actorId);
+            actorDetailsVm.movieActors = dbData.RetrieveActorMovies(actorId);
             return View(actorDetailsVm);
         }
         
         public ActionResult DirectorDetails(string id)
         {
             int directorId = Int32.Parse(id);
-           userFunction.AssignDirectorsToVm(directorId);
+            DirectorDetailsViewModel directorDetailsVm = new DirectorDetailsViewModel();
+            directorDetailsVm.Director = dbData.RetriveDirectors(directorId);
+            directorDetailsVm.Movies = dbData.RetrieveDirectorMovies(directorId);
             return View(directorDetailsVm);
         }
     }

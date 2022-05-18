@@ -7,13 +7,6 @@
       <FileName>Controllers\AdminViewController.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="IMDB.Controllers.DirectorsController">
-    <Position X="70.75" Y="6" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAACARAACAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
-      <FileName>Controllers\DirectorsController.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="IMDB.Controllers.HomeController">
     <Position X="77.5" Y="6" Width="1.5" />
     <TypeIdentifier>
@@ -110,13 +103,6 @@
     <TypeIdentifier>
       <HashCode>AAQAAEAAAACABAAAAAAAAAgAAAAAAAEAAAAAAAAAAAA=</HashCode>
       <FileName>Functions\IsRated.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="IMDB.Functions.UserFunctions">
-    <Position X="7.5" Y="4" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAEAACAAAAAAAACAAAAAAAAAAAA=</HashCode>
-      <FileName>Functions\UserFunctions.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IMDB.ViewModel.ActorDetailsViewModel">
