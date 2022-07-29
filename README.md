@@ -22,9 +22,9 @@ Created a database schema for the IMDb project with ERD Model
 
 
 ## Class Diagram: 
-![Class Diagram][https://github.com/roshdology123/IMDB_201900461/blob/main/IMDB/IMDB%20ClassDiagramV2.png]
+![Class Diagram](https://github.com/roshdology123/IMDB_201900461/blob/main/IMDB/IMDB%20ClassDiagramV2.png)
 
 
 
 ## Database Schema
-![Db Schema][https://github.com/roshdology123/IMDB_201900461/blob/main/IMDB/DatabaseSchema/IMDb%20database%20Schema.pdf]
+![Db Schema](https://github.com/roshdology123/IMDB_201900461/blob/main/IMDB/DatabaseSchema/IMDb%20database%20Schema%20(1)-1.jpg)
